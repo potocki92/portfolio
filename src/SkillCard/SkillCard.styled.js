@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const SkillCardStyled = styled.div`
   margin-bottom: 31px;
-  width: 50%;
   padding: 0 20px;
 
   span {
