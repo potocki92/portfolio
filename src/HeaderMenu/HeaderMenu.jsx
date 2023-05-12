@@ -14,17 +14,30 @@ import {
 
 const HeaderMenu = () => {
   const [isClick, setIsClick] = useState(false);
+  const [isTop, setIsTop] = useState(false);
   const handleBurgerClick = () => {
     setIsClick(!isClick);
   };
 
   const handleLinkClick = (e, id) => {
     e.preventDefault();
-    document.getElementById(id).scrollIntoView({behavior: "smooth"})
-   
-    setIsClick(false)
-  }
-  
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+
+    setIsClick(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsTop(window.scrollY === 0 ? false : true);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -54,11 +67,11 @@ const HeaderMenu = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <>
       <MobileHeader>
-        <ToggleMenuButton onClick={handleBurgerClick} >
+        <ToggleMenuButton onClick={handleBurgerClick}>
           <BurgerIcon className={isClick ? "active" : ""}>
             <span></span>
             <span></span>
@@ -66,16 +79,31 @@ const HeaderMenu = () => {
           </BurgerIcon>
         </ToggleMenuButton>
       </MobileHeader>
-      <StyledHeaderMenu className={isClick ? "menu-open" : ""}>
+      <StyledHeaderMenu
+        className={` ${isClick ? "menu-open" : ""} ${
+          isTop ? "fixed-header" : ""
+        }`}
+      >
         <SidebarInner>
           <Logo>Potocki</Logo>
           <Menu>
             <MenuList>
               <MenuItem>
-                <MenuLink href="#home" onClick={(e) => handleLinkClick(e, "home")}>Home</MenuLink>
+                <MenuLink
+                  href="#home"
+                  onClick={(e) => handleLinkClick(e, "home")}
+                  className="active"
+                >
+                  Home
+                </MenuLink>
               </MenuItem>
               <MenuItem>
-                <MenuLink href="#about" onClick={(e) => handleLinkClick(e, "about")}>About</MenuLink>
+                <MenuLink
+                  href="#about"
+                  onClick={(e) => handleLinkClick(e, "about")}
+                >
+                  About
+                </MenuLink>
               </MenuItem>
               <MenuItem>
                 <MenuLink>Portfolio</MenuLink>

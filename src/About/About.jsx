@@ -1,8 +1,10 @@
+import { AboutStyled } from "./About.styled";
+
 const About = () => {
   return (
-    <section id="about" className="section">
+    <AboutStyled id="about">
       About
-    </section>
+    </AboutStyled>
   );
 };
 

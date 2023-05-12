@@ -1,17 +1,28 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const showHeaderAnimation = keyframes`
+0% {
+  transform: translateY(-100%);
+}
+100% {
+  transform: translateY(0);
+}
+`;
 export const StyledHeaderMenu = styled.header`
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-
   width: 320px;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
   background-color: #fff;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   z-index: 98;
   transition: all 0.5s ease;
+
+  &.fixed-header {
+    position: fixed;
+    animation: ${showHeaderAnimation} 0.8s ease-in-out forwards;
+  }
   @media (min-width: 1200px) {
     width: 100%;
     height: 100px;
@@ -22,7 +33,7 @@ export const StyledHeaderMenu = styled.header`
 
   @media screen and (max-width: 1199px) {
     transform: translateX(-100%);
-    
+
     &.menu-open {
       transform: translateX(0);
     }
@@ -111,7 +122,8 @@ export const MenuLink = styled.a`
   padding: 9px 15px;
   position: relative;
   transition: all 0.3s ease;
-
+  z-index: 1;
+  
   &.active {
     &::before {
       transform: scaleX(1);
@@ -165,7 +177,7 @@ export const ToggleMenuButton = styled.div`
   z-index: 100;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  box-shadow: 0 6px 12px rgba(0,0,0,.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 255, 255);
 `;
 
@@ -243,4 +255,4 @@ export const BurgerIcon = styled.div`
     }
     
   }
-  `
+  `;
