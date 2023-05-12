@@ -1,6 +1,12 @@
 @import "node_modules/modern-normalize/modern-normalize.css";
 
-h1, h2, h3, h4, h5, h6, p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -17,4 +23,19 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+.container {
+  max-width: 1500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  padding: 0 20px;
+  position: relative;
+  clear: both;
+}
+@media (max-width: 1600px) {
+  .container {
+    max-width: 1170px;
+  }
 }

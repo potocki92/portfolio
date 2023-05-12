@@ -46,8 +46,16 @@ export const ButtonCv = styled.button`
   font-weight: 500;
   font-size: 18px;
   display: inline-block;
-  border-radius: 6px;
-  border: 2px solid #7e7e7e;
-  padding: 8px 35px 7px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  padding: 12px 35px 13px;
   transition: all 0.3s ease;
+  background-color: #fff;
+
+  &:hover {
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    color: #fff;
+    border: none;
+  }
 `;
