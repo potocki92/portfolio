@@ -38,7 +38,13 @@ const About = () => {
                 provident?
               </p>
               <Skills>
-                <SkillCard />
+                <SkillCard name="HTML5"/>
+                <SkillCard name="CSS3"/>
+                <SkillCard name="JavaScript"/>
+                <SkillCard name="React.Js"/>
+                <SkillCard name="Figma"/>
+                <SkillCard name="Styled Components"/>
+                <SkillCard name="Node.Js"/>
               </Skills>
             </SkillsContainer>
           </div>

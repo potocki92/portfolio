@@ -19,11 +19,11 @@ export const StyledHeaderMenu = styled.header`
   z-index: 98;
   transition: all 0.5s ease;
 
-  &.fixed-header {
-    position: fixed;
-    animation: ${showHeaderAnimation} 0.8s ease-in-out forwards;
-  }
   @media (min-width: 1200px) {
+    &.fixed-header {
+      position: fixed;
+      animation: ${showHeaderAnimation} 0.8s ease-in-out forwards;
+    }
     width: 100%;
     height: 100px;
     backgroound: transparent;
