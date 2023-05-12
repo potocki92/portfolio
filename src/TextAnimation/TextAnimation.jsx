@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react"
-import { TextAnimationStyled, TypedCursor, Wrapper } from "./TextAnimation.styled"
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
+import { TextAnimationStyled, Wrapper } from "./TextAnimation.styled";
 
 const TextAnimation = () => {
+  const typedRef = useRef(null);
 
-    const [animation, setAnimation] = useState(false);
-    const [written, setWritten] = useState(false)
-    
-    useEffect(() => {
-        setAnimation(true);
-    },[])
+  useEffect(() => {
+    const options = {
+      strings: ["Full Stack Developer"],
+      typeSpeed: 50,
+    };
+    const typed = new Typed(typedRef.current, options);
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
-    const onAnimationEnd = () => {
-        setWritten(true)
-    }
+  return (
+    <Wrapper data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+      <TextAnimationStyled>
+        <span ref={typedRef}></span>
+      </TextAnimationStyled>
+    </Wrapper>
+  );
+};
 
-    return (
-        <Wrapper data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" >
-            <TextAnimationStyled  className={animation ? "animated" : ""} onAnimationEnd={onAnimationEnd} delay={0}>Full Stack Developer</TextAnimationStyled>
-            <TypedCursor className={written ? "animated" : ""} delay={2.5}>|</TypedCursor>
-        </Wrapper>
-    )
-}
-
-export default TextAnimation
+export default TextAnimation;

@@ -37,7 +37,9 @@ const Home = () => {
             I'm Full-stack React Developer based in Poland.
           </p>
         </HomeExtra>
-        <ButtonCv data-aos="fade-up" data-aos-duration="2000">Download CV</ButtonCv>
+        <ButtonCv >
+          Download CV
+        </ButtonCv>
       </HomeContent>
     </HomeStyled>
   );

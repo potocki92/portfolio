@@ -12,6 +12,7 @@ export const HomeStyled = styled.section`
 `;
 
 export const HomeContent = styled.div`
+  width: 100%;
   padding: 100px 20px;
 `;
 
@@ -41,21 +42,26 @@ export const HomeExtra = styled.div`
 `;
 
 export const ButtonCv = styled.button`
-  cursor: pointer;
-  margin-top: 25px;
-  font-weight: 500;
-  font-size: 18px;
-  display: inline-block;
-  border-radius: 30px;
-  border: none;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  padding: 12px 35px 13px;
-  transition: all 0.3s ease;
-  background-color: #fff;
-
-  &:hover {
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
-    color: #fff;
-    border: none;
+margin-top: 25px;
+font-weight: 0;
+font-size: 14px;
+color: #666;
+background-color: transparent;
+padding: 10px 30px;
+border: 2px solid #666;
+box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+border-radius: 50px;
+transition : 336ms;
+transform: translateY(0);
+cursor: pointer;
+&:hover {
+  transition : 336ms;
+  padding: 10px 30px;
+  transform : translateY(-5px);
+  background-color: #0066CC;
+  color: #fff;
+  border: solid 2px #0066cc;
   }
 `;
+
+

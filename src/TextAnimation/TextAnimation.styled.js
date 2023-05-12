@@ -1,31 +1,17 @@
 import styled, { keyframes } from "styled-components";
 
-const writeAnimation = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-`;
-
-const blinkAnimation = keyframes`
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
   align-items: center;
+  justify-content: center;
   color: #1a1a1a;
   margin: 10px 0 12px;
+
+  @media (max-width: 250px) {
+    max-width: 200px; /* maksymalna szerokość kontenera przy rozdzielczości 250px */
+  }
 `;
 
 export const TextAnimationStyled = styled.h1`
@@ -33,27 +19,10 @@ export const TextAnimationStyled = styled.h1`
   font-weight: 700;
   line-height: 1.2;
   height: 100%;
-  width: 100%;
-  display: inline-block;
-  overflow: hidden;
-  letter-spacing: 0.06em;
-  width: 0;
+  max-width: fit-content;
+  
 
-  &.animated {
-    animation: ${writeAnimation} 2s linear forwards;
-    animation-delay: ${({ delay }) => delay}s;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-`;
-
-export const TypedCursor = styled.span`
-  font-weight: 700;
-  line-height: 1.2;
-  font-size: 36px;
-
-  &.animated {
-    animation: ${blinkAnimation} 1s step-end infinite;
-    color: #000;
+  @media (max-width: 480px) {
+    font-size: 30px;
   }
 `;
