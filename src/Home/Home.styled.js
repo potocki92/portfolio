@@ -57,10 +57,10 @@ cursor: pointer;
 &:hover {
   transition : 336ms;
   padding: 10px 30px;
-  transform : translateY(-5px);
-  background-color: #0066CC;
+  transform : translateY(-4px);
+  background-color: #666;
   color: #fff;
-  border: solid 2px #0066cc;
+  border: solid 2px #666;
   }
 `;
 

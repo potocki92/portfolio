@@ -65,9 +65,9 @@ export const SkillsContainer = styled.div`
 export const Skills = styled.div`
   width: 100%;
   display: flex;
+  gap: 10px;
   padding-top: 40px;
   flex-wrap: wrap;
-  margin: 0 -20px 10px;
   height: auto;
   clear: both;
   float: left;
