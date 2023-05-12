@@ -9,6 +9,11 @@ import {
 } from "./About.styled";
 import { FaHtml5, FaCss3Alt, FaReact, FaJs, FaNodeJs } from 'react-icons/fa';
 import { SiFigma, SiStyledcomponents } from "react-icons/si"
+
+const libraries = [
+  FaHtml5, FaCss3Alt, FaReact, FaJs, FaNodeJs,SiFigma, SiStyledcomponents
+]
+
 const About = () => {
   return (
     <AboutStyled id="about">
@@ -39,20 +44,9 @@ const About = () => {
                 provident?
               </p>
               <Skills>
-                {/* <SkillCard skillName="HTML5" /> */}
-                <FaHtml5 />
-                {/* <SkillCard skillName="CSS3" /> */}
-                <FaCss3Alt />
-                {/* <SkillCard skillName="JavaScript" /> */}
-                <FaJs />
-                {/* <SkillCard skillName="React.Js" /> */}
-                <FaReact />
-                {/* <SkillCard skillName="Figma" /> */}
-                <SiFigma />
-                {/* <SkillCard skillName="Styled Components" /> */}
-                <SiStyledcomponents />
-                {/* <SkillCard skillName="Node.Js" /> */}
-                <FaNodeJs />
+                {libraries.map((Library, index) => (
+                  <SkillCard key={index} skillIcon={<Library />} />
+                ))}
               </Skills>
             </SkillsContainer>
           </div>

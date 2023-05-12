@@ -1,11 +1,10 @@
 import { SkillCardStyled } from "./SkillCard.styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SkillCard = ({ skillName, skillIcon }) => {
+const SkillCard = ({ skillIcon }) => {
   return (
     <SkillCardStyled>
-      <span>{skillName}</span>
-      <FontAwesomeIcon icon={skillIcon}></FontAwesomeIcon>
+      {skillIcon}
     </SkillCardStyled>
   );
 };
