@@ -1,6 +1,7 @@
-import About from "./About/About";
-import HeaderMenu from "./HeaderMenu/HeaderMenu";
-import Home from "./Home/Home";
+import About from "./components/About/About";
+import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
+import Home from "./components/Home/Home";
+import PersonalModal from "./components/PersonalModal/PersonalModal";
 
 function App() {
   return (

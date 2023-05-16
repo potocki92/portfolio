@@ -7,21 +7,15 @@ import {
   Skills,
   SkillsContainer,
 } from "./About.styled";
-import { FaHtml5, FaCss3Alt, FaReact, FaJs, FaNodeJs } from 'react-icons/fa';
-import { SiFigma, SiStyledcomponents } from "react-icons/si"
-
-import HtmlImg from "../assets/FaHtml5.png"
-import CssImg from "../assets/FaCss3Alt.png"
-
-const libraries = [
-  FaHtml5, FaCss3Alt, FaReact, FaJs, FaNodeJs,SiFigma, SiStyledcomponents
-]
-
-const imgLibraries = [
-  HtmlImg, CssImg
-]
+import { iconLibraries } from "../../utils/iconLibraries";
+import Button from "../Button/Button";
+import { useEffect, useState } from "react";
+import PersonalModal from "../PersonalModal/PersonalModal";
+import { createPortal } from "react-dom";
 
 const About = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <AboutStyled id="about">
       <div className="container">
@@ -50,23 +44,43 @@ const About = () => {
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit,
                 provident?
               </p>
-              <Skills 
+              <Skills
                 data-aos="fade-right"
                 data-aos-duration="1200"
-                data-aos-delay="100">
-
-                {libraries.map((Library, index) => (
-                  <SkillCard key={index} skillIcon={<Library size={52}/>} />
+                data-aos-delay="100"
+              >
+                {iconLibraries.map((Library, index) => (
+                  <SkillCard key={index} skillIcon={<Library size={52} />} />
                 ))}
-                {/* {
-                  imgLibraries.map((img, index) => (
-                    <SkillCard key={index} skillIcon={img}/>
-                  ))
-                } */}
               </Skills>
             </SkillsContainer>
           </div>
         </AboutContent>
+        <div
+          data-aos="fade-right"
+          data-aos-duration="1200"
+          data-aos-delay="100"
+        >
+          <Button
+            style={{
+              borderRadius: "6px",
+              padding: "12px 20px",
+              marginTop: "10px",
+              fontSize: "16px",
+              letterSpacing: "0.4px",
+            }}
+            text={"See More"}
+            openModal={() => setShowModal(true)}
+          ></Button>
+          {showModal &&
+            createPortal(
+              <PersonalModal
+                onClose={() => setShowModal(false)}
+                className={showModal ? "show" : ""}
+              />,
+              document.body
+            )}
+        </div>
       </div>
     </AboutStyled>
   );

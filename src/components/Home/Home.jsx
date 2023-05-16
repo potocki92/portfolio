@@ -1,5 +1,4 @@
 import {
-  ButtonCv,
   HomeContent,
   HomeExtra,
   HomeImgContent,
@@ -9,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import TextAnimation from "../TextAnimation/TextAnimation";
+import Button from "../Button/Button";
 
 const Home = () => {
   useEffect(() => {
@@ -37,9 +37,7 @@ const Home = () => {
             I'm Full-stack React Developer based in Poland.
           </p>
         </HomeExtra>
-        <ButtonCv >
-          Download CV
-        </ButtonCv>
+        <Button text={"Download CV"}/>
       </HomeContent>
     </HomeStyled>
   );
