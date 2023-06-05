@@ -4,11 +4,14 @@ export const HomeStyled = styled.section`
   width: 100%;
   min-height: 100vh;
   position: relative;
-  display: flex;
-  background-color: #f5f8fc;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding-top: 54px;
+  margin-top: 54px;
+
+  @media screen and (min-width: 40em) {
+    padding-top: 64px;
+    margin-top: 64px;
+    min-height: 0;
+  }
 `;
 
 export const HomeContent = styled.div`
@@ -35,7 +38,6 @@ export const HomeExtra = styled.div`
   transition: all 1s ease;
 
   .hello {
-    color: #666;
     font-weight: 500;
     font-size: 20px;
   }
@@ -45,7 +47,6 @@ export const ButtonCv = styled.button`
 margin-top: 25px;
 font-weight: 0;
 font-size: 14px;
-color: #666;
 background-color: transparent;
 padding: 10px 30px;
 border: 2px solid #666;
@@ -64,4 +65,17 @@ cursor: pointer;
   }
 `;
 
+export const HomeText = styled.h1`
+margin-bottom: 40px;
+font-size: 3rem;
+font-weight: 500;
+letter-spacing: -.15rem;
+line-height: 1.15;
+`
 
+export const HomeUnderText = styled.p`
+margin: 20px 0;
+font-size: 1.3rem;
+line-height: 1.6;
+}
+`

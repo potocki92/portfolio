@@ -1,44 +1,26 @@
 import {
-  HomeContent,
-  HomeExtra,
-  HomeImgContent,
   HomeStyled,
+  HomeText,
+  HomeUnderText,
 } from "./Home.styled";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import TextAnimation from "../TextAnimation/TextAnimation";
-import Button from "../Button/Button";
+import { SectionTitle } from "../Section/Section.styled";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
 const Home = () => {
   useEffect(() => {
     AOS.init();
   });
   return (
-    <HomeStyled id="home">
-      <HomeContent data-aos="fade-up" data-aos-duration="1200">
-        <HomeImgContent></HomeImgContent>
-        <HomeExtra>
-          <h5
-            className="hello"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="100"
-          >
-            Hello, I'm Mateusz Potocki
-          </h5>
-          <TextAnimation />
-          <p
-            className="text"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-            data-aos-delay="300"
-          >
-            I'm Full-stack React Developer based in Poland.
-          </p>
-        </HomeExtra>
-        <Button text={"Download CV"}/>
-      </HomeContent>
+    <HomeStyled id="profile" className="container">
+        <HomeText>An ambitious<br/> Full-Stack Developer starting his career in IT.
+        </HomeText>
+        <HomeUnderText>
+          Hi, I'm Mateusz, a web developer focused on learning new technologies and improving my skills based in Poland.
+          Currently I'm looking for a job as a Junior Front-end Developer.
+      </HomeUnderText>
     </HomeStyled>
   );
 };

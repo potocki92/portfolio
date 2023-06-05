@@ -10,14 +10,18 @@ p {
   margin: 0;
   padding: 0;
 }
+html {
+  font-size: .9rem;
+}
 body {
+  background-color: #14182c;
   font-family: Poppins;
-  font-size: 18px;
   line-height: 30px;
   letter-spacing: 0;
   word-wrap: break-word;
   font-weight: 400;
-  color: #7e7e7e;
+  color: #fff;
+  min-height: 100vh;  
 }
 img {
   display: block;
@@ -25,17 +29,9 @@ img {
   height: auto;
 }
 .container {
-  max-width: 1500px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  padding: 0 20px;
-  position: relative;
-  clear: both;
+  max-width: 640px;
+  padding: 0 24px 32px;
+  margin: 0 auto;
 }
-@media (max-width: 1600px) {
-  .container {
-    max-width: 1170px;
-  }
-}
+
