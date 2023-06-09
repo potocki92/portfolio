@@ -165,14 +165,16 @@ line-height: 1.6;
     }
 `,zh=he.img`
     max-width: 100%;
-    min-width: 336px;
+    min-width: 260px;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 0px;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
     transition-property: box-shadow, transform;
-    height: 176px;
+
+    @media screen and (min-width: 40em) {
+        width: 80%;
 `,Th=he.div`
     margin-bottom: 16px;
     display: flex;
@@ -181,6 +183,9 @@ line-height: 1.6;
     flex-direction: column;
     gap: 16px;
 
+    @media screen and (min-width: 40em) {
+        width: 20%;
+    }
     
 `,Oh=he.h3`
     font-weight: 500;
@@ -191,7 +196,7 @@ line-height: 1.6;
     @media screen and (min-width: 40em) {
         font-size: 1rem;
     }
-`,ro=({projectName:e,description:t})=>q.jsxs(Nh,{children:[q.jsx(zh,{}),q.jsxs(Th,{children:[q.jsx(Oh,{children:e}),q.jsx(jh,{children:t})]})]}),Lh=()=>(St.useEffect(()=>{Ph.init()}),q.jsxs(xh,{id:"profile",className:"container",children:[q.jsxs(Ch,{children:["An ambitious",q.jsx("br",{})," Full-Stack Developer starting his career in IT."]}),q.jsx(Eh,{children:"Hi, I'm Mateusz, a web developer focused on learning new technologies and improving my skills based in Poland. Currently I'm looking for a job as a Junior Front-end Developer."})]})),Ah=he.section`
+`,ro=({projectName:e,description:t,projectImg:n})=>q.jsxs(Nh,{children:[q.jsx(zh,{src:n}),q.jsxs(Th,{children:[q.jsx(Oh,{children:e}),q.jsx(jh,{children:t})]})]}),Lh=()=>(St.useEffect(()=>{Ph.init()}),q.jsxs(xh,{id:"profile",className:"container",children:[q.jsxs(Ch,{children:["An ambitious",q.jsx("br",{})," Full-Stack Developer starting his career in IT."]}),q.jsx(Eh,{children:"Hi, I'm Mateusz, a web developer focused on learning new technologies and improving my skills based in Poland. Currently I'm looking for a job as a Junior Front-end Developer."})]})),Ah=he.section`
 padding-top: 54px;
 margin-top: 54px;
-`,Rh=()=>q.jsxs(Ah,{id:"work",className:"container",children:[q.jsx(Hf,{children:"Selected Work"}),q.jsx(ro,{projectName:"WebStudio",description:"My first responsive website."}),q.jsx(ro,{projectName:"IceCream",description:"Group project an ice cream shop website."}),q.jsx(ro,{projectName:"Filmoteka",description:"Group project a movie website."}),q.jsx(ro,{projectName:"Invoice",description:"Creating invoices with a database."})]});function $h(){return q.jsxs(q.Fragment,{children:[q.jsx(Sh,{}),q.jsx(Lh,{}),q.jsx(Rh,{}),q.jsx(yh,{})]})}Gi.createRoot(document.getElementById("root")).render(q.jsx(jr.StrictMode,{children:q.jsx($h,{})}));
+`,Rh="/portfolio/assets/WebStudio-dd7ed55c.png",$h="/portfolio/assets/IceCream-3db0caff.png",Ih="/portfolio/assets/Filmoteka-d7ee7ae8.png",Mh="/portfolio/assets/Invoice-36697aa5.png",Dh=()=>q.jsxs(Ah,{id:"work",className:"container",children:[q.jsx(Hf,{children:"Selected Work"}),q.jsx(ro,{projectName:"WebStudio",description:"My first responsive website.",projectImg:Rh}),q.jsx(ro,{projectName:"IceCream",description:"Group project an ice cream shop website.",projectImg:$h}),q.jsx(ro,{projectName:"Filmoteka",description:"Group project a movie website.",projectImg:Ih}),q.jsx(ro,{projectName:"Invoice",description:"Creating invoices with a database.",projectImg:Mh})]});function Fh(){return q.jsxs(q.Fragment,{children:[q.jsx(Sh,{}),q.jsx(Lh,{}),q.jsx(Dh,{}),q.jsx(yh,{})]})}Gi.createRoot(document.getElementById("root")).render(q.jsx(jr.StrictMode,{children:q.jsx(Fh,{})}));
