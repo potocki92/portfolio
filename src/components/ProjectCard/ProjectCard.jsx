@@ -1,9 +1,9 @@
 import { ProjectCardContent, ProjectCardDescription, ProjectCardImg, ProjectCardStyled, ProjectCardTitle } from "./ProjectCard.styled";
 
-const ProjectCard = ({ projectName, description }) => {
+const ProjectCard = ({ projectName, description, projectImg }) => {
     return (
         <ProjectCardStyled>
-            <ProjectCardImg/>
+            <ProjectCardImg src={projectImg}/>
             <ProjectCardContent>
                 <ProjectCardTitle>{projectName}</ProjectCardTitle>
                 <ProjectCardDescription>{description}</ProjectCardDescription>

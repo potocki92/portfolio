@@ -15,14 +15,16 @@ export const ProjectCardStyled = styled.div`
 
 export const ProjectCardImg = styled.img`
     max-width: 100%;
-    min-width: 336px;
+    min-width: 260px;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 0px;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
     transition-property: box-shadow, transform;
-    height: 176px;
+
+    @media screen and (min-width: 40em) {
+        width: 80%;
 `
 
 export const ProjectCardContent = styled.div`
@@ -33,6 +35,9 @@ export const ProjectCardContent = styled.div`
     flex-direction: column;
     gap: 16px;
 
+    @media screen and (min-width: 40em) {
+        width: 20%;
+    }
     
 `
 export const ProjectCardTitle = styled.h3`
