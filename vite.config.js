@@ -1,11 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import styleX from "vite-plugin-stylex";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: "/portfolio/",
-  plugins: [react()],
-  server: {
-    port: 3000
-  }
-})
+  plugins: [react(), styleX()],
+});
