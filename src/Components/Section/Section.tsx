@@ -15,8 +15,8 @@ const styles = stylex.create({
       },
 })
 type SectionProps = {
-    children: ReactNode,
-    id: string
+    children?: ReactNode,
+    id?: string
 }
 const Section =(props: SectionProps) => {
     return (
