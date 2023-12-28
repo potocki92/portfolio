@@ -1,20 +1,25 @@
-import gsap from 'gsap';
+import gsap from "gsap";
 
 type AnimationOptions = {
-  fontSize?: string;
-  duration?: number | 0.5;
-  ease?: string | "power3.out";
+  [key: string]: any; // Allow any additional properties
+  ease?: string;
+  duration?: number;
 };
 
-export const animationOptions = (options: AnimationOptions = {}): gsap.TweenVars => {
-  const { fontSize, duration = 0.5, ease = 'power3.out', ...rest } = options;
+const createAnimationOptions = (options: AnimationOptions = {}): gsap.TweenVars => {
+  const { duration = 0.5, ease = "power3.out", ...rest } = options;
 
   const baseOptions: gsap.TweenVars = {
     ...rest,
-    fontSize,
     duration,
     ease,
   };
 
   return baseOptions;
 };
+
+const animate = (options: AnimationOptions = {}): gsap.TweenVars => {
+  return createAnimationOptions(options);
+};
+
+export { createAnimationOptions, animate };
