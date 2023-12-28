@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, RefObject } from "react";
+import { useLayoutEffect, useState, RefObject, useEffect } from "react";
 /**
  * Custom React hook for dynamically tracking the minimum height of a specified DOM element.
  *
@@ -15,9 +15,9 @@ import { useLayoutEffect, useState, RefObject } from "react";
  * };
  */
 const useMinHeight = (ref: RefObject<HTMLElement>): number => {
-  const [minHeight, setMinHeight] = useState<number>(100);
+  const [minHeight, setMinHeight] = useState<number>(0);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (ref.current) {
         setMinHeight(ref.current.clientHeight);
@@ -27,11 +27,14 @@ const useMinHeight = (ref: RefObject<HTMLElement>): number => {
 
     handleResize();
 
-    window.addEventListener('resize', handleResize);
+    if (ref.current) {
+      const resizeObserver = new ResizeObserver(handleResize)
+      resizeObserver.observe(ref.current)
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      return () => {
+        resizeObserver.disconnect()
+      }
+    }
   }, [ref]);
 
   return minHeight;
