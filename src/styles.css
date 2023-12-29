@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 
-
 body {
   background-color: rgb(17 17 17 / 1);;
-  font-family: Poppins;
+  font-family: Geist;
   line-height: 30px;
   letter-spacing: 0;
   word-wrap: break-word;
   font-weight: 400;
   color: #fff;
   min-height: 100vh;  
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/public/fonts/GeistVariableVF.woff2') format('woff2');
 }
