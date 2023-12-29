@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import Logo from "../../Components/Logo/Logo";
 import useScroll from "../../hooks/useScroll";
 import * as stylex from "@stylexjs/stylex";
 import deviceHeightInfo from "../../utils/deviceHeightInfo";
 import styles from "./Header.stylex";
-import useGlassEffect from "../../hooks/useGlassEffect";
 import useCurrentHeight from "../../hooks/useCurrentHeight";
 import { animate } from "../../utils/animationOptions";
+import Wrapper from "../../Components/Wrapper/Wrapper";
+import Nav from "../../Components/Nav/Nav";
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
  *
@@ -24,18 +25,12 @@ const Header = (): JSX.Element => {
   // Current height of the <Logo> element, tracked using the useCurrentHeight hook.
   const currentHeight = useCurrentHeight(logoRef);
 
-  /**
-   * Current scroll position obtained using the useScroll hook.
-   * @type {number}
-   */
-  const scrollPosition: number = useScroll();
-
-  /**
+  
+/**
    * Minimum header height adjusted for content wrapped in the <div> element.
    * @type {number}
    */
-  const minHeaderHeight: number = 74; // Default height for minHeaderHeight
-
+const minHeaderHeight: number = 74
   /**
    * Maximum header height based on device information.
    * @type {number}
@@ -44,7 +39,12 @@ const Header = (): JSX.Element => {
 
   //State indicating whether the header is larger than a specified height.
   const [isHeaderLarger, setIsHeaderLarger] = useState<boolean>(false);
-
+  /**
+     * Current scroll position obtained using the useScroll hook.
+     * @type {number}
+     */
+  const scrollPosition: number = useScroll();
+  
   /**
    * Calculated header height based on the scroll position.
    * @type {number}
@@ -59,9 +59,9 @@ const Header = (): JSX.Element => {
 
   // Effect to update the state based on changes in the logo height.
   useEffect(() => {
-    if (logoRef.current) {
+    if (wrapperRef.current) {
       const isLarger =
-        headerHeight > minHeaderHeight && headerHeight > currentHeight;
+        headerHeight > minHeaderHeight * 2 && headerHeight > currentHeight;
       setIsHeaderLarger(isLarger);
     }
   }, [headerHeight, currentHeight]);
@@ -81,44 +81,41 @@ const Header = (): JSX.Element => {
     gsap.to(
       wrapperRef.current,
       animate({
-        top: `${targetTop / 1.5}px`,
+        top: isHeaderLarger ? `${targetTop / 1.5}px` : "10"
       }),
     );
-  }, [scrollPosition]);
+    
+  }, [scrollPosition, isHeaderLarger]);
 
   // Effect to handle font size changes based on the state of isHeaderLarger.
   useEffect(() => {
     gsap.to(
       [logoRef.current],
       animate({
-        fontSize: !isHeaderLarger ? "4vw" : "18vw",
+        fontSize: !isHeaderLarger ? "clamp(1.3rem, 4vw, 18rem)" : "clamp(1.3rem, 18vw, 18rem)",
       }),
     );
 
     gsap.to(
       heroHeading.current,
       animate({
-        fontSize: !isHeaderLarger ? "1.5vw" : "7vw",
+        fontSize: !isHeaderLarger ? "clamp(0.5rem, 1.5vw, 7rem)" : "clamp(0.5rem, 6.6vw, 7rem)",
       }),
     );
   }, [isHeaderLarger]);
-
+  
   return (
     <header ref={headerRef} {...stylex.props(styles.header)}>
-      <div
+      <Wrapper
         ref={wrapperRef}
-        className="w-full py-3"
-        style={{
-          position: "fixed",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
+        style={isHeaderLarger ? styles.headerWrapper : styles.transform}
       >
         <Logo ref={logoRef} />
         <span ref={heroHeading} {...stylex.props(styles.heroHeading)}>
           FULLSTACK DEVELOPER
         </span>
-      </div>
+      </Wrapper>
+      <Nav height={minHeaderHeight}/>
     </header>
   );
 };
