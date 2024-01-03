@@ -2,7 +2,8 @@ import * as stylex from "@stylexjs/stylex";
 import { FC } from "react";
 
 const styles = stylex.create({
-    nav: (height?) => ({
+    nav: ({
+        position: "fixed",
         height: 40,
         display: "flex",
         justifyContent: "flex-end",
@@ -18,11 +19,10 @@ const styles = stylex.create({
     }
 })
 
-const Nav: FC<{height: number}> = ({height}) => {
-    console.log(height);
+const Nav: FC<{height?: number}> = ({height}) => {
     
     return (
-        <nav {...stylex.props(styles.nav(height))}>
+        <nav {...stylex.props(styles.nav)}>
             <ul className="relative hidden md:flex gap-6 text-sm">
                 <li {...stylex.props(styles.list)}>
                     <a>Home</a></li>
