@@ -16,5 +16,5 @@ body {
 
 @font-face {
   font-family: 'Geist';
-  src: url('/public/fonts/GeistVariableVF.woff2') format('woff2');
+  src: url('/fonts/GeistVariableVF.woff2') format('woff2');
 }
