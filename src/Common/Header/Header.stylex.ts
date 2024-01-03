@@ -24,6 +24,7 @@ const styles = stylex.create({
   headerWrapper: {
     position: "absolute",
     left: "50%",
+    top: "50%",
     transform: "translateX(-50%)",
   },
   transform: {
