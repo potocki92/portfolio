@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
 import deviceHeightInfo from "../../utils/deviceHeightInfo";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
@@ -18,7 +18,6 @@ const maxHeight: number = deviceHeightInfo();
  */
 const Wrapper = (props: WrapperProps) => {
   const { children, style } = props;
-  const { scrollY } = useScroll();
 
   const initialY = motionValueScrollYFactory([`${maxHeight / 3}px`, `25px`]);
   const initialX = motionValueScrollYFactory([
