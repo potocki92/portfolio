@@ -1,7 +1,8 @@
 import { useTransform } from "framer-motion";
-import { useViewportScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
 
-const motionValueScrollYFactory = (scrollY: any, values: any[]) => {
+const motionValueScrollYFactory = (values: any[]) => {
+  const { scrollY } = useScroll();
   return useTransform(scrollY, [0, 500], values);
 };
 
