@@ -1,4 +1,4 @@
-import { motion, useViewportScroll, useTransform, useAnimation } from "framer-motion";
+import { motion, useAnimation, useScroll } from "framer-motion";
 import Logo from "../../Components/Logo/Logo";
 import * as stylex from "@stylexjs/stylex";
 import styles from "./Header.stylex";
@@ -17,14 +17,12 @@ const Header = (): JSX.Element => {
   const controls = useAnimation();
   const delta = useRef(0);
   const lastScrollY = useRef(0);
-  const { scrollY } = useViewportScroll();
-  // Define initial values for logo font size based on scroll position.
+  const { scrollY } = useScroll();
+
   const initialYLogo = motionValueScrollYFactory(scrollY,["clamp(1.3rem, 18vw, 18rem)", "clamp(1.3rem, 2vw, 18rem)"]);
-  // Define initial values for hero heading font size based on scroll position.
   const initialYSpan = motionValueScrollYFactory(scrollY,["clamp(0.5rem, 6.6vw, 6.7rem)", "clamp(0.49rem, 0.75vw, 6.7rem)"]);
 
-  // This event handler is triggered whenever the scroll position changes.
-  scrollY.onChange((val) => {
+  scrollY.on("change",(val) => {
     const diff = Math.abs(val - lastScrollY.current);
     if (val >= lastScrollY.current) {
       delta.current = delta.current >= 10 ? 10 : delta.current + diff;
