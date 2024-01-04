@@ -16,19 +16,16 @@ const maxHeight: number = deviceHeightInfo();
  * @param {WrapperProps} props - The properties of the Wrapper component.
  * @returns {JSX.Element} The JSX representation of the Wrapper component.
  */
-const Wrapper = ((props: WrapperProps) => {
+const Wrapper = (props: WrapperProps) => {
   const { children, style } = props;
   const { scrollY } = useScroll();
 
-  const initialY = motionValueScrollYFactory(scrollY, [
-    `${maxHeight / 3}px`,
-    `25px`,
-  ]);
-  const initialX = motionValueScrollYFactory(scrollY, [
+  const initialY = motionValueScrollYFactory([`${maxHeight / 3}px`, `25px`]);
+  const initialX = motionValueScrollYFactory([
     `calc(50% + 0rem)`,
     `calc(0% + 1.5rem)`,
   ]);
-  const initialTransform = motionValueScrollYFactory(scrollY, [
+  const initialTransform = motionValueScrollYFactory([
     `translate(-50%)`,
     "translate(0%)",
   ]);
@@ -47,6 +44,6 @@ const Wrapper = ((props: WrapperProps) => {
       {children}
     </motion.div>
   );
-});
+};
 
 export default Wrapper;
