@@ -9,20 +9,26 @@ import motionValueScrollYFactory from "../../utils/motionValueScroll";
 
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
-*
-* @component
-* @returns {JSX.Element} The JSX representation of the header component.
-*/
+ *
+ * @component
+ * @returns {JSX.Element} The JSX representation of the header component.
+ */
 const Header = (): JSX.Element => {
   const controls = useAnimation();
   const delta = useRef(0);
   const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
 
-  const initialYLogo = motionValueScrollYFactory(scrollY,["clamp(1.3rem, 18vw, 18rem)", "clamp(1.3rem, 2vw, 18rem)"]);
-  const initialYSpan = motionValueScrollYFactory(scrollY,["clamp(0.5rem, 6.6vw, 6.7rem)", "clamp(0.49rem, 0.75vw, 6.7rem)"]);
+  const initialYLogo = motionValueScrollYFactory([
+    "clamp(1.3rem, 18vw, 18rem)",
+    "clamp(1.3rem, 2vw, 18rem)",
+  ]);
+  const initialYSpan = motionValueScrollYFactory([
+    "clamp(0.5rem, 6.6vw, 6.7rem)",
+    "clamp(0.49rem, 0.75vw, 6.7rem)",
+  ]);
 
-  scrollY.on("change",(val) => {
+  scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
     if (val >= lastScrollY.current) {
       delta.current = delta.current >= 10 ? 10 : delta.current + diff;
@@ -38,14 +44,15 @@ const Header = (): JSX.Element => {
   });
 
   return (
-    <motion.header 
-    initial="visible"
+    <motion.header
+      initial="visible"
       animate={controls}
       variants={{
         visible: { top: "0px" },
-        hidden: { top: "-100px" }
+        hidden: { top: "-100px" },
       }}
-    {...stylex.props(styles.header)}>
+      {...stylex.props(styles.header)}
+    >
       <Wrapper style={styles.headerWrapper}>
         <motion.div
           style={{
