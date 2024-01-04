@@ -4,13 +4,13 @@
 
 
 body {
-  background-color: rgb(17 17 17 / 1);;
+  background-color: rgb(24 24 24 / 1);;
   font-family: Geist;
   line-height: 30px;
   letter-spacing: 0;
   word-wrap: break-word;
   font-weight: 400;
-  color: #fff;
+  color: rgb(244 244 245 / 1);
   min-height: 100vh;  
 }
 
