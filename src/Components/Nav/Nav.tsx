@@ -1,5 +1,6 @@
 import { stylex } from "@stylexjs/stylex";
 import React from "react";
+import { Popover, Transition } from "@headlessui/react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 
@@ -43,7 +44,7 @@ const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) 
   );
 };
 
-const Nav = () => {
+const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <nav {...stylex.props(styles.nav)}>
       <ul {...stylex.props(styles.list)}>
@@ -60,4 +61,13 @@ const Nav = () => {
   );
 };
 
+export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <Popover {...stylex.props(styles.nav ,styles.navMobile)}>
+        <Popover.Button>
+          Menu
+        </Popover.Button>
+    </Popover>
+  )
+}
 export default Nav;
