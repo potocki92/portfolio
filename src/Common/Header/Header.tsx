@@ -6,6 +6,8 @@ import Wrapper from "../../Components/Wrapper/Wrapper";
 import Nav from "../../Components/Nav/Nav";
 import { useRef } from "react";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
+import { useLocation } from "react-router-dom";
+import deviceHeightInfo from "../../utils/deviceHeightInfo";
 
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
@@ -13,20 +15,29 @@ import motionValueScrollYFactory from "../../utils/motionValueScroll";
  * @component
  * @returns {JSX.Element} The JSX representation of the header component.
  */
+const maxHeight: number = deviceHeightInfo();
+
+const initialValue = {
+  initialYLogo: {max: "clamp(1.3rem, 18vw, 18rem)", min: "clamp(1.3rem, 2vw, 18rem)"},
+  initialYSpan: {max: "clamp(0.5rem, 6.6vw, 6.7rem)", min: "clamp(0.49rem, 0.75vw, 6.7rem)"},
+  initialY:{ max: `${maxHeight / 3}px`, min:`25px`},
+  initialX: { max: `calc(50% + 0rem)`, min: `calc(0% + 1.5rem)`},
+  initialTransform : { max: `translate(-50%)`, min: "translate(0%)"},
+} as const
+
 const Header = (): JSX.Element => {
+  const location = useLocation();
+  let isHomePage = location.pathname === "/";
   const controls = useAnimation();
   const delta = useRef(0);
   const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
-
-  const initialYLogo = motionValueScrollYFactory([
-    "clamp(1.3rem, 18vw, 18rem)",
-    "clamp(1.3rem, 2vw, 18rem)",
-  ]);
-  const initialYSpan = motionValueScrollYFactory([
-    "clamp(0.5rem, 6.6vw, 6.7rem)",
-    "clamp(0.49rem, 0.75vw, 6.7rem)",
-  ]);
+  
+  const initialYLogo = motionValueScrollYFactory([initialValue.initialYLogo.max, initialValue.initialYLogo.min]);
+  const initialYSpan = motionValueScrollYFactory([initialValue.initialYSpan.max, initialValue.initialYSpan.min]);
+  const initialY = motionValueScrollYFactory([initialValue.initialY.max, initialValue.initialY.min]);
+  const initialX = motionValueScrollYFactory([initialValue.initialX.max,initialValue.initialX.min]);
+  const initialTransform = motionValueScrollYFactory([initialValue.initialTransform.max, initialValue.initialTransform.min]);
 
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
@@ -45,7 +56,7 @@ const Header = (): JSX.Element => {
 
   return (
     <motion.header
-      initial="visible"
+      initial={isHomePage ? "visible" : undefined}
       animate={controls}
       variants={{
         visible: { top: "0px" },
@@ -53,22 +64,46 @@ const Header = (): JSX.Element => {
       }}
       {...stylex.props(styles.header)}
     >
-      <Wrapper style={styles.headerWrapper}>
-        <motion.div
-          style={{
-            fontSize: initialYLogo,
-          }}
+      {isHomePage && (
+        <Wrapper initialTransform={initialTransform} initialX={initialX} initialY={initialY} style={styles.headerWrapper}>
+          <motion.div
+            initial={isHomePage ? "visible" : undefined}
+            style={{
+              fontSize: initialYLogo,
+            } as unknown as React.CSSProperties}
+          >
+            <Logo />
+          </motion.div>
+          <motion.div
+            style={{
+              fontSize: initialYSpan,
+            } as unknown as React.CSSProperties}
+          >
+            <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
+          </motion.div>
+        </Wrapper>)}
+        {!isHomePage && (
+        <Wrapper 
+          initialTransform={initialValue.initialTransform.min}
+          initialX={initialValue.initialX.min} 
+          initialY={initialValue.initialY.min} 
+          style={styles.headerWrapper}
         >
-          <Logo />
-        </motion.div>
-        <motion.div
-          style={{
-            fontSize: initialYSpan,
-          }}
-        >
-          <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
-        </motion.div>
-      </Wrapper>
+          <div
+            style={{
+              fontSize: initialValue.initialYLogo.min,
+            } as unknown as React.CSSProperties}
+          >
+            <Logo />
+          </div>
+          <div
+            style={{
+              fontSize: initialValue.initialYSpan.min,
+            } as unknown as React.CSSProperties}
+          >
+            <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
+          </div>
+        </Wrapper>)}
       <Nav />
     </motion.header>
   );
