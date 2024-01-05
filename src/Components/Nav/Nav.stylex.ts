@@ -4,7 +4,10 @@ const styles = stylex.create({
   nav: {
     position: "fixed",
     height: 40,
-    display: "flex",
+    display: "none",
+    "@media (min-width: 768px)": {
+      display: "flex",
+    },
     justifyContent: "flex-end",
     alignItems: "center",
     backgroundColor: "rgba(39, 39, 42, 0.9)",
@@ -13,16 +16,22 @@ const styles = stylex.create({
     border: "1px solid rgba(255, 255, 255, 0.1)",
     color: "rgba(228, 228, 231)",
   },
-  list : {
-    position: "relative", 
-    display: "none", 
-    gap : "1.5rem", 
+  navMobile: {
+    display: "flex",
+    "@media (min-width: 768px)": {
+      display: "none",
+    },
+  },
+  list: {
+    position: "relative",
+    display: "none",
+    gap: "1.5rem",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
-  
+
     "@media (min-width: 768px)": {
-          display: "flex"
-    }
+      display: "flex",
+    },
   },
   item: {
     cursor: "pointer",
