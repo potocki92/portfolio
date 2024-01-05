@@ -1,33 +1,22 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
-import deviceHeightInfo from "../../utils/deviceHeightInfo";
-import motionValueScrollYFactory from "../../utils/motionValueScroll";
 
 type WrapperProps = {
   children?: ReactNode;
   style?: stylex.StyleXStyles;
+  initialX?: any;
+  initialY?: any;
+  initialTransform?: any
 };
 
-const maxHeight: number = deviceHeightInfo();
 /**
  * Functional React component representing a wrapper with dynamic styling based on scroll position.
  *
  * @param {WrapperProps} props - The properties of the Wrapper component.
  * @returns {JSX.Element} The JSX representation of the Wrapper component.
  */
-const Wrapper = (props: WrapperProps) => {
-  const { children, style } = props;
-
-  const initialY = motionValueScrollYFactory([`${maxHeight / 3}px`, `25px`]);
-  const initialX = motionValueScrollYFactory([
-    `calc(50% + 0rem)`,
-    `calc(0% + 1.5rem)`,
-  ]);
-  const initialTransform = motionValueScrollYFactory([
-    `translate(-50%)`,
-    "translate(0%)",
-  ]);
+const Wrapper = ({children, style, initialX, initialY, initialTransform}: React.PropsWithChildren<WrapperProps>) => {
 
   return (
     <motion.div
