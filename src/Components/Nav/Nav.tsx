@@ -1,28 +1,60 @@
-import * as stylex from "@stylexjs/stylex";
-import { FC, useEffect, useState } from "react";
+import { stylex } from "@stylexjs/stylex";
+import React from "react";
 import styles from "./Nav.stylex";
+import { Link, useLocation } from "react-router-dom";
 
-const Nav: FC<{}> = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+const NavigationItems = [
+  {
+    name: 'Home',
+    href: '/',
+  },
+  {
+    name: 'Projects',
+    href: '/projects',
+  },
+  {
+    name: 'Resume',
+    href: '/resume',
+  },
+  {
+    name: 'About',
+    href: '/about',
+  },
+] as const;
 
-  const onChange = (index: number) => {
-    setActiveIndex(index);
-  };
+const NavItem = ({ href, children }: React.PropsWithChildren<{ href: string }>) => {
+  return (
+    <li>
+      <NavLink href={href}>
+        {children}
+      </NavLink>
+    </li>
+  );
+};
+
+const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) => {
+  const location = useLocation();
+  const isActive = location.pathname === href;
+
+  return (
+    <Link to={href} {...stylex.props(styles.item, isActive && styles.activeItem)}>
+      {children}
+    </Link>
+  );
+};
+
+const Nav = () => {
   return (
     <nav {...stylex.props(styles.nav)}>
-      <ul className="relative hidden md:flex gap-6 text-sm">
-        {["Home", "Creating", "Resume", "Contact"].map((label, index) => (
-          <li
-            key={index}
-            {...stylex.props(
-              styles.item,
-              activeIndex === index && styles.activeItem,
-            )}
-            onClick={() => onChange(index)}
-          >
-            <a>{label}</a>
-          </li>
-        ))}
+      <ul {...stylex.props(styles.list)}>
+        {NavigationItems.map((item) => {
+            return (
+              <NavItem key={item.href} href={item.href}>
+                {item.name}
+              </NavItem>
+            )
+          
+        })}
       </ul>
     </nav>
   );
