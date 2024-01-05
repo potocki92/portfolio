@@ -1,5 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 import Layout from "./Layout/Layout";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Projects from "./Pages/Projects";
 
 const styles = stylex.create({
   base: {
@@ -11,7 +15,35 @@ const styles = stylex.create({
 function App() {
   return (
     <div {...stylex.props(styles.base)}>
-      <Layout/>
+     <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <Home/>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <About/>
+            }
+          />
+          <Route
+            path="/resume"
+            element={
+              <Home/>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <Projects/>
+            }
+          />
+          <Route />
+        </Route>
+      </Routes>
     </div>
   );
 }
