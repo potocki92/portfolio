@@ -1,14 +1,9 @@
-import Hero from "../../Sections/Hero/Hero";
-import About from "../../Sections/About/About";
-import Projects from "../../Sections/Projects/Projects";
-import Section from "../../Components/Section/Section";
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
   return (
     <main>
-      <Section />
-      <Hero />
-      <About />
+      <Outlet/>
     </main>
   );
 };
