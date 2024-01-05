@@ -13,7 +13,17 @@ const styles = stylex.create({
     border: "1px solid rgba(255, 255, 255, 0.1)",
     color: "rgba(228, 228, 231)",
   },
-
+  list : {
+    position: "relative", 
+    display: "none", 
+    gap : "1.5rem", 
+    fontSize: "0.875rem",
+    lineHeight: "1.25rem",
+  
+    "@media (min-width: 768px)": {
+          display: "flex"
+    }
+  },
   item: {
     cursor: "pointer",
     padding: "0.5rem 0.75rem",
