@@ -1,5 +1,3 @@
-import React from 'react';
-import Logo from '../../Components/Logo/Logo';
 import Section from '../../Components/Section/Section';
 import * as stylex from '@stylexjs/stylex';
 
@@ -26,7 +24,7 @@ const styles = stylex.create({
 const Hero = () => {
   return (
     <>
-    <Section id="hero">
+      <Section id="hero">
         <div {...stylex.props(styles.heroContainer)}>
           <h1 {...stylex.props(styles.heroHeading)}>
             FULLSTACK DEVELOPER
