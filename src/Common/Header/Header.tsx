@@ -3,7 +3,7 @@ import Logo from "../../Components/Logo/Logo";
 import * as stylex from "@stylexjs/stylex";
 import styles from "./Header.stylex";
 import Wrapper from "../../Components/Wrapper/Wrapper";
-import Nav from "../../Components/Nav/Nav";
+import Nav, { MobileNav } from "../../Components/Nav/Nav";
 import { useRef } from "react";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
 import { useLocation } from "react-router-dom";
@@ -104,7 +104,8 @@ const Header = (): JSX.Element => {
             <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
           </div>
         </Wrapper>)}
-      <Nav />
+      <Nav/>
+      <MobileNav/>
     </motion.header>
   );
 };
