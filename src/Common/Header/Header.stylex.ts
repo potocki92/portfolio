@@ -11,7 +11,7 @@ const styles = stylex.create({
     maxWidth: "1200px",
     alignItems: "baseline",
     justifyContent: "end",
-    padding: "1.5rem",
+    padding: "2rem 1.5rem",
     color: "white",
   }),
   heroHeading: {
