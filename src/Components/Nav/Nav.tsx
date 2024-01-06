@@ -1,5 +1,5 @@
 import { stylex } from "@stylexjs/stylex";
-import React from "react";
+import React, { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
@@ -61,12 +61,61 @@ const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   );
 };
 
+const MobileNavItem = ({ href, children}: React.PropsWithChildren<{href: string}>) => {
+  return (
+    <li>
+    </li>
+  )
+}
 export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Popover {...stylex.props(styles.nav ,styles.navMobile)}>
-        <Popover.Button>
+    <Popover {...stylex.props(styles.popover)}>
+        <Popover.Button {...stylex.props(styles.button)}>
           Menu
         </Popover.Button>
+        <Transition.Child
+          as={Fragment}
+          enter="duration-150 ease-out"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="duration-150 ease-in"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+        </Transition.Child>
+        <Transition.Child
+          as={Fragment}
+          enter="duration-150 ease-out"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="duration-150 ease-in"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <Popover.Panel
+            focus
+            {...stylex.props(styles.mobiePanel)}
+            >
+            <div className="flex flex-row-reverse items-center justify-between p-">
+              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
+                X
+              </Popover.Button>
+              <h2 {...stylex.props(styles.bottomMargin)}>Navigation</h2>
+            </div>
+            <nav>
+              <ul>
+                {
+                  NavigationItems.map((item) => (
+                    <NavItem key={item.href} href={item.href}>
+                      {item.name}
+                    </NavItem>
+                  ))
+                }
+              </ul>
+            </nav>
+          </Popover.Panel>
+        </Transition.Child>
     </Popover>
   )
 }
