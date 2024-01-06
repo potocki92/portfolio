@@ -20,7 +20,7 @@ const maxHeight: number = deviceHeightInfo();
 const initialValue = {
   initialYLogo: {max: "clamp(1.3rem, 18vw, 18rem)", min: "clamp(1.3rem, 2vw, 18rem)"},
   initialYSpan: {max: "clamp(0.5rem, 6.6vw, 6.7rem)", min: "clamp(0.49rem, 0.75vw, 6.7rem)"},
-  initialY:{ max: `${maxHeight / 3}px`, min:`25px`},
+  initialY:{ max: `${maxHeight / 3}px`, min:`32px`},
   initialX: { max: `calc(50% + 0rem)`, min: `calc(0% + 1.5rem)`},
   initialTransform : { max: `translate(-50%)`, min: "translate(0%)"},
 } as const
