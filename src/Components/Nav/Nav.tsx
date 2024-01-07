@@ -23,9 +23,9 @@ const NavigationItems = [
   },
 ] as const;
 
-const NavItem = ({ href, children }: React.PropsWithChildren<{ href: string }>) => {
+const NavItem = ({ href, children, isLast }: React.PropsWithChildren<{ href: string, isLast?: boolean }>) => {
   return (
-    <li>
+    <li {...stylex.props(isLast ? {} : styles.underline)}>
       <NavLink href={href}>
         {children}
       </NavLink>
@@ -61,12 +61,6 @@ const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   );
 };
 
-const MobileNavItem = ({ href, children}: React.PropsWithChildren<{href: string}>) => {
-  return (
-    <li>
-    </li>
-  )
-}
 export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <Popover {...stylex.props(styles.popover)}>
@@ -82,7 +76,7 @@ export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+          <Popover.Overlay {...stylex.props(styles.overlay)}/>
         </Transition.Child>
         <Transition.Child
           as={Fragment}
@@ -97,17 +91,17 @@ export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
             focus
             {...stylex.props(styles.mobiePanel)}
             >
-            <div className="flex flex-row-reverse items-center justify-between p-">
+            <div className="flex flex-row-reverse items-center justify-between p-" >
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
                 X
               </Popover.Button>
               <h2 {...stylex.props(styles.bottomMargin)}>Navigation</h2>
             </div>
             <nav>
-              <ul>
+              <ul {...stylex.props(styles.list)}>
                 {
-                  NavigationItems.map((item) => (
-                    <NavItem key={item.href} href={item.href}>
+                  NavigationItems.map((item, index) => (
+                    <NavItem key={item.href} href={item.href} isLast={index === NavigationItems.length - 1}>
                       {item.name}
                     </NavItem>
                   ))
