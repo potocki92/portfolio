@@ -4,10 +4,7 @@ const styles = stylex.create({
   nav: {
     position: "fixed",
     height: 40,
-    display: "none",
-    "@media (min-width: 768px)": {
-      display: "flex",
-    },
+    display: { default: "none", "@media (min-width: 768px)": "flex" },
     justifyContent: "flex-end",
     alignItems: "center",
     backgroundColor: "rgba(39, 39, 42, 0.9)",
@@ -26,15 +23,19 @@ const styles = stylex.create({
     color: "rgba(228, 228, 231)",
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
     backdropBlur: "10px",
-    display: "block",
-    "@media (min-width: 768px)": {
-      display: "none",
-    },
+    display: { default: "block", "@media (min-width: 768px)": "none" },
   },
   popover: {
     "@media (min-width: 768px)": {
       display: "none",
     },
+  },
+  overlay: {
+    position: "fixed",
+    inset: "0px",
+    zIndex: 50,
+    backgroundColor: "rgba(39 39 42/0.4)",
+    backdropFilter: "blur(4px)",
   },
   mobiePanel: {
     zIndex: 50,
@@ -53,36 +54,33 @@ const styles = stylex.create({
     },
   },
   bottomMargin: {
-    marginBottom:"1rem",
+    marginBottom: "1rem",
   },
   list: {
     position: "relative",
-    display: "none",
+    display: { default: "block", "@media (min-width: 768px)": "flex" },
     gap: "1.5rem",
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
-
-    "@media (min-width: 768px)": {
-      display: "flex",
-    },
+    margin: {default: "-0.5rem 0", "@media (min-width: 768px)": "0"}
   },
   item: {
     cursor: "pointer",
     display: "block",
-    padding: "0.5rem 0rem",
+    padding: { default: "'0.5rem 0rem", "@media (min-width: 768px)": "0.5rem 0.75rem" },
     ":hover": {
       color: "rgba(251 37 118/1)",
     },
     userSelect: "none",
     transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
     transitionDuration: ".15s",
-    
-    "@media (min-width: 768px)": {
-      padding: "0.5rem 0.75rem",
-    },
+
   },
   activeItem: {
     color: "rgba(251 37 118/1)",
+  },
+  underline: {
+      borderBottom: {default: "1px solid hsla(240,5%,96%,.05)", "@media (min-width: 768px)": "none"}
   },
 });
 export default styles;
