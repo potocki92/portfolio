@@ -12,7 +12,6 @@ const styles = stylex.create({
     alignItems: "baseline",
     justifyContent: "end",
     padding: "2rem 1.5rem",
-    color: "white",
   }),
   heroHeading: {
     display: "block",

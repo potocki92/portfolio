@@ -7,7 +7,6 @@ const styles = stylex.create({
     textTransform: 'uppercase',
     fontWeight: 700,
     overflow: 'hidden',
-    color: 'rgb(255 255 255 / 1)',
     textAlign: 'center',
   }),
 });
