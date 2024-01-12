@@ -1,5 +1,5 @@
 import { stylex } from "@stylexjs/stylex";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
@@ -61,28 +61,26 @@ const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
     </nav>
   );
 };
-const transitionProps = (state?: string) =>
-  ({
-    enter: "duration-150 ease-out",
-    enterFrom: state !== "exit" ? "opacity-0" : "opacity-0 scale-95",
-    enterTo: state !== "exit" ? "opacity-100" : "opacity-100 scale-100",
-    leave: "duration-150 ease-in",
-    leaveFrom: state !== "exit" ? "opacity-100" : "opacity-100 scale-100",
-    leaveTo: state !== "exit" ? "opacity-0" : "opacity-0 scale-95",
-  }) as const;
 
 export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <Popover {...stylex.props(styles.popover)}>
-      <Popover.Button {...stylex.props(styles.button)}>Menu</Popover.Button>
-      <Transition.Child as={Fragment} {...transitionProps}>
-        <Popover.Overlay {...stylex.props(styles.overlay)} />
-      </Transition.Child>
-      <Transition.Child as={Fragment} {...transitionProps("exit")}>
-        <Popover.Panel focus {...stylex.props(styles.panel)}>
-          <div 
-          className="flex flex-row-reverse items-center justify-between p-"
-          {...stylex.props(styles.container)}
+      <Popover.Button {...stylex.props(styles.button)} onChange={() => setIsOpen(!isOpen)}>
+        Menu
+      </Popover.Button>
+     
+        <Popover.Overlay {...stylex.props(styles.overlay(isOpen))} />
+      
+      <Transition.Child
+        as={Fragment}
+        {...stylex.props()}
+      >
+        <Popover.Panel focus {...stylex.props(styles.panel(isOpen))}>
+          <div
+            className="flex flex-row-reverse items-center justify-between p-"
+            {...stylex.props(styles.container)}
           >
             <Popover.Button aria-label="Close menu" className="-m-1 p-1">
               X
