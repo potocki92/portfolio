@@ -3,42 +3,6 @@ import { colors, globalTokens as $ } from "../../styles/globalTokens.stylex";
 
 const MEDIA = "@media (min-width: 768px)";
 
-const fadeIn = stylex.keyframes({
-  "0%": {
-    opacity: 0,
-  },
-  "100%": {
-    opacity: 1,
-  },
-});
-
-const fadeOut = stylex.keyframes({
-  "100%": {
-    opacity: 1,
-  },
-  "0%": {
-    opacity: 0,
-  },
-});
-
-const scaleIn = stylex.keyframes({
-  "0%": {
-    scale: 0.95,
-  },
-  "100%": {
-    scale: 1,
-  },
-});
-
-const scaleOut = stylex.keyframes({
-  "100%": {
-    scale: 1,
-  },
-  "0%": {
-    scale: 0.95,
-  },
-});
-
 const styles = stylex.create({
   nav: {
     position: "fixed",
@@ -53,41 +17,15 @@ const styles = stylex.create({
     border: `1px solid ${colors.border}`,
     color: colors.primaryText,
   },
-  button: {
-    cursor: "pointer",
-    borderRadius: $.borderRadius,
-    border: `1px solid ${colors.border}`,
-    backgroundColor: colors.secondBackground,
-    padding: "0.5rem 1rem",
-    fontSize: ".875rem",
-    fontWeight: "500",
-    color: colors.primaryText,
-    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
-    backdropFilter: "blur(10px)",
-    display: { default: "block", [MEDIA]: "none" },
-  },
-  popover: {
-    [MEDIA]: {
-      display: "none",
-    },
-  },
-  overlay: (isVisible) =>  ({
-    opacity: isVisible ? 0 : 1,
+  backdrop:({
     position: "fixed",
     inset: "0px",
     zIndex: 50,
     backgroundColor: "rgba(39 39 42/0.4)",
     backdropFilter: "blur(4px)",
-    animationName: isVisible ? fadeIn : fadeOut,
-    animationDuration: "1500ms",
-    animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
   }),
-  panel: (isVisible) =>  ({
-    opacity: isVisible ? 0 : 1,
-    animationName: isVisible ? fadeIn : fadeOut,
-    // scale: isVisible ? .95 : 1,
-    animationDuration: "1500ms",
-    animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+  modal: {
+    overflow: "hidden",
     color: "rgba(212 212 216/1)",
     zIndex: 50,
     position: "fixed",
@@ -103,11 +41,11 @@ const styles = stylex.create({
     [MEDIA]: {
       display: "none",
     },
-  }),
+  },
   bottomMargin: {
     marginBottom: "1rem",
   },
-  list: {
+  ul: {
     position: "relative",
     display: { default: "block", [MEDIA]: "flex" },
     gap: "1.5rem",
@@ -115,7 +53,7 @@ const styles = stylex.create({
     lineHeight: "1.25rem",
     margin: { default: "-0.5rem 0", [MEDIA]: "0" },
   },
-  item: {
+  a: {
     cursor: "pointer",
     display: "block",
     padding: { default: "'0.5rem 0rem", [MEDIA]: "0.5rem 0.75rem" },
@@ -126,7 +64,7 @@ const styles = stylex.create({
     transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
     transitionDuration: ".15s",
   },
-  activeItem: {
+  active: {
     color: "rgba(251 37 118/1)",
   },
   underline: {
@@ -137,29 +75,6 @@ const styles = stylex.create({
     flexDirection: "row-reverse",
     alignItems: "center",
     justifyContent: "space-between",
-  },
-  transitionIn: {
-    animationName: fadeIn,
-    animationDuration: "150ms",
-    animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
-    opacity: 1,
-  },
-  transitionOut: {
-    animationName: fadeOut,
-    animationDuration: "150ms",
-    animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
-    opacity: 1,
-  },
-  transationScaleIn: {
-    animationName: scaleIn,
-    animationDuration: "150ms",
-    scale: 1,
-  },
-
-  transationScaleOut: {
-    animationName: scaleOut,
-    animationDuration: "150ms",
-    scale: .95,
   },
 });
 

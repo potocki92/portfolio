@@ -1,8 +1,9 @@
 import { stylex } from "@stylexjs/stylex";
-import React, { Fragment, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import React, { useState } from "react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import Button from "../Button/Button";
 
 const NavigationItems = [
   {
@@ -23,6 +24,7 @@ const NavigationItems = [
   },
 ] as const;
 
+
 const NavItem = ({
   href,
   children,
@@ -40,16 +42,86 @@ const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) 
   const isActive = location.pathname === href;
 
   return (
-    <Link to={href} {...stylex.props(styles.item, isActive && styles.activeItem)}>
+    <Link to={href} {...stylex.props(styles.a, isActive && styles.active)}>
       {children}
     </Link>
   );
 };
 
-const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+const backdrop = {
+  visible: {opacity: 1},
+  hidden: {opacity: 0}
+} as const
+
+const modal = {
+  hidden: {
+    y: "0rem",
+    opacity: 0
+  },
+  visible: {
+    y: "2rem",
+    opacity: 1,
+    transition: { delay: 0.250 }
+  }
+} as const
+
+const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+  return (
+    <AnimatePresence mode="wait">
+      {isModalOpen && (
+        <motion.div
+
+          {...stylex.props(styles.backdrop)}
+          variants={backdrop}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          <motion.div {...stylex.props(styles.modal)} variants={modal}>
+            <div
+              {...stylex.props(styles.container)}
+            >
+              <Button borderRadius="6px" onClick={() => setIsModalOpen(false)}>
+                X
+              </Button>
+              <h2 {...stylex.props(styles.bottomMargin)}>Navigation</h2>
+            </div>
+            <nav>
+              <ul {...stylex.props(styles.ul)}>
+                {NavigationItems.map((item, index) => (
+                  <NavItem
+                    key={item.href}
+                    href={item.href}
+                    isLast={index === NavigationItems.length - 1}
+                  >
+                    {item.name}
+                  </NavItem>
+                ))}
+              </ul>
+            </nav>
+          </motion.div>
+        </motion.div>
+        )}
+    </AnimatePresence>
+  )
+}
+
+export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsModalOpen(true)}>Menu</Button>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+    </>
+  );
+};
+
+
+export const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <nav {...stylex.props(styles.nav)}>
-      <ul {...stylex.props(styles.list)}>
+      <ul {...stylex.props(styles.ul)}>
         {NavigationItems.map((item) => {
           return (
             <NavItem key={item.href} href={item.href}>
@@ -61,48 +133,3 @@ const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
     </nav>
   );
 };
-
-export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  return (
-    <Popover {...stylex.props(styles.popover)}>
-      <Popover.Button {...stylex.props(styles.button)} onChange={() => setIsOpen(!isOpen)}>
-        Menu
-      </Popover.Button>
-     
-        <Popover.Overlay {...stylex.props(styles.overlay(isOpen))} />
-      
-      <Transition.Child
-        as={Fragment}
-        {...stylex.props()}
-      >
-        <Popover.Panel focus {...stylex.props(styles.panel(isOpen))}>
-          <div
-            className="flex flex-row-reverse items-center justify-between p-"
-            {...stylex.props(styles.container)}
-          >
-            <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-              X
-            </Popover.Button>
-            <h2 {...stylex.props(styles.bottomMargin)}>Navigation</h2>
-          </div>
-          <nav>
-            <ul {...stylex.props(styles.list)}>
-              {NavigationItems.map((item, index) => (
-                <NavItem
-                  key={item.href}
-                  href={item.href}
-                  isLast={index === NavigationItems.length - 1}
-                >
-                  {item.name}
-                </NavItem>
-              ))}
-            </ul>
-          </nav>
-        </Popover.Panel>
-      </Transition.Child>
-    </Popover>
-  );
-};
-export default Nav;
