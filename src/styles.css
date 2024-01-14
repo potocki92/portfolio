@@ -1,7 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 html {
   color-scheme: dark;
 }
@@ -31,7 +27,9 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
 }
 p,
 h1,

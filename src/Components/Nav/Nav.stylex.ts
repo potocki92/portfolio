@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { colors, globalTokens as $ } from "../../styles/globalTokens.stylex";
+import { colors, globalTokens as $, text } from "../../styles/globalTokens.stylex";
 
 const MEDIA = "@media (min-width: 768px)";
 
@@ -17,19 +17,18 @@ const styles = stylex.create({
     border: `1px solid ${colors.border}`,
     color: colors.primaryText,
   },
-  backdrop:({
+  backdrop: {
     position: "fixed",
     inset: "0px",
     zIndex: 50,
     backgroundColor: "rgba(39 39 42/0.4)",
     backdropFilter: "blur(4px)",
-  }),
+  },
   modal: {
     overflow: "hidden",
     color: "rgba(212 212 216/1)",
     zIndex: 50,
     position: "fixed",
-    top: "2rem",
     left: "1rem",
     right: "1rem",
     transformOrigin: "top",
@@ -54,9 +53,11 @@ const styles = stylex.create({
     margin: { default: "-0.5rem 0", [MEDIA]: "0" },
   },
   a: {
+    fontSize: text.p,
+    lineHeight: "1.75rem",
     cursor: "pointer",
     display: "block",
-    padding: { default: "'0.5rem 0rem", [MEDIA]: "0.5rem 0.75rem" },
+    padding: { default: "0.5rem 0rem", [MEDIA]: "0.5rem 0.75rem" },
     ":hover": {
       color: "rgba(251 37 118/1)",
     },
@@ -75,6 +76,36 @@ const styles = stylex.create({
     flexDirection: "row-reverse",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  button: {
+    cursor: "pointer",
+    borderRadius: $.borderRadius,
+    border: {
+      default: `1px solid ${colors.secondBackground}`,
+      ":hover": `1px solid ${colors.border}`,
+    },
+    backgroundColor: colors.secondBackground,
+    padding: "0.5rem 1rem",
+    fontSize: text.sm,
+    fontWeight: "500",
+    color: colors.primaryText,
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
+    backdropFilter: "blur(10px)",
+    display: { default: "block", [MEDIA]: "none" },
+  },
+  navButton: {
+    height: "1.5rem",
+    width: "1.5rem",
+    padding: "0.25rem",
+    margin: "-0.25rem",
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+  },
+  h2: {
+    fontSize: text.sm,
+    lineHeight: "1.5rem",
+    fontWeight: "500",
   },
 });
 

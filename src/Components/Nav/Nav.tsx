@@ -79,12 +79,12 @@ const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModal
         >
           <motion.div {...stylex.props(styles.modal)} variants={modal}>
             <div
-              {...stylex.props(styles.container)}
+              {...stylex.props(styles.bottomMargin, styles.container)}
             >
-              <Button borderRadius="6px" onClick={() => setIsModalOpen(false)}>
+              <Button style={styles.navButton} onClick={() => setIsModalOpen(false)}>
                 X
               </Button>
-              <h2 {...stylex.props(styles.bottomMargin)}>Navigation</h2>
+              <h2 {...stylex.props(styles.h2)}>Navigation</h2>
             </div>
             <nav>
               <ul {...stylex.props(styles.ul)}>
@@ -111,7 +111,7 @@ export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
 
   return (
     <>
-      <Button onClick={() => setIsModalOpen(true)}>Menu</Button>
+      <Button style={styles.button} onClick={() => setIsModalOpen(true)}>Menu</Button>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     </>
   );
