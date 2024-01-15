@@ -98,6 +98,6 @@ export const colors = stylex.defineVars({
 export const globalTokens = stylex.defineVars({
   maxWidth: `${MAX_WIDTH}px`,
   borderRadius: "9999px",
-  backgroundColor: { default: colors.primaryBackground, [DARK_MODE]: "rgb(24 24 27/1)" },
-  color: { default: colors.primaryText, [DARK_MODE]: "rgb(244 244 245/1)" },
+  backgroundColor: { default: colors.primaryBackground },
+  color: { default: colors.primaryText },
 });
