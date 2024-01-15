@@ -41,7 +41,7 @@ const NavItem = ({
 const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) => {
   const location = useLocation();
   const isActive = location.pathname === href;
-
+  
   return (
     <Link to={href} {...stylex.props(styles.a, isActive && styles.active)}>
       {children}

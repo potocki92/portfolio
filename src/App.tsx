@@ -5,8 +5,8 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import { globalTokens as $, colors } from "./styles/globalTokens.stylex";
-import { useState } from "react";
 import { dark } from "./styles/themes.stylex";
+import { ThemeProvider, useTheme } from "./Components/ThemeContext/ThemeContex";
 
 const styles = stylex.create({
   reset: {
@@ -28,48 +28,30 @@ const styles = stylex.create({
    }
 })
 
-
 function App() {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  };
   return (
-    <div {...stylex.props( styles.base, darkMode ? styles.body : dark)}>
-       <button {...stylex.props(styles.button)} onClick={toggleDarkMode}>
-        Toggle Dark Mode
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+function AppContent() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div {...stylex.props(styles.base, theme === "light" ? styles.body : dark)}>
+      <button {...stylex.props(styles.button)} onClick={toggleTheme}>
+        Toggle Theme
       </button>
-     <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <Home/>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <About/>
-            }
-          />
-          <Route
-            path="/resume"
-            element={
-              <Home/>
-            }
-          />
-          <Route
-            path="/projects"
-            element={
-              <Projects/>
-            }
-          />
-          <Route />
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
         </Route>
       </Routes>
     </div>
   );
 }
-
 export default App;

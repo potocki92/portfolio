@@ -48,18 +48,19 @@ const styles = stylex.create({
     position: "relative",
     display: { default: "block", [MEDIA]: "flex" },
     gap: "1.5rem",
-    fontSize: "0.875rem",
+    fontSize: text.p,
     lineHeight: "1.25rem",
     margin: { default: "-0.5rem 0", [MEDIA]: "0" },
   },
   a: {
-    fontSize: text.p,
+    fontSize: text.sm,
     lineHeight: "1.75rem",
     cursor: "pointer",
     display: "block",
     padding: { default: "0.5rem 0rem", [MEDIA]: "0.5rem 0.75rem" },
-    ":hover": {
-      color: "rgba(251 37 118/1)",
+    color: {
+      default: colors.secondText,
+      ":hover":"rgba(251 37 118/1)"
     },
     userSelect: "none",
     transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
