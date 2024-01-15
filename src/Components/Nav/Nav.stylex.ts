@@ -21,7 +21,7 @@ const styles = stylex.create({
     position: "fixed",
     inset: "0px",
     zIndex: 50,
-    backgroundColor: colors.darkBackground,
+    backgroundColor: colors.backdropBackground,
     backdropFilter: "blur(4px)",
   },
   modal: {
@@ -34,7 +34,7 @@ const styles = stylex.create({
     transformOrigin: "top",
     borderRadius: "1.5rem",
     border: "1px solid rgba(255, 255, 255, 0.1)",
-    backgroundColor: colors.secondDarkBackground,
+    backgroundColor: colors.modalBackground,
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
     padding: "2rem",
     [MEDIA]: {
@@ -69,7 +69,7 @@ const styles = stylex.create({
     color: "rgba(251 37 118/1)",
   },
   underline: {
-    borderBottom: { default: "1px solid hsla(240,5%,96%,.05)", [MEDIA]: "none" },
+    borderBottom: { default: `1px solid ${colors.modalUnderline}`, [MEDIA]: "none" },
   },
   container: {
     display: "flex",
@@ -94,6 +94,7 @@ const styles = stylex.create({
     display: { default: "block", [MEDIA]: "none" },
   },
   navButton: {
+    color: colors.secondText,
     height: "1.5rem",
     width: "1.5rem",
     padding: "0.25rem",

@@ -85,11 +85,12 @@ export const text = stylex.defineVars({
 
 export const colors = stylex.defineVars({
   primaryText: "rgb(39 39 42/1)",
-  secondText: "rgba(212 212 216/1)",
+  secondText: "rgba(63 63 70/1)",
   primaryBackground: "rgb(244 244 245/1)",
   secondBackground: "hsla(0,0%,100%,.9);",
-  darkBackground: "rgba(0,0,0,.8)",
-  secondDarkBackground: "rgba(24 24 27/1)",
+  backdropBackground: "rgba(39,39,42,.4)",
+  modalBackground: "rgba(255 255 255/1)",
+  modalUnderline: "#e5e7eb",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   border: "hsla(0 0% 100%/.9)",
 });
