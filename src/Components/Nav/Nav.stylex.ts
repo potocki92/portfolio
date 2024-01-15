@@ -21,12 +21,12 @@ const styles = stylex.create({
     position: "fixed",
     inset: "0px",
     zIndex: 50,
-    backgroundColor: "rgba(39 39 42/0.4)",
+    backgroundColor: colors.darkBackground,
     backdropFilter: "blur(4px)",
   },
   modal: {
     overflow: "hidden",
-    color: "rgba(212 212 216/1)",
+    color: colors.secondText,
     zIndex: 50,
     position: "fixed",
     left: "1rem",
@@ -34,7 +34,7 @@ const styles = stylex.create({
     transformOrigin: "top",
     borderRadius: "1.5rem",
     border: "1px solid rgba(255, 255, 255, 0.1)",
-    backgroundColor: "rgba(39, 39, 42, 0.9)",
+    backgroundColor: colors.secondDarkBackground,
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
     padding: "2rem",
     [MEDIA]: {

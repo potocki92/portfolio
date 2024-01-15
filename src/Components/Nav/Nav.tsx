@@ -29,9 +29,10 @@ const NavItem = ({
   href,
   children,
   isLast,
-}: React.PropsWithChildren<{ href: string; isLast?: boolean }>) => {
+  ...props
+}: React.PropsWithChildren<{ href: string; isLast?: boolean}> & React.HTMLAttributes<HTMLLIElement> ) => {
   return (
-    <li {...stylex.props(isLast ? {} : styles.underline)}>
+    <li {...stylex.props(isLast ? {} : styles.underline)} {...props}>
       <NavLink href={href}>{children}</NavLink>
     </li>
   );
@@ -66,22 +67,29 @@ const modal = {
 } as const
 
 const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation()
+  }
   return (
     <AnimatePresence mode="wait">
       {isModalOpen && (
         <motion.div
-
           {...stylex.props(styles.backdrop)}
           variants={backdrop}
           initial="hidden"
           animate="visible"
           exit="hidden"
+          onClick={closeModal}
         >
-          <motion.div {...stylex.props(styles.modal)} variants={modal}>
+          <motion.div {...stylex.props(styles.modal)} variants={modal} onClick={stopPropagation}>
             <div
               {...stylex.props(styles.bottomMargin, styles.container)}
             >
-              <Button style={styles.navButton} onClick={() => setIsModalOpen(false)}>
+              <Button style={styles.navButton} onClick={closeModal}>
                 X
               </Button>
               <h2 {...stylex.props(styles.h2)}>Navigation</h2>
@@ -93,6 +101,7 @@ const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModal
                     key={item.href}
                     href={item.href}
                     isLast={index === NavigationItems.length - 1}
+                    onClick={closeModal}
                   >
                     {item.name}
                   </NavItem>
