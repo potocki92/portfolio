@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import styleX from "vite-plugin-stylex";
 
 export default defineConfig({
-  base: "/portfolio/",
+  base: process.env.VITE_BASE_PATH || "/portfolio/",
   plugins: [react(), styleX()],
   server: {
     port: 3000
