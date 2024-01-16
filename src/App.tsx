@@ -7,7 +7,6 @@ import { globalTokens as $, colors } from "./styles/globalTokens.stylex";
 import { dark } from "./styles/themes.stylex";
 import { ThemeProvider, useTheme } from "./Components/ThemeContext/ThemeContex";
 import Layout from "./Layout/Layout";
-
 const styles = stylex.create({
   reset: {
     minHeight: "100%",
