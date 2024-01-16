@@ -16,22 +16,33 @@ const styles = stylex.create({
   },
   body: {
     backgroundColor: $.backgroundColor,
-    color: colors.primaryText,
+    color: colors.primaryText
   },
   base: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
-  button: {
-    zIndex: 1000,
-  },
-});
+   button: {
+    zIndex: 1000
+   }
+})
 
 function App() {
   return (
-    <div {...stylex.props(styles.base)}>
-      <button {...stylex.props(styles.button)}>Toggle Theme</button>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+function AppContent() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <div {...stylex.props(styles.base, theme === "light" ? styles.body : dark)}>
+      <button {...stylex.props(styles.button)} onClick={toggleTheme}>
+        Toggle Theme
+      </button>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
