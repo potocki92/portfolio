@@ -14,7 +14,7 @@ menu {
   padding: 0;
 }
 body {
-  font-family: Geist;
+  font-family: Geist, sans-serif;
   line-height: 30px;
   letter-spacing: 0;
   word-wrap: break-word;
@@ -41,6 +41,6 @@ h6 {
 }
 @font-face {
   font-family: "Geist";
-  src: url("/fonts/geist-sans/GeistVariableVF.woff2") format("woff2"),
+  src: 
       url("/fonts/geist-sans/GeistVariableVF.ttf") format('truetype');
 }
