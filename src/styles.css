@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 html {
   color-scheme: dark;
 }
 * {
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
   text-decoration: none;
   outline: 0;
@@ -14,7 +16,6 @@ menu {
   padding: 0;
 }
 body {
-  font-family: Geist, sans-serif;
   line-height: 30px;
   letter-spacing: 0;
   word-wrap: break-word;
@@ -38,8 +39,4 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
-}
-@font-face {
-  font-family: "Geist";
-  src: url("/fonts/geist-sans/GeistVariableVF.ttf") format('truetype');
 }

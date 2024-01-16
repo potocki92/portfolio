@@ -14,7 +14,6 @@ const styles = stylex.create({
     padding: "2rem 1.5rem",
   }),
   heroHeading: {
-    fontFamily: "Geist",
     display: "block",
     overflow: "hidden",
     fontWeight: "bold",
