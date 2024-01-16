@@ -1,7 +1,7 @@
 
-import Hero from "../Sections/Hero/Hero";
 import Section from "../Components/Section/Section";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import Hero from "../Sections/Hero/Hero";
 
 const Home = () => {
     const helmetTitle = 'Mateusz Potocki';

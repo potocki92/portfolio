@@ -115,7 +115,7 @@ const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModal
   )
 }
 
-export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+export const MobileNav = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
@@ -127,7 +127,7 @@ export const MobileNav = (props: React.HTMLAttributes<HTMLDivElement>) => {
 };
 
 
-export const Nav = (props: React.HTMLAttributes<HTMLDivElement>) => {
+export const Nav = () => {
   return (
     <nav {...stylex.props(styles.nav)}>
       <ul {...stylex.props(styles.ul)}>

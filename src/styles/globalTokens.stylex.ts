@@ -6,7 +6,6 @@ const MIN_SCALE = 1.2;
 const MAX_SCALE = 1.333;
 const MIN_BASE_SIZE = 16;
 const MAX_BASE_SIZE = 20;
-const DARK_MODE = "@media (prefers-color-scheme: dark)";
 
 const MIN_FONT = {
   xxs: Math.round(MIN_BASE_SIZE / Math.pow(MIN_SCALE, 3) / 0.16) / 100,

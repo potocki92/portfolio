@@ -1,9 +1,6 @@
 import { FC } from "react"
 import Section from "../../Components/Section/Section"
-import * as stylex from "@stylexjs/stylex"
 
-const styles = stylex.create({
-})
 const About: FC = () => {
     return (
         <Section id="about">

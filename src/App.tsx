@@ -1,5 +1,4 @@
 import * as stylex from "@stylexjs/stylex";
-import Layout from "./Layout/Layout";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -7,6 +6,7 @@ import Projects from "./Pages/Projects";
 import { globalTokens as $, colors } from "./styles/globalTokens.stylex";
 import { dark } from "./styles/themes.stylex";
 import { ThemeProvider, useTheme } from "./Components/ThemeContext/ThemeContex";
+import Layout from "./Layout/Layout";
 
 const styles = stylex.create({
   reset: {
