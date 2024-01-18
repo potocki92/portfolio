@@ -10,5 +10,6 @@ export const dark = stylex.createTheme(colors, {
   backdropBackground: "rgba(0,0,0,.8)",
   modalUnderline: "hsla(240,5%,96%,.05)",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-  border: "hsla(0 0% 100%/.1)"
+  border: "hsla(0 0% 50%/.2)",
+  borderHover: "hsla(0 0% 100%/.2)"
 });

@@ -35,10 +35,6 @@ const Header = (): JSX.Element => {
     initialValue.initialY.max,
     initialValue.initialY.min,
   ]);
-  const initialTransform = motionValueScrollYFactory([
-    initialValue.initialTransform.max,
-    initialValue.initialTransform.min,
-  ]);
 
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
@@ -67,12 +63,10 @@ const Header = (): JSX.Element => {
     >
       {isHomePage && (
         <Wrapper
-          initialTransform={initialTransform}
-          initialY={initialY}
-          initialX={$.globalXPadding}
-          initialTransformOrigin="left"
+        initialY={initialY}
+        initialX={$.globalXPadding}
         >
-          <Logo/>
+          <Logo initialTransformOrigin="left"/>
         </Wrapper>
       )}
       {!isHomePage && (

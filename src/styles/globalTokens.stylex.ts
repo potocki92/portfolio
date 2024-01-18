@@ -91,6 +91,7 @@ export const colors = stylex.defineVars({
   modalUnderline: "#e5e7eb",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   border: "hsla(0 0% 100%/.9)",
+  borderHover: "hsla(0 0% 100%/.9)"
 });
 
 export const globalTokens = stylex.defineVars({
