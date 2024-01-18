@@ -1,7 +1,6 @@
 import type { StyleXStyles } from "@stylexjs/stylex";
 import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $  } from "../../styles/globalTokens.stylex";
-import image from "../../assets/vite.svg"
 type LogoProps = {
   style?: StyleXStyles;
 };
@@ -18,7 +17,7 @@ const Logo = (props: LogoProps) => {
   const { style } = props;
   return (
     <div id="logo" {...stylex.props(style)}>
-      <img src={image} {...stylex.props(styles.img)}/>
+      <img {...stylex.props(styles.img)}/>
     </div>
   );
 };
