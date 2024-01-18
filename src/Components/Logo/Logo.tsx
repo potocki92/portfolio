@@ -3,7 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import { motion } from "framer-motion";
 import { globalTokens as $, colors  } from "../../styles/globalTokens.stylex";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
-import image from "../../assets/bozenka.jpg"
+import avatarImage from "../../assets/avatar.jpg"
 
 type LogoProps = {
   style?: StyleXStyles;
@@ -59,7 +59,7 @@ const Logo = ({initialTransformOrigin, style}: React.PropsWithChildren<LogoProps
         transform: initialTransform
       }}
       ></motion.div>
-      <motion.img src={image} {...stylex.props(styles.img)} style={{ 
+      <motion.img src={avatarImage} {...stylex.props(styles.img)} style={{ 
         transformOrigin: initialTransformOrigin, 
         transform: initialImageTransform
       }}/>
