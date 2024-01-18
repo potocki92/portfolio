@@ -16,13 +16,10 @@ import Logo from "../../Components/Logo/Logo";
  */
 
 const initialValue = {
-  initialYLogo: { max: "clamp(1.3rem, 18vw, 18rem)", min: "clamp(1.3rem, 2vw, 18rem)" },
-  initialYSpan: { max: "clamp(0.5rem, 6.6vw, 5rem)", min: "clamp(0.45rem, 0.70vw, 5rem)" },
-  initialY: { max: `145px`, min: `-12px` },
-  initialX: { max: `calc(50% + 0rem)`, min: `calc(0% + 1.5rem)` },
+  initialY: { max: `145px`, min: `15px` },
   initialTransform: {
     max: `translate3d(0rem, 0, 0) scale(1)`,
-    min: "translate3d(0.12rem, 0, 0) scale(.2)",
+    min: "translate3d(0.12rem, 0, 0) scale(.6)",
   },
 } as const;
 
@@ -75,8 +72,7 @@ const Header = (): JSX.Element => {
           initialX={$.globalXPadding}
           initialTransformOrigin="left"
         >
-          <Logo fontSize={initialValue.initialYLogo.max} />
-          <span {...stylex.props(styles.heroHeading)} style={{fontSize: initialValue.initialYSpan.max}}>FULLSTACK DEVELOPER</span>
+          <Logo/>
         </Wrapper>
       )}
       {!isHomePage && (
@@ -86,8 +82,7 @@ const Header = (): JSX.Element => {
           initialX={$.globalXPadding}
           initialTransformOrigin="left"
         >
-          <Logo fontSize={initialValue.initialYLogo.max} />
-          <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
+          <Logo/>
         </Wrapper>
       )}
       <Nav />
