@@ -88,7 +88,6 @@ export const colors = stylex.defineVars({
   primaryBackground: "rgb(244 244 245/1)",
   secondBackground: "hsla(0,0%,100%,.9);",
   backdropBackground: "rgba(39,39,42,.4)",
-  modalBackground: "rgba(255 255 255/1)",
   modalUnderline: "#e5e7eb",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   border: "hsla(0 0% 100%/.9)",

@@ -34,7 +34,7 @@ const styles = stylex.create({
     transformOrigin: "top",
     borderRadius: "1.5rem",
     border: "1px solid rgba(255, 255, 255, 0.1)",
-    backgroundColor: colors.modalBackground,
+    backgroundColor: colors.primaryBackground,
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
     padding: "2rem",
     [MEDIA]: {

@@ -3,10 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Projects from "./Pages/Projects";
-import { globalTokens as $, colors } from "./styles/globalTokens.stylex";
+import { colors } from "./styles/globalTokens.stylex";
 import { dark } from "./styles/themes.stylex";
 import { ThemeProvider, useTheme } from "./Components/ThemeContext/ThemeContex";
 import Layout from "./Layout/Layout";
+
 const styles = stylex.create({
   reset: {
     minHeight: "100%",
@@ -14,7 +15,7 @@ const styles = stylex.create({
     padding: 0,
   },
   body: {
-    backgroundColor: $.backgroundColor,
+    backgroundColor: colors.primaryBackground,
     color: colors.primaryText
   },
   base: {
@@ -38,7 +39,7 @@ function AppContent() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div {...stylex.props(styles.base, theme === "light" ? styles.body : dark)}>
+    <div {...stylex.props(styles.body, styles.base, theme === "light" ? [] : dark)}>
       <button {...stylex.props(styles.button)} onClick={toggleTheme}>
         Toggle Theme
       </button>
