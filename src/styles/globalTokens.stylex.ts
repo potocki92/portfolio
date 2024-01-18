@@ -99,4 +99,6 @@ export const globalTokens = stylex.defineVars({
   borderRadius: "9999px",
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
+  globalXPadding: "1.5rem",
+  globalYPadding: "2rem",
 });

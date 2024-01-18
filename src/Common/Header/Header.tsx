@@ -1,29 +1,30 @@
 import { motion, useAnimation, useScroll } from "framer-motion";
-import Logo from "../../Components/Logo/Logo";
-import * as stylex from "@stylexjs/stylex";
-import styles from "./Header.stylex";
-import Wrapper from "../../Components/Wrapper/Wrapper";
-import { Nav, MobileNav } from "../../Components/Nav/Nav";
 import { useRef } from "react";
-import motionValueScrollYFactory from "../../utils/motionValueScroll";
+import * as stylex from "@stylexjs/stylex";
+import { globalTokens as $ } from "../../styles/globalTokens.stylex";
+import styles from "./Header.stylex";
 import { useLocation } from "react-router-dom";
-import deviceHeightInfo from "../../utils/deviceHeightInfo";
-
+import motionValueScrollYFactory from "../../utils/motionValueScroll";
+import { Nav, MobileNav } from "../../Components/Nav/Nav";
+import Wrapper from "../../Components/Wrapper/Wrapper";
+import Logo from "../../Components/Logo/Logo";
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
  *
  * @component
  * @returns {JSX.Element} The JSX representation of the header component.
  */
-const maxHeight: number = deviceHeightInfo();
 
 const initialValue = {
-  initialYLogo: {max: "clamp(1.3rem, 18vw, 18rem)", min: "clamp(1.3rem, 2vw, 18rem)"},
-  initialYSpan: {max: "clamp(0.5rem, 6.6vw, 5rem)", min: "clamp(0.45rem, 0.70vw, 5rem)"},
-  initialY:{ max: `${maxHeight / 3}px`, min:`32px`},
-  initialX: { max: `calc(50% + 0rem)`, min: `calc(0% + 1.5rem)`},
-  initialTransform : { max: `translate(-50%)`, min: "translate(0%)"},
-} as const
+  initialYLogo: { max: "clamp(1.3rem, 18vw, 18rem)", min: "clamp(1.3rem, 2vw, 18rem)" },
+  initialYSpan: { max: "clamp(0.5rem, 6.6vw, 5rem)", min: "clamp(0.45rem, 0.70vw, 5rem)" },
+  initialY: { max: `145px`, min: `-12px` },
+  initialX: { max: `calc(50% + 0rem)`, min: `calc(0% + 1.5rem)` },
+  initialTransform: {
+    max: `translate3d(0rem, 0, 0) scale(1)`,
+    min: "translate3d(0.12rem, 0, 0) scale(.2)",
+  },
+} as const;
 
 const Header = (): JSX.Element => {
   const location = useLocation();
@@ -32,12 +33,15 @@ const Header = (): JSX.Element => {
   const delta = useRef(0);
   const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
-  
-  const initialYLogo = motionValueScrollYFactory([initialValue.initialYLogo.max, initialValue.initialYLogo.min]);
-  const initialYSpan = motionValueScrollYFactory([initialValue.initialYSpan.max, initialValue.initialYSpan.min]);
-  const initialY = motionValueScrollYFactory([initialValue.initialY.max, initialValue.initialY.min]);
-  const initialX = motionValueScrollYFactory([initialValue.initialX.max,initialValue.initialX.min]);
-  const initialTransform = motionValueScrollYFactory([initialValue.initialTransform.max, initialValue.initialTransform.min]);
+
+  const initialY = motionValueScrollYFactory([
+    initialValue.initialY.max,
+    initialValue.initialY.min,
+  ]);
+  const initialTransform = motionValueScrollYFactory([
+    initialValue.initialTransform.max,
+    initialValue.initialTransform.min,
+  ]);
 
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
@@ -65,47 +69,29 @@ const Header = (): JSX.Element => {
       {...stylex.props(styles.header)}
     >
       {isHomePage && (
-        <Wrapper initialTransform={initialTransform} initialX={initialX} initialY={initialY} style={styles.headerWrapper}>
-          <motion.div
-            initial={isHomePage ? "visible" : undefined}
-            style={{
-              fontSize: initialYLogo,
-            } as unknown as React.CSSProperties}
-          >
-            <Logo />
-          </motion.div>
-          <motion.div
-            style={{
-              fontSize: initialYSpan,
-            } as unknown as React.CSSProperties}
-          >
-            <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
-          </motion.div>
-        </Wrapper>)}
-        {!isHomePage && (
-        <Wrapper 
-          initialTransform={initialValue.initialTransform.min}
-          initialX={initialValue.initialX.min} 
-          initialY={initialValue.initialY.min} 
-          style={styles.headerWrapper}
+        <Wrapper
+          initialTransform={initialTransform}
+          initialY={initialY}
+          initialX={$.globalXPadding}
+          initialTransformOrigin="left"
         >
-          <div
-            style={{
-              fontSize: initialValue.initialYLogo.min,
-            } as unknown as React.CSSProperties}
-          >
-            <Logo />
-          </div>
-          <div
-            style={{
-              fontSize: initialValue.initialYSpan.min,
-            } as unknown as React.CSSProperties}
-          >
-            <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
-          </div>
-        </Wrapper>)}
-      <Nav/>
-      <MobileNav/>
+          <Logo fontSize={initialValue.initialYLogo.max} />
+          <span {...stylex.props(styles.heroHeading)} style={{fontSize: initialValue.initialYSpan.max}}>FULLSTACK DEVELOPER</span>
+        </Wrapper>
+      )}
+      {!isHomePage && (
+        <Wrapper
+          initialTransform={initialValue.initialTransform.min}
+          initialY={initialValue.initialY.min}
+          initialX={$.globalXPadding}
+          initialTransformOrigin="left"
+        >
+          <Logo fontSize={initialValue.initialYLogo.max} />
+          <span {...stylex.props(styles.heroHeading)}>FULLSTACK DEVELOPER</span>
+        </Wrapper>
+      )}
+      <Nav />
+      <MobileNav />
     </motion.header>
   );
 };
