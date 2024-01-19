@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
 import { Nav, MobileNav } from "../../Components/Nav/Nav";
 import Wrapper from "../../Components/Wrapper/Wrapper";
-import Logo from "../../Components/Logo/Logo";
+import Avatar from "../../Components/Avatar/Avatar";
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
  *
@@ -18,8 +18,8 @@ import Logo from "../../Components/Logo/Logo";
 const initialValue = {
   initialY: { max: `145px`, min: `15px` },
   initialTransform: {
-    max: `translate3d(0rem, 0, 0) scale(1)`,
-    min: "translate3d(0.12rem, 0, 0) scale(.6)",
+    max: "translate3d(0rem, 0, 0) scale(1)",
+    min: "translate3d(.129rem, .15rem, 0) scale(0.6)",
   },
 } as const;
 
@@ -35,7 +35,10 @@ const Header = (): JSX.Element => {
     initialValue.initialY.max,
     initialValue.initialY.min,
   ]);
-
+  const initialAvatarTransform = motionValueScrollYFactory([
+    initialValue.initialTransform.max,
+    initialValue.initialTransform.min,
+  ]);
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
     if (val >= lastScrollY.current) {
@@ -50,7 +53,7 @@ const Header = (): JSX.Element => {
     }
     lastScrollY.current = val;
   });
-
+  
   return (
     <motion.header
       initial={isHomePage ? "visible" : undefined}
@@ -63,20 +66,24 @@ const Header = (): JSX.Element => {
     >
       {isHomePage && (
         <Wrapper
-        initialY={initialY}
-        initialX={$.globalXPadding}
+          initialY={initialY}
+          initialX={$.globalXPadding}
+          initialTransformOrigin="left"
+          initialTransform={initialAvatarTransform}
+          style={styles.avatarBackground}
         >
-          <Logo initialTransformOrigin="left"/>
+          <Avatar style={styles.avatar}/>
         </Wrapper>
       )}
       {!isHomePage && (
         <Wrapper
-          initialTransform={initialValue.initialTransform.min}
-          initialY={initialValue.initialY.min}
-          initialX={$.globalXPadding}
-          initialTransformOrigin="left"
+        initialY={initialValue.initialY.min}
+        initialX={$.globalXPadding}
+        initialTransformOrigin="left"
+        initialTransform={initialValue.initialTransform.min}
+        style={styles.avatarBackground}
         >
-          <Logo/>
+          <Avatar />
         </Wrapper>
       )}
       <Nav />

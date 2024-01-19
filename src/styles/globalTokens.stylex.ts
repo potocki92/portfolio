@@ -101,4 +101,6 @@ export const globalTokens = stylex.defineVars({
   color: { default: colors.primaryText },
   globalXPadding: "1.5rem",
   globalYPadding: "2rem",
+  avatarSize: "3.5rem",
+  avatarCircleSize: "4rem",
 });
