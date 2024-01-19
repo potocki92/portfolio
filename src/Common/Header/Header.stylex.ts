@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
+import { globalTokens as $ } from "../../styles/globalTokens.stylex";
 const styles = stylex.create({
   header: {
     position: "fixed",
