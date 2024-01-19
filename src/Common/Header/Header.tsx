@@ -1,7 +1,7 @@
 import { motion, useAnimation, useScroll } from "framer-motion";
 import { useRef } from "react";
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens as $ } from "../../styles/globalTokens.stylex";
+import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 import styles from "./Header.stylex";
 import { useLocation } from "react-router-dom";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
@@ -51,9 +51,14 @@ const Header = (): JSX.Element => {
     } else if (delta.current <= -10 || val < 200) {
       controls.start("visible");
     }
+    if (val > 450) {
+      controls.start("color");
+    } else if (val < 450) {
+      controls.start("transparent");
+    }
     lastScrollY.current = val;
   });
-  
+
   return (
     <motion.header
       initial={isHomePage ? "visible" : undefined}
@@ -71,17 +76,28 @@ const Header = (): JSX.Element => {
           initialTransformOrigin="left"
           initialTransform={initialAvatarTransform}
           style={styles.avatarBackground}
+          animate={controls}
+          variants={{
+            transparent: {
+              background: colors.primaryBackground,
+              border: "1px solid transparent",
+            },
+            color: {
+              background: colors.secondBackground,
+              border: `1px solid ${colors.border}`,
+            },
+          }}
         >
-          <Avatar style={styles.avatar}/>
+          <Avatar style={styles.avatar} />
         </Wrapper>
       )}
       {!isHomePage && (
         <Wrapper
-        initialY={initialValue.initialY.min}
-        initialX={$.globalXPadding}
-        initialTransformOrigin="left"
-        initialTransform={initialValue.initialTransform.min}
-        style={styles.avatarBackground}
+          initialY={initialValue.initialY.min}
+          initialX={$.globalXPadding}
+          initialTransformOrigin="left"
+          initialTransform={initialValue.initialTransform.min}
+          style={styles.avatarBackground}
         >
           <Avatar />
         </Wrapper>

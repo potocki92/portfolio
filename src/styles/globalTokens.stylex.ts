@@ -90,6 +90,7 @@ export const colors = stylex.defineVars({
   backdropBackground: "rgba(39,39,42,.4)",
   modalUnderline: "#e5e7eb",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+  avatarShadow: "rgb(47, 47, 50) 0px 0px 0px 0px, rgba(47, 47, 50, 0.2) 0px 0px 0px 1px, rgba(47, 47, 50) 0px 0px 0px 0px",
   border: "hsla(0 0% 100%/.9)",
   borderHover: "hsla(0 0% 100%/.9)"
 });

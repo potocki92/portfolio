@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens as $ } from "../../styles/globalTokens.stylex";
+import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 const styles = stylex.create({
   header: {
     position: "fixed",
@@ -53,10 +53,8 @@ const styles = stylex.create({
     width: $.avatarCircleSize,
     height: $.avatarCircleSize,
     backdropFilter: "blur(8px)",
-    backgroundColor: "black",
     borderRadius: $.borderRadius,
-    boxShadow: "0 0 0 0 #fff, 0 0 0 1px rgba(24, 24, 27, 0.05), 0 0 0 0 rgba(39, 39, 42, 0.05)",
-  },
+    },
   avatar: {
     width: $.avatarSize,
     height: $.avatarSize,
