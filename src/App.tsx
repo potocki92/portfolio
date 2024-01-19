@@ -36,13 +36,10 @@ function App() {
   );
 }
 function AppContent() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div {...stylex.props(styles.body, styles.base, theme === "light" ? [] : dark)}>
-      <button {...stylex.props(styles.button)} onClick={toggleTheme}>
-        Toggle Theme
-      </button>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

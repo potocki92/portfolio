@@ -4,6 +4,7 @@ import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../Button/Button";
+import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
 const NavigationItems = [
   {
@@ -120,7 +121,10 @@ export const MobileNav = () => {
 
   return (
     <>
-      <Button style={styles.button} onClick={() => setIsModalOpen(true)}>Menu</Button>
+      <div {...stylex.props(styles.mobileButtonWrapper)}>
+        <Button style={styles.button} onClick={() => setIsModalOpen(true)}>Menu</Button>
+        <ToggleTheme/>
+      </div>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     </>
   );

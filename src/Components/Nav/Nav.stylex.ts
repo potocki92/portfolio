@@ -80,7 +80,7 @@ const styles = stylex.create({
   },
   button: {
     cursor: "pointer",
-    borderRadius: $.borderRadius,
+    borderRadius: $.borderButtonRadius,
     border: {
       default: `1px solid ${colors.border}`,
       ":hover": `1px solid ${colors.borderHover}`,
@@ -92,7 +92,7 @@ const styles = stylex.create({
     color: colors.primaryText,
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(10px)",
-    display: { default: "block", [MEDIA]: "none" },
+    display: { default: "flex", [MEDIA]: "none" },
     transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
     transitionDuration: ".15s",
   },
@@ -105,6 +105,10 @@ const styles = stylex.create({
     background: "transparent",
     border: "none",
     cursor: "pointer",
+  },
+  mobileButtonWrapper: {
+    display: "flex",
+    gap: "0.5rem"
   },
   h2: {
     fontSize: text.sm,
