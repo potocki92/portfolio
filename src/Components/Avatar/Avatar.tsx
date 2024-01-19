@@ -1,6 +1,6 @@
 import type { StyleXStyles } from "@stylexjs/stylex";
 import * as stylex from "@stylexjs/stylex";
-import avatarImage from "../../assets/avatar.jpg";
+import avatarImage from "/assets/avatar-min.jpg";
 
 type LogoProps = {
   style?: StyleXStyles;

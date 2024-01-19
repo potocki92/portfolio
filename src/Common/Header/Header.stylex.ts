@@ -56,11 +56,13 @@ const styles = stylex.create({
     borderRadius: $.borderRadius,
     },
   avatar: {
+    cursor: "pointer",
     width: $.avatarSize,
     height: $.avatarSize,
     zIndex: 100,
     objectFit: "cover",
     borderRadius: $.borderRadius,
+    boxShadow: "rgba(0, 0, 0, 0.05) 0px 4px 8px, rgba(0, 0, 0, 0.1) 0px 1px 3px"
   },
 });
 

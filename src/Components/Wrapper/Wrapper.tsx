@@ -11,6 +11,7 @@ type WrapperProps = {
   initialTransformOrigin?: string;
   animate?: any
   variants?: any;
+  initial?: any
 };
 
 /**
@@ -22,12 +23,13 @@ type WrapperProps = {
 const Wrapper = ({
   children,
   style,
+  initial,
   initialX,
   initialY,
   initialTransform,
   initialTransformOrigin,
   animate,
-  variants
+  variants,
 }: React.PropsWithChildren<WrapperProps>) => {
   return (
     <motion.div
@@ -40,6 +42,7 @@ const Wrapper = ({
         transform: initialTransform,
         transformOrigin: initialTransformOrigin,
       }}
+      initial={initial}
       animate={animate}
       variants={variants}
     >

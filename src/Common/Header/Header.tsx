@@ -98,8 +98,15 @@ const Header = (): JSX.Element => {
           initialTransformOrigin="left"
           initialTransform={initialValue.initialTransform.min}
           style={styles.avatarBackground}
+          initial={"color"}
+          variants={{
+            color: {
+              background: colors.secondBackground,
+              border: `1px solid ${colors.border}`,
+            },
+          }}
         >
-          <Avatar />
+          <Avatar style={styles.avatar} />
         </Wrapper>
       )}
       <Nav />
