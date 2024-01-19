@@ -98,10 +98,12 @@ export const colors = stylex.defineVars({
 export const globalTokens = stylex.defineVars({
   maxWidth: `${MAX_WIDTH}px`,
   borderRadius: "9999px",
+  borderButtonRadius: "1rem",
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
   globalXPadding: "1.5rem",
   globalYPadding: "2rem",
   avatarSize: "3.5rem",
   avatarCircleSize: "4rem",
+  iconToggleSize: "1rem"
 });

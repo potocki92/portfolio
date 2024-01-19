@@ -1,5 +1,4 @@
-// ThemeContext.tsx
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type ThemeContextType = "light" | "dark";
 interface ThemeContextProps {
@@ -20,10 +19,17 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [theme, setTheme] = useState<ThemeContextType>("light");
+  const [theme, setTheme] = useState<ThemeContextType>(() => {
+    const localStorageTheme = localStorage.getItem("theme")
+    return (localStorageTheme as ThemeContextType) || "light"
+  });
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newTheme)
+      return newTheme
+      });
   };
 
   const contextValue: ThemeContextProps = {
@@ -31,6 +37,9 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
     toggleTheme,
   };
 
+  useEffect(() => {
+    localStorage.setItem("theme", theme)
+  },[theme])
   return (
     <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>
   );

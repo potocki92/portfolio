@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens as $ } from "../../styles/globalTokens.stylex";
+import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 const styles = stylex.create({
   header: {
     position: "fixed",
@@ -62,7 +62,7 @@ const styles = stylex.create({
     zIndex: 100,
     objectFit: "cover",
     borderRadius: $.borderRadius,
-    boxShadow: "rgba(0, 0, 0, 0.05) 0px 4px 8px, rgba(0, 0, 0, 0.1) 0px 1px 3px"
+    boxShadow: colors.avatarShadow
   },
 });
 
