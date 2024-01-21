@@ -25,13 +25,13 @@ const NavigationItems = [
   },
 ] as const;
 
-
 const NavItem = ({
   href,
   children,
   isLast,
   ...props
-}: React.PropsWithChildren<{ href: string; isLast?: boolean}> & React.HTMLAttributes<HTMLLIElement> ) => {
+}: React.PropsWithChildren<{ href: string; isLast?: boolean }> &
+  React.HTMLAttributes<HTMLLIElement>) => {
   return (
     <li {...stylex.props(isLast ? {} : styles.underline)} {...props}>
       <NavLink href={href}>{children}</NavLink>
@@ -42,7 +42,7 @@ const NavItem = ({
 const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) => {
   const location = useLocation();
   const isActive = location.pathname === href;
-  
+
   return (
     <Link to={href} {...stylex.props(styles.a, isActive && styles.active)}>
       {children}
@@ -51,30 +51,36 @@ const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) 
 };
 
 const backdrop = {
-  visible: {opacity: 1},
-  hidden: {opacity: 0}
-} as const
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+} as const;
 
 const modal = {
   hidden: {
     y: "0rem",
-    opacity: 0
+    opacity: 0,
   },
   visible: {
     y: "2rem",
     opacity: 1,
-    transition: { delay: 0.250 }
-  }
-} as const
+    transition: { delay: 0.25 },
+  },
+} as const;
 
-const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const Modal = ({
+  isModalOpen,
+  setIsModalOpen,
+}: {
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const closeModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
-  }
+    e.stopPropagation();
+  };
   return (
     <AnimatePresence mode="wait">
       {isModalOpen && (
@@ -87,9 +93,7 @@ const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModal
           onClick={closeModal}
         >
           <motion.div {...stylex.props(styles.modal)} variants={modal} onClick={stopPropagation}>
-            <div
-              {...stylex.props(styles.bottomMargin, styles.container)}
-            >
+            <div {...stylex.props(styles.bottomMargin, styles.container)}>
               <Button style={styles.navButton} onClick={closeModal}>
                 X
               </Button>
@@ -111,25 +115,23 @@ const Modal = ({isModalOpen, setIsModalOpen} : {isModalOpen: boolean, setIsModal
             </nav>
           </motion.div>
         </motion.div>
-        )}
+      )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
 export const MobileNav = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
     <>
-      <div {...stylex.props(styles.mobileButtonWrapper)}>
-        <Button style={styles.button} onClick={() => setIsModalOpen(true)}>Menu</Button>
-        <ToggleTheme/>
-      </div>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+      <Button style={styles.button} onClick={() => setIsModalOpen(true)}>
+        Menu
+      </Button>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
 };
-
 
 export const Nav = () => {
   return (

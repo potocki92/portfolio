@@ -1,15 +1,19 @@
+import * as stylex from "@stylexjs/stylex";
+import { StyleXStyles } from "@stylexjs/stylex";
 import Button from "../Button/Button"
 import { useTheme } from "../ThemeContext/ThemeContex";
-import styles from "../Nav/Nav.stylex";
 import { Sun, Moon } from "react-feather";
 
 const iconToggleSize: string =  "1rem" as const
-const ToggleTheme = () => {
+type ToggleProps = {
+    style?: StyleXStyles
+}
+const ToggleTheme = ({style}: React.PropsWithChildren<ToggleProps>) => {
   const { theme, toggleTheme } = useTheme();
     return (
         <>
             <Button
-                style={styles.button}
+                {...stylex.props(style)}
                 onClick={toggleTheme} 
             >
                 {theme === 'light' ?  <Moon size={iconToggleSize}/> :<Sun size={iconToggleSize}/> }
