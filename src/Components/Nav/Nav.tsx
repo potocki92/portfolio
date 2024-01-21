@@ -4,7 +4,6 @@ import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../Button/Button";
-import ToggleTheme from "../ToggleTheme/ToggleTheme";
 
 const NavigationItems = [
   {
