@@ -7,6 +7,7 @@ const MAX_SCALE = 1.333;
 const MIN_BASE_SIZE = 16;
 const MAX_BASE_SIZE = 20;
 
+const MEDIA = "@media (min-width: 768px)";
 const MIN_FONT = {
   xxs: Math.round(MIN_BASE_SIZE / Math.pow(MIN_SCALE, 3) / 0.16) / 100,
   xs: Math.round(MIN_BASE_SIZE / Math.pow(MIN_SCALE, 2) / 0.16) / 100,
@@ -90,9 +91,10 @@ export const colors = stylex.defineVars({
   backdropBackground: "rgba(39,39,42,.4)",
   modalUnderline: "#e5e7eb",
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-  avatarShadow: "rgb(47, 47, 50) 0px 0px 0px 0px, rgba(47, 47, 50, 0.2) 0px 0px 0px 1px, rgba(47, 47, 50) 0px 0px 0px 0px",
+  avatarShadow:
+    "rgb(47, 47, 50) 0px 0px 0px 0px, rgba(47, 47, 50, 0.2) 0px 0px 0px 1px, rgba(47, 47, 50) 0px 0px 0px 0px",
   border: "hsla(0 0% 100%/.9)",
-  borderHover: "hsla(0 0% 100%/.9)"
+  borderHover: "hsla(0 0% 100%/.9)",
 });
 
 export const globalTokens = stylex.defineVars({
@@ -105,5 +107,12 @@ export const globalTokens = stylex.defineVars({
   globalYPadding: "2rem",
   avatarSize: "3.5rem",
   avatarCircleSize: "4rem",
-  iconToggleSize: "1rem"
+  iconToggleSize: "1rem",
+});
+
+export const globalStyles = stylex.create({
+  flex: {
+    display: "flex",
+  },
+  flexButtons: { display: { default: "flex", [MEDIA]: "none" } },
 });

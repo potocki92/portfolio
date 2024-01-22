@@ -124,7 +124,7 @@ export const MobileNav = () => {
 
   return (
     <>
-      <Button style={styles.button} onClick={() => setIsModalOpen(true)}>
+      <Button onClick={() => setIsModalOpen(true)}>
         Menu
       </Button>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />

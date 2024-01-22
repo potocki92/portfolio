@@ -112,7 +112,7 @@ const Header = (): JSX.Element => {
       )}
       <Nav />
       <MobileNav />
-      <ToggleTheme style={styles.button("flex")}/>
+      <ToggleTheme />
     </motion.header>
   );
 };
