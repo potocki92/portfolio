@@ -5,7 +5,6 @@ const MEDIA = "@media (min-width: 768px)";
 
 const styles = stylex.create({
   nav: {
-    // position: "fixed",
     height: 40,
     display: { default: "none", [MEDIA]: "flex" },
     justifyContent: "flex-end",

@@ -61,59 +61,64 @@ const Header = (): JSX.Element => {
   });
 
   return (
-    <motion.header
-      initial={isHomePage ? "visible" : undefined}
-      animate={controls}
-      variants={{
-        visible: { top: "0px" },
-        hidden: { top: "-100px" },
-      }}
-      {...stylex.props(styles.header)}
-    >
-      {isHomePage && (
-        <Wrapper
-          initialY={initialY}
-          initialX={$.globalXPadding}
-          initialTransformOrigin="left"
-          initialTransform={initialAvatarTransform}
-          style={styles.avatarBackground}
-          animate={controls}
-          variants={{
-            transparent: {
-              background: colors.primaryBackground,
-              border: "1px solid transparent",
-            },
-            color: {
-              background: colors.secondBackground,
-              border: `1px solid ${colors.border}`,
-            },
-          }}
-        >
-          <Avatar style={styles.avatar} />
-        </Wrapper>
-      )}
-      {!isHomePage && (
-        <Wrapper
-          initialY={initialValue.initialY.min}
-          initialX={$.globalXPadding}
-          initialTransformOrigin="left"
-          initialTransform={initialValue.initialTransform.min}
-          style={styles.avatarBackground}
-          initial={"color"}
-          variants={{
-            color: {
-              background: colors.secondBackground,
-              border: `1px solid ${colors.border}`,
-            },
-          }}
-        >
-          <Avatar style={styles.avatar} />
-        </Wrapper>
-      )}
-      <Nav />
-      <MobileNav />
-      <ToggleTheme />
-    </motion.header>
+    <>
+      <motion.header
+        initial={isHomePage ? "visible" : undefined}
+        animate={controls}
+        variants={{
+          visible: { top: "0px" },
+          hidden: { top: "-100px" },
+        }}
+        {...stylex.props(styles.header)}
+      >
+        {isHomePage && (
+          <Wrapper
+            initialY={initialY}
+            initialX={$.globalXPadding}
+            initialTransformOrigin="left"
+            initialTransform={initialAvatarTransform}
+            style={styles.avatarBackground}
+            animate={controls}
+            variants={{
+              transparent: {
+                background: colors.primaryBackground,
+                border: "1px solid transparent",
+                visibility: "hidden",
+              },
+              color: {
+                background: colors.secondBackground,
+                border: `1px solid ${colors.border}`,
+                visibility: "visible",
+              },
+            }}
+          >
+            <Avatar style={styles.avatar} />
+          </Wrapper>
+        )}
+        {!isHomePage && (
+          <Wrapper
+            initialY={initialValue.initialY.min}
+            initialX={$.globalXPadding}
+            initialTransformOrigin="left"
+            initialTransform={initialValue.initialTransform.min}
+            style={styles.avatarBackground}
+            initial={"color"}
+            variants={{
+              color: {
+                background: colors.secondBackground,
+                border: `1px solid ${colors.border}`,
+              },
+            }}
+          >
+            <Avatar style={styles.avatar} />
+          </Wrapper>
+        )}
+        <Nav />
+        <MobileNav />
+        <ToggleTheme />
+      </motion.header>
+      {isHomePage && <div style={{ height: $.contentOffset }}></div>}
+    </>
   );
 };
 

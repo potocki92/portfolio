@@ -7,7 +7,7 @@ const styles = stylex.create({
     top: 0,
     zIndex: 10,
     display: "flex",
-    gap:".5rem",
+    gap: ".5rem",
     height: "auto",
     width: "100%",
     maxWidth: "1200px",
@@ -50,7 +50,9 @@ const styles = stylex.create({
     height: $.avatarCircleSize,
     backdropFilter: "blur(8px)",
     borderRadius: $.borderRadius,
-    },
+    boxShadow: colors.avatarShadow,
+    visibility: "hidden",
+  },
   avatar: {
     cursor: "pointer",
     width: $.avatarSize,
@@ -58,7 +60,8 @@ const styles = stylex.create({
     zIndex: 100,
     objectFit: "cover",
     borderRadius: $.borderRadius,
-    boxShadow: colors.avatarShadow
+    boxShadow: colors.avatarShadow,
+    visibility: "visible",
   },
 });
 

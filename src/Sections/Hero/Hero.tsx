@@ -27,7 +27,7 @@ const Hero = () => {
       <Section id="hero">
         <div {...stylex.props(styles.heroContainer)}>
           <h1 {...stylex.props(styles.heroHeading)}>
-            FULLSTACK DEVELOPER
+            John Doe
           </h1>
         </div>
       </Section>

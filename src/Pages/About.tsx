@@ -15,7 +15,6 @@ const About = () => {
                     <meta property="og:title" content={helmetTitle} />
                     <meta property="og:description" content={helmetDescription} />
                 </Helmet>
-
                 <Section />
             </HelmetProvider>
         </>
