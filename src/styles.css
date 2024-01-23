@@ -2,6 +2,9 @@
 html {
   color-scheme: dark;
 }
+main {
+  width:100%;
+}
 * {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
