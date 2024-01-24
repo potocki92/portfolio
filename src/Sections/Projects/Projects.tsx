@@ -1,14 +1,14 @@
-import { FC } from "react"
-import Section from "../../Components/Section/Section"
+import { FC } from "react";
+import Container from "../../Components/Container/Container";
 
 const Projects: FC = () => {
-    return (
-        <Section id="projects">
-            <div className="w-full flex flex-col gap-8">
-                <h2 className="text-5xl font-bold">Projects</h2>
-            </div>
-        </Section>
-    )
-}
+  return (
+    <Container id="projects">
+      <div className="w-full flex flex-col gap-8">
+        <h2 className="text-5xl font-bold">Projects</h2>
+      </div>
+    </Container>
+  );
+};
 
-export default Projects
+export default Projects;

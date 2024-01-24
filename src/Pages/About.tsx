@@ -1,24 +1,24 @@
-import Section from "../Components/Section/Section";
+import {Container} from "../Components/Container/Container";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const About = () => {
-    const helmetTitle = 'About';
-    const helmetDescription = 'A few words about me.';
+  const helmetTitle = "About";
+  const helmetDescription = "A few words about me.";
 
-    return (
-        <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>{helmetTitle}</title>
-                    <meta name="description" content={helmetDescription} />
-                    <link rel="canonical" href="/about"/>
-                    <meta property="og:title" content={helmetTitle} />
-                    <meta property="og:description" content={helmetDescription} />
-                </Helmet>
-                <Section />
-            </HelmetProvider>
-        </>
-    )
-}
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{helmetTitle}</title>
+          <meta name="description" content={helmetDescription} />
+          <link rel="canonical" href="/about" />
+          <meta property="og:title" content={helmetTitle} />
+          <meta property="og:description" content={helmetDescription} />
+        </Helmet>
+        <Container />
+      </HelmetProvider>
+    </>
+  );
+};
 
-export default About
+export default About;

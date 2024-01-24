@@ -10,10 +10,10 @@ const styles = stylex.create({
     gap: ".5rem",
     height: "auto",
     width: "100%",
-    maxWidth: "1200px",
+    maxWidth: $.maxWidth,
     alignItems: "center",
     justifyContent: "end",
-    padding: "2rem 1.5rem",
+    padding: "2rem 2rem",
   },
   heroHeading: {
     display: "block",

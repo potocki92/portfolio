@@ -24,7 +24,7 @@ const initialValue = {
   },
 } as const;
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const location = useLocation();
   let isHomePage = location.pathname === "/";
   const controls = useAnimation();
