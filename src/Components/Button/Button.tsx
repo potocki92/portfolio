@@ -33,8 +33,6 @@ const Button = forwardRef(
     ref: React.Ref<T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : T>,
   ) => {
     const { className, children, onClick, is,  ...rest } = props;
-    console.log(is);
-    
     return (
       <Component
         className={className}
