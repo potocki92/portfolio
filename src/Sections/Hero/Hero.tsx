@@ -17,7 +17,7 @@ const styles = stylex.create({
   },
   p: {
     marginTop: "1.5rem",
-    fontSize: text.xxs,
+    fontSize: text.sm,
     lineHeight: "1.75rem",
     textWrap: "balance"
   },
