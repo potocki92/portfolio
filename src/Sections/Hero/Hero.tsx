@@ -31,6 +31,7 @@ const Hero = () => {
           <PageTitle style={styles.heroHeading}>{Name}</PageTitle>
           <p {...stylex.props(styles.p)}>{HeroAbout}</p>
         </div>
+        <div style={{height: "200vh"}}></div>
       </Container>
     </>
   );

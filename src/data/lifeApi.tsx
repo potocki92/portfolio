@@ -1,3 +1,7 @@
+import { GitHubIcon } from "../Components/Icons/GitHubIcon";
+import { LinkedinIcon } from "../Components/Icons/LinkedInIcon";
+import { XIcon } from "../Components/Icons/XIcon";
+
 export const Name = "John Doe";
 
 export const HeroAbout =
@@ -49,6 +53,8 @@ export const MyProjects: Project[] = [
 ];
 
 export const SocialMedia = [
-    {name: 'LinkedIn', link: 'https://www.linkedin.com/in/mateusz-potocki/', icon: ''},
+    {name: 'LinkedIn', link: 'https://www.linkedin.com/in/mateusz-potocki/', icon: LinkedinIcon},
+    {name: 'X', link: 'https://twitter.com/?lang=pl', icon: XIcon},
+    {name: 'GitHub', link: 'https://github.com/potocki92', icon: GitHubIcon},
 
 ]

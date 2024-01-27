@@ -22,6 +22,7 @@ const initialValue = {
     max: "translate3d(0rem, 0, 0) scale(1)",
     min: "translate3d(.129rem, .15rem, 0) scale(0.6)",
   },
+  initialOffset: { max: "150px", min: "500px" },
 } as const;
 
 const Header = () => {
@@ -39,6 +40,10 @@ const Header = () => {
   const initialAvatarTransform = motionValueScrollYFactory([
     initialValue.initialTransform.max,
     initialValue.initialTransform.min,
+  ]);
+  const initialOffset = motionValueScrollYFactory([
+    initialValue.initialOffset.max,
+    initialValue.initialOffset.min,
   ]);
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
@@ -117,7 +122,7 @@ const Header = () => {
         <MobileNav />
         <ToggleTheme />
       </motion.header>
-      {isHomePage && <div style={{ height: $.contentOffset }}></div>}
+      {isHomePage && <motion.div style={{ height: initialOffset }}></motion.div>}
     </>
   );
 };

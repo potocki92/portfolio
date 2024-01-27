@@ -3,7 +3,7 @@ import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 
 const styles = stylex.create({
   header: {
-    position: "fixed",
+    position: "sticky",
     top: 0,
     zIndex: 10,
     display: "flex",
