@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens as $, text } from "../../styles/globalTokens.stylex";
+import { globalTokens as $ } from "../../styles/globalTokens.stylex";
 import { Container } from "../../Components/Container/Container";
 import { HeroAbout, Name } from "../../data/lifeApi";
 import PageTitle from "../../Components/PageTitle/PageTitle";
