@@ -52,7 +52,7 @@ const Header = () => {
     } else {
       delta.current = delta.current <= -10 ? -10 : delta.current - diff;
     }
-    if (delta.current >= 10 && val > 650) {
+    if (delta.current >= 10 && val > 525) {
       controls.start("hidden");
     } else if (delta.current <= -10 || val < 200) {
       controls.start("visible");

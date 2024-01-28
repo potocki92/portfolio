@@ -111,11 +111,16 @@ export const globalTokens = stylex.defineVars({
   iconToggleSize: "1rem",
   socialIconSize: "2rem",
   socialGap: "2.5rem",
+  maxTitleWidth: "42rem",
+  letterTitleSpacing: "-.05em"
 });
 
 export const globalStyles = stylex.create({
   flex: {
     display: "flex",
+  },
+  flexColumn: {
+    flexDirection: "column",
   },
   flexButtons: { display: { default: "flex", [MEDIA]: "none" } },
 });

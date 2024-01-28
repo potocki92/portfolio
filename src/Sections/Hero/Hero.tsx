@@ -3,23 +3,12 @@ import { globalTokens as $, text } from "../../styles/globalTokens.stylex";
 import { Container } from "../../Components/Container/Container";
 import { HeroAbout, Name } from "../../data/lifeApi";
 import PageTitle from "../../Components/PageTitle/PageTitle";
+import Paragraph from "../../Components/Paragraph/Paragraph";
 
 const styles = stylex.create({
-  heroContainer: {
+  container: {
     width: "100%",
-    maxWidth: $.maxWidth,
-  },
-  heroHeading: {
-    overflow: "hidden",
-    fontWeight: "bold",
-    fontSize: text.h3,
-    lineHeight: 1,
-  },
-  p: {
-    marginTop: "1.5rem",
-    fontSize: text.sm,
-    lineHeight: "1.75rem",
-    textWrap: "balance",
+    maxWidth: $.maxTitleWidth,
   },
 });
 
@@ -27,11 +16,10 @@ const Hero = () => {
   return (
     <>
       <Container>
-        <div {...stylex.props(styles.heroContainer)}>
-          <PageTitle style={styles.heroHeading}>{Name}</PageTitle>
-          <p {...stylex.props(styles.p)}>{HeroAbout}</p>
+        <div {...stylex.props(styles.container)}>
+          <PageTitle>{Name}</PageTitle>
+          <Paragraph>{HeroAbout}</Paragraph>
         </div>
-        <div style={{height: "200vh"}}></div>
       </Container>
     </>
   );

@@ -5,9 +5,21 @@ import { XIcon } from "../Components/Icons/XIcon";
 export const Name = "John Doe";
 
 export const HeroAbout =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde debitis veniam non, totam dolorum expedita?";
+  "Passionate Software Engineer with a focus on React Native development, dedicated to crafting elegant and user-friendly mobile applications.";
 
-export const About = `I live in Bolesławiec, Poland, ....`;
+export const AboutTitle = "About Me"
+export const AboutExtended = (
+  <>
+    {`As a passionate software engineer, I thrive on the intricate dance between logic and
+    creativity. Currently immersed in the dynamic world of WebHR, my expertise centers around React
+    Native, where I seamlessly blend technology with innovation.`}
+    <br />
+    <br />
+    {`With a fervor for crafting elegant solutions, 
+    I navigate the ever-evolving landscape of software development. 
+    My journey involves translating concepts into code, creating seamless user experiences, and constantly pushing the boundaries of what's possible`}
+  </>
+);
 
 export type Project = {
   title: string;
@@ -53,8 +65,7 @@ export const MyProjects: Project[] = [
 ];
 
 export const SocialMedia = [
-    {name: 'LinkedIn', link: 'https://www.linkedin.com/in/mateusz-potocki/', icon: LinkedinIcon},
-    {name: 'X', link: 'https://twitter.com/?lang=pl', icon: XIcon},
-    {name: 'GitHub', link: 'https://github.com/potocki92', icon: GitHubIcon},
-
-]
+  { name: "LinkedIn", link: "https://www.linkedin.com/in/mateusz-potocki/", icon: LinkedinIcon },
+  { name: "X", link: "https://twitter.com/?lang=pl", icon: XIcon },
+  { name: "GitHub", link: "https://github.com/potocki92", icon: GitHubIcon },
+];
