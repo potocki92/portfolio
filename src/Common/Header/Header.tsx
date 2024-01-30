@@ -52,9 +52,9 @@ const Header = () => {
     } else if (delta.current <= -10 || val < 200) {
       controls.start("visible");
     }
-    if (val > 450) {
+    if (val > 120) {
       controls.start("color");
-    } else if (val < 450) {
+    } else if (val < 120) {
       controls.start("transparent");
     }
     lastScrollY.current = val;
@@ -71,31 +71,6 @@ const Header = () => {
         }}
         {...stylex.props(styles.header)}
       >
-        {isHomePage && (
-          <></>
-          // <Wrapper
-          //   initialY={initialY}
-          //   initialX={$.globalXPadding}
-          //   initialTransformOrigin="left"
-          //   initialTransform={initialAvatarTransform}
-          //   style={styles.avatarBackground}
-          //   animate={controls}
-          //   variants={{
-          //     transparent: {
-          //       background: colors.primaryBackground,
-          //       border: "1px solid transparent",
-          //       visibility: "hidden",
-          //     },
-          //     color: {
-          //       background: colors.secondBackground,
-          //       border: `1px solid ${colors.border}`,
-          //       visibility: "visible",
-          //     },
-          //   }}
-          // >
-          //   <Avatar style={styles.avatar} />
-          // </Wrapper>
-        )}
         {!isHomePage && (
           <Wrapper
             initialY={initialValue.initialY.min}
@@ -128,6 +103,12 @@ const Header = () => {
             maxWidth: "1250px",
             padding: "0 2rem",
           }}
+          initial={isHomePage ? "visible" : undefined}
+        animate={controls}
+        variants={{
+          visible: { top: "0px" },
+          hidden: { top: "-100px" },
+        }}
         >
           <Wrapper
             initialY={initialY}
