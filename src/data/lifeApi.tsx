@@ -5,19 +5,18 @@ import { XIcon } from "../Components/Icons/XIcon";
 export const Name = "John Doe";
 
 export const HeroAbout =
-  "Passionate Software Engineer with a focus on React Native development, dedicated to crafting elegant and user-friendly mobile applications.";
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, cupiditate eligendi? Quibusdam vel delectus laudantium.";
 
-export const AboutTitle = "About Me"
+export const AboutTitle = "About Me";
 export const AboutExtended = (
   <>
-    {`As a passionate software engineer, I thrive on the intricate dance between logic and
-    creativity. Currently immersed in the dynamic world of WebHR, my expertise centers around React
-    Native, where I seamlessly blend technology with innovation.`}
+    {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit.`}
     <br />
     <br />
-    {`With a fervor for crafting elegant solutions, 
-    I navigate the ever-evolving landscape of software development. 
-    My journey involves translating concepts into code, creating seamless user experiences, and constantly pushing the boundaries of what's possible`}
+    {`Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+    Saepe reprehenderit voluptates sapiente, tempora iure libero aliquid dolorum iste debitis impedit rerum sequi id nesciunt culpa, 
+    deleniti odio architecto soluta maxime?`}
   </>
 );
 
