@@ -63,6 +63,14 @@ const styles = stylex.create({
     boxShadow: colors.avatarShadow,
     visibility: "visible",
   },
+  avatarWrapper: {
+    height: "103px",
+    width: "100%",
+    position: "sticky",
+    top: "0px",
+    maxWidth: $.maxWidth,
+    padding: "0 2rem",
+  }
 });
 
 export default styles;

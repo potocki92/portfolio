@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { ReactNode } from "react";
-import { globalTokens as $, text } from "../../styles/globalTokens.stylex";
+import { globalTokens as $, colors, text } from "../../styles/globalTokens.stylex";
 
 type Props = {
   children?: ReactNode;
@@ -12,7 +12,8 @@ const styles = stylex.create({
     fontWeight: 600,
     fontSize: text.h1,
     lineHeight: 1,
-    letterSpacing: $.letterTitleSpacing
+    letterSpacing: $.letterTitleSpacing,
+    color: colors.primaryText
   },
 });
 const PageTitle = ({ children }: React.PropsWithChildren<Props>) => {

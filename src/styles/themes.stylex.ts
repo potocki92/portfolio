@@ -3,8 +3,8 @@ import { colors } from "../styles/globalTokens.stylex";
 
 // dark theme
 export const dark = stylex.createTheme(colors, {
-  primaryText: "rgb(228 228 231/1)",
-  secondText: "rgba(212 212 216/1)",
+  primaryText: "rgb(255 255 255/1)",
+  secondText: "rgba(229 231 235/1)",
   primaryBackground: "rgb(24 24 27/1)",
   secondBackground: "rgba(39,39,42,.9);",
   backdropBackground: "rgba(0,0,0,.8)",

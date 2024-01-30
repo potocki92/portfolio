@@ -15,9 +15,9 @@ const styles = stylex.create({
     display: "grid",
     justifyItems: "start",
     gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateRows: "15rem auto",
+    gridTemplateRows: "auto",
     gridColumnGap: "0px",
-    gridRowGap: "0px",
+    gridRowGap: $.containerGap,
   },
 });
 const Home = () => {

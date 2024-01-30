@@ -110,6 +110,7 @@ export const globalTokens = stylex.defineVars({
   avatarCircleSize: "4rem",
   iconToggleSize: "1rem",
   socialIconSize: "2rem",
+  containerGap: "5rem",
   socialGap: "2.5rem",
   maxTitleWidth: "42rem",
   letterTitleSpacing: "-.05em"

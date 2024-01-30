@@ -5,7 +5,6 @@ import { HeroAbout, Name } from "../../data/lifeApi";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import Paragraph from "../../Components/Paragraph/Paragraph";
 
-// const MEDIA = "@media (min-width: 768px)";
 const styles = stylex.create({
   container: {
     width: "100%",
@@ -13,8 +12,7 @@ const styles = stylex.create({
   },
   containerGrid: {
     gridArea: {
-      default: "1/1/3/3", 
-      // [MEDIA]: "1/2/2/3"
+      default: "1/1/1/3", 
     }
   }
 });

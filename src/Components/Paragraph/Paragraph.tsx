@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { ReactNode } from "react";
-import { text } from "../../styles/globalTokens.stylex";
+import { colors, text } from "../../styles/globalTokens.stylex";
 
 type Props = {
   children?: ReactNode;
@@ -11,6 +11,7 @@ const styles = stylex.create({
     fontSize: text.sm,
     lineHeight: "1.75rem",
     textWrap: "balance",
+    color: colors.secondText
   },
 });
 const Paragraph = ({ children }: React.PropsWithChildren<Props>) => {

@@ -17,10 +17,10 @@ import ToggleTheme from "../../Components/ToggleTheme/ToggleTheme";
  */
 
 const initialValue = {
-  initialY: { max: `calc(50% + 0px)`, min: `calc(50% + 15px)` },
+  initialY: { max: `calc(50% + 0px)`, min: `calc(50% + 13px)` },
   initialTransform: {
-    max: "translate3d(0, -50%, 0) scale(1)",
-    min: "translate3d(0, -50%, 0) scale(0.6)",
+    max: "translate3d(0, calc(-50% + 0px), 0) scale(1)",
+    min: "translate3d(0, calc(-50% + 13px), 0) scale(0.6)",
   },
 } as const;
 
@@ -95,14 +95,7 @@ const Header = () => {
       </motion.header>
       {isHomePage && (
         <motion.div
-          style={{
-            height: "120px",
-            width: "100%",
-            position: "sticky",
-            top: "0px",
-            maxWidth: "1250px",
-            padding: "0 2rem",
-          }}
+          {...stylex.props(styles.avatarWrapper)}
           initial={isHomePage ? "visible" : undefined}
         animate={controls}
         variants={{
