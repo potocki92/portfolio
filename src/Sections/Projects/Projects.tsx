@@ -1,11 +1,12 @@
-import { FC } from "react";
 import {Container} from "../../Components/Container/Container";
+import PageTitle from "../../Components/PageTitle/PageTitle";
+import { ProjectTitle } from "../../data/lifeApi";
 
-const Projects: FC = () => {
+const Projects = () => {
   return (
-    <Container id="projects">
-      <div className="w-full flex flex-col gap-8">
-        <h2 className="text-5xl font-bold">Projects</h2>
+    <Container>
+      <div>
+        <PageTitle>{ProjectTitle}</PageTitle>
       </div>
     </Container>
   );

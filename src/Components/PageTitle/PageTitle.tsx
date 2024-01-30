@@ -11,7 +11,7 @@ const styles = stylex.create({
     overflow: "hidden",
     fontWeight: 600,
     fontSize: text.h1,
-    lineHeight: 1,
+    lineHeight: 1.5,
     letterSpacing: $.letterTitleSpacing,
     color: colors.primaryText
   },

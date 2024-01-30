@@ -20,6 +20,13 @@ export const AboutExtended = (
   </>
 );
 
+export const ExperienceTitle = "Experience"
+export const ExperienceExtended = (
+  <>
+    {`Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.`}
+  </>
+);
 export type Project = {
   title: string;
   techStack: string[];
@@ -31,6 +38,7 @@ export type Project = {
   };
 };
 
+export const ProjectTitle = "Projects"
 export const MyProjects: Project[] = [
   {
     title: "Invoice",
