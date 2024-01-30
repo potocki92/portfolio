@@ -7,7 +7,7 @@ export const Name = "John Doe";
 export const HeroAbout =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, cupiditate eligendi? Quibusdam vel delectus laudantium.";
 
-export const AboutTitle = "ABOUT ME";
+ExperienceTitleexport const AboutTitle = "ABOUT ME";
 export const AboutExtended = (
   <>
     {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
