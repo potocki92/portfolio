@@ -25,9 +25,9 @@ const InnerContainer = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 );
 
 const ContainerRoot = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  function Container({ children, ...props }, ref) {
+  function Container({ style, children, ...props }, ref) {
     return (
-      <div ref={ref} {...stylex.props(styles.section)} {...props}>
+      <div ref={ref} {...stylex.props(styles.section)} style={{...style}} {...props}>
         <InnerContainer>{children}</InnerContainer>
       </div>
     );

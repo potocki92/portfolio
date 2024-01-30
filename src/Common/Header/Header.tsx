@@ -17,12 +17,11 @@ import ToggleTheme from "../../Components/ToggleTheme/ToggleTheme";
  */
 
 const initialValue = {
-  initialY: { max: `145px`, min: `15px` },
+  initialY: { max: `calc(50% + 0px)`, min: `calc(50% + 15px)` },
   initialTransform: {
-    max: "translate3d(0rem, 0, 0) scale(1)",
-    min: "translate3d(.129rem, .15rem, 0) scale(0.6)",
+    max: "translate3d(0, -50%, 0) scale(1)",
+    min: "translate3d(0, -50%, 0) scale(0.6)",
   },
-  initialOffset: { max: "150px", min: "500px" },
 } as const;
 
 const Header = () => {
@@ -40,10 +39,6 @@ const Header = () => {
   const initialAvatarTransform = motionValueScrollYFactory([
     initialValue.initialTransform.max,
     initialValue.initialTransform.min,
-  ]);
-  const initialOffset = motionValueScrollYFactory([
-    initialValue.initialOffset.max,
-    initialValue.initialOffset.min,
   ]);
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
@@ -77,28 +72,29 @@ const Header = () => {
         {...stylex.props(styles.header)}
       >
         {isHomePage && (
-          <Wrapper
-            initialY={initialY}
-            initialX={$.globalXPadding}
-            initialTransformOrigin="left"
-            initialTransform={initialAvatarTransform}
-            style={styles.avatarBackground}
-            animate={controls}
-            variants={{
-              transparent: {
-                background: colors.primaryBackground,
-                border: "1px solid transparent",
-                visibility: "hidden",
-              },
-              color: {
-                background: colors.secondBackground,
-                border: `1px solid ${colors.border}`,
-                visibility: "visible",
-              },
-            }}
-          >
-            <Avatar style={styles.avatar} />
-          </Wrapper>
+          <></>
+          // <Wrapper
+          //   initialY={initialY}
+          //   initialX={$.globalXPadding}
+          //   initialTransformOrigin="left"
+          //   initialTransform={initialAvatarTransform}
+          //   style={styles.avatarBackground}
+          //   animate={controls}
+          //   variants={{
+          //     transparent: {
+          //       background: colors.primaryBackground,
+          //       border: "1px solid transparent",
+          //       visibility: "hidden",
+          //     },
+          //     color: {
+          //       background: colors.secondBackground,
+          //       border: `1px solid ${colors.border}`,
+          //       visibility: "visible",
+          //     },
+          //   }}
+          // >
+          //   <Avatar style={styles.avatar} />
+          // </Wrapper>
         )}
         {!isHomePage && (
           <Wrapper
@@ -122,7 +118,41 @@ const Header = () => {
         <MobileNav />
         <ToggleTheme />
       </motion.header>
-      {isHomePage && <motion.div style={{ height: initialOffset }}></motion.div>}
+      {isHomePage && (
+        <motion.div
+          style={{
+            height: "120px",
+            width: "100%",
+            position: "sticky",
+            top: "0px",
+            maxWidth: "1250px",
+            padding: "0 2rem",
+          }}
+        >
+          <Wrapper
+            initialY={initialY}
+            initialX={$.globalXPadding}
+            initialTransformOrigin="left"
+            initialTransform={initialAvatarTransform}
+            style={styles.avatarBackground}
+            animate={controls}
+            variants={{
+              transparent: {
+                background: colors.primaryBackground,
+                border: "1px solid transparent",
+                visibility: "hidden",
+              },
+              color: {
+                background: colors.secondBackground,
+                border: `1px solid ${colors.border}`,
+                visibility: "visible",
+              },
+            }}
+          >
+            <Avatar style={styles.avatar} />
+          </Wrapper>
+        </motion.div>
+      )}
     </>
   );
 };

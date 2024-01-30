@@ -44,7 +44,7 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
+    position: "sticky",
     left: 0,
     width: $.avatarCircleSize,
     height: $.avatarCircleSize,

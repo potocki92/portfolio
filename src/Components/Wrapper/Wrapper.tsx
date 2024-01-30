@@ -36,7 +36,7 @@ const Wrapper = ({
       id="wrapper"
       {...stylex.props(style)}
       style={{
-        position: "absolute",
+        position: "sticky",
         left: initialX,
         top: initialY,
         transform: initialTransform,
