@@ -7,7 +7,7 @@ export const Name = "John Doe";
 export const HeroAbout =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, cupiditate eligendi? Quibusdam vel delectus laudantium.";
 
-export const AboutTitle = "About Me";
+export const AboutTitle = "ABOUT ME";
 export const AboutExtended = (
   <>
     {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
@@ -20,13 +20,15 @@ export const AboutExtended = (
   </>
 );
 
-export const ExperienceTitle = "Experience"
+export const ExperienceTitle = "EXPERIENCE"
 export const ExperienceExtended = (
   <>
     {`Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.`}
   </>
 );
+
+export const ProjectTitle = "PROJECTS"
 export type Project = {
   title: string;
   techStack: string[];
@@ -38,7 +40,6 @@ export type Project = {
   };
 };
 
-export const ProjectTitle = "Projects"
 export const MyProjects: Project[] = [
   {
     title: "Invoice",
