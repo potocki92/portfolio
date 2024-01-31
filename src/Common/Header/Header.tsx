@@ -1,4 +1,4 @@
-import { motion, useAnimation, useScroll } from "framer-motion";
+import { MotionValue, motion, useAnimation, useScroll } from "framer-motion";
 import { useRef } from "react";
 import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
@@ -40,52 +40,68 @@ const Header = () => {
     initialValue.initialTransform.max,
     initialValue.initialTransform.min,
   ]);
+
   scrollY.on("change", (val) => {
     const diff = Math.abs(val - lastScrollY.current);
-    if (val >= lastScrollY.current) {
-      delta.current = delta.current >= 10 ? 10 : delta.current + diff;
-    } else {
-      delta.current = delta.current <= -10 ? -10 : delta.current - diff;
-    }
+    delta.current =
+      val >= lastScrollY.current
+        ? Math.min(delta.current + diff, 10)
+        : Math.max(delta.current - diff, -10);
+
     if (delta.current >= 10 && val > 525) {
       controls.start("hidden");
     } else if (delta.current <= -10 || val < 200) {
       controls.start("visible");
     }
-    if (val > 120) {
-      controls.start("color");
-    } else if (val < 120) {
-      controls.start("transparent");
-    }
+
+    controls.start(val > 120 ? "color" : "transparent");
+
     lastScrollY.current = val;
   });
 
+  type AnimationVariantProps = {
+    initial: string | undefined;
+    initialY: string | MotionValue<string>;
+    initialX: string | MotionValue<string>;
+    initialTransformOrigin: string;
+    initialTransform: string | MotionValue<string>;
+    style: stylex.StyleXStyles;
+    variants: {
+      transparent: Record<string, string | number>;
+      color: Record<string, string | number>;
+    };
+  };
+  const AnimationVariants: AnimationVariantProps = {
+    initial: isHomePage ? "visible" : undefined,
+    initialY: isHomePage ? initialY : initialValue.initialY.min,
+    initialX: $.globalXPadding,
+    initialTransformOrigin: "left",
+    initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.min,
+    style: styles.avatarBackground,
+    variants: {
+      transparent: {
+        background: colors.primaryBackground,
+        border: "1px solid transparent",
+        visibility: "hidden",
+      },
+      color: {
+        background: colors.secondBackground,
+        border: `1px solid ${colors.border}`,
+        visibility: "visible",
+      },
+    },
+  };
+  const VisibleVariants = {
+    variants: {
+      visible: { top: "0px" },
+      hidden: { top: "-100px" },
+    },
+  };
   return (
     <>
-      <motion.header
-        initial={isHomePage ? "visible" : undefined}
-        animate={controls}
-        variants={{
-          visible: { top: "0px" },
-          hidden: { top: "-100px" },
-        }}
-        {...stylex.props(styles.header)}
-      >
+      <motion.header animate={controls} {...VisibleVariants} {...stylex.props(styles.header)}>
         {!isHomePage && (
-          <Wrapper
-            initialY={initialValue.initialY.min}
-            initialX={$.globalXPadding}
-            initialTransformOrigin="left"
-            initialTransform={initialValue.initialTransform.min}
-            style={styles.avatarBackground}
-            initial={"color"}
-            variants={{
-              color: {
-                background: colors.secondBackground,
-                border: `1px solid ${colors.border}`,
-              },
-            }}
-          >
+          <Wrapper {...AnimationVariants}>
             <Avatar style={styles.avatar} />
           </Wrapper>
         )}
@@ -94,35 +110,8 @@ const Header = () => {
         <ToggleTheme />
       </motion.header>
       {isHomePage && (
-        <motion.div
-          {...stylex.props(styles.avatarWrapper)}
-          initial={isHomePage ? "visible" : undefined}
-        animate={controls}
-        variants={{
-          visible: { top: "0px" },
-          hidden: { top: "-100px" },
-        }}
-        >
-          <Wrapper
-            initialY={initialY}
-            initialX={$.globalXPadding}
-            initialTransformOrigin="left"
-            initialTransform={initialAvatarTransform}
-            style={styles.avatarBackground}
-            animate={controls}
-            variants={{
-              transparent: {
-                background: colors.primaryBackground,
-                border: "1px solid transparent",
-                visibility: "hidden",
-              },
-              color: {
-                background: colors.secondBackground,
-                border: `1px solid ${colors.border}`,
-                visibility: "visible",
-              },
-            }}
-          >
+        <motion.div animate={controls} {...VisibleVariants} {...stylex.props(styles.avatarWrapper)}>
+          <Wrapper {...AnimationVariants}>
             <Avatar style={styles.avatar} />
           </Wrapper>
         </motion.div>
