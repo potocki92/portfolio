@@ -20,7 +20,38 @@ export const AboutExtended = (
   </>
 );
 
-export const ExperienceTitle = "EXPERIENCE"
+export const ExperienceTitle = "EXPERIENCE";
+
+export type Experience = {
+  title: string;
+  date: string;
+  logo?: any;
+  description: string;
+  techStack: string[];
+};
+export const MyExperience: Experience[] = [
+  {
+    title: "LORO IPSUM TECH",
+    techStack: ["React", "JavaScript", "TypeScript"],
+    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+  },
+  {
+    title: "LORO IPSUM TECH2",
+    techStack: ["React", "JavaScript", "TypeScript"],
+    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+  },
+  {
+    title: "LORO IPSUM TECH3",
+    techStack: ["React", "JavaScript", "TypeScript"],
+    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+  },
+];
 export const ExperienceExtended = (
   <>
     {`Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -28,7 +59,7 @@ export const ExperienceExtended = (
   </>
 );
 
-export const ProjectTitle = "PROJECTS"
+export const ProjectTitle = "PROJECTS";
 export type Project = {
   title: string;
   techStack: string[];
