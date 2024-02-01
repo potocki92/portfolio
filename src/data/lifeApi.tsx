@@ -35,6 +35,9 @@ export const MyExperience: Experience[] = [
     techStack: ["React", "JavaScript", "TypeScript"],
     date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.`,
   },
   {
@@ -42,6 +45,9 @@ export const MyExperience: Experience[] = [
     techStack: ["React", "JavaScript", "TypeScript"],
     date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.`,
   },
   {
@@ -49,6 +55,9 @@ export const MyExperience: Experience[] = [
     techStack: ["React", "JavaScript", "TypeScript"],
     date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.`,
   },
 ];

@@ -10,40 +10,47 @@ const CardRoot = ({
 };
 
 const CardTitle = ({
-  as: Component = "h2",
+  as: Component = "h5",
   children,
-}: React.PropsWithChildren<{ as?: React.ElementType; href?: string }>) => {
-  return <Component>{children}</Component>;
+  style
+}: React.PropsWithChildren<{ as?: React.ElementType; href?: string, style?: StyleXStyles }>) => {
+  return <Component {...stylex.props(style)}>{children}</Component>;
 };
 
 const CardDate = ({
   as: Component = "span",
   children,
-}: React.PropsWithChildren<{ as?: React.ElementType }>) => {
-  return <Component>{children}</Component>;
+  style
+}: React.PropsWithChildren<{ as?: React.ElementType; style?: StyleXStyles }>) => {
+  return <Component {...stylex.props(style)}>{children}</Component>;
 };
 
-const CardDescription = ({ children }: React.PropsWithChildren) => {
-  return <Paragraph>{children}</Paragraph>;
+const CardDescription = ({
+  children,
+  style,
+}: React.PropsWithChildren<{ style?: StyleXStyles }>) => {
+  return <Paragraph style={style}>{children}</Paragraph>;
 };
 
 const CardTech = ({
   as: Component = "ul",
   children,
-}: React.PropsWithChildren<{ as?: React.ElementType }>) => {
-  return <Component>{children}</Component>;
+  style
+}: React.PropsWithChildren<{ as?: React.ElementType, style?: StyleXStyles }>) => {
+  return <Component {...stylex.props(style)}>{children}</Component>;
 };
 
 const CardTechItem = ({
   as: Component = "li",
   children,
-}: React.PropsWithChildren<{ as?: React.ElementType }>) => {
-  return <Component>{children}</Component>;
+  style
+}: React.PropsWithChildren<{ as?: React.ElementType, style?: StyleXStyles }>) => {
+  return <Component {...stylex.props(style)}>{children}</Component>;
 };
 export const Card = Object.assign(CardRoot, {
   Title: CardTitle,
   Description: CardDescription,
   Date: CardDate,
   Tech: CardTech,
-  TechItem: CardTechItem
+  TechItem: CardTechItem,
 });
