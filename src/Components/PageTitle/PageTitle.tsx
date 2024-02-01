@@ -14,7 +14,6 @@ const styles = stylex.create({
     lineHeight: 1.5,
     letterSpacing: $.letterTitleSpacing,
     color: colors.primaryText,
-    marginBottom: "1.5rem"
   },
 });
 const PageTitle = ({ children }: React.PropsWithChildren<Props>) => {

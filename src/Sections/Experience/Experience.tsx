@@ -11,7 +11,8 @@ const styles = stylex.create({
   cardWrapper: {
     display: "flex",
     flexDirection: "column",
-    gap: "2rem"
+    gap: "2rem",
+    marginTop: "2rem"
   },  
   card: {
     display: "grid",
