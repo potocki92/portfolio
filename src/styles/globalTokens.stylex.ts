@@ -93,8 +93,12 @@ export const colors = stylex.defineVars({
   shadow: "0 1px 15px -2px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   avatarShadow:
     "rgb(47, 47, 50) 0px 0px 0px 0px, rgba(47, 47, 50, 0.2) 0px 0px 0px 1px, rgba(47, 47, 50) 0px 0px 0px 0px",
+  transparentAvatarShadow:
+    "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.2) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
   border: "hsla(0 0% 100%/.9)",
+  borderLi: "hsla(0 0% 50%/.2)",
   borderHover: "hsla(0 0% 100%/.9)",
+  cardLiBackground: "transparent",
 });
 
 export const globalTokens = stylex.defineVars({
@@ -102,6 +106,7 @@ export const globalTokens = stylex.defineVars({
   contentOffset: "180px",
   borderRadius: "9999px",
   borderButtonRadius: "1rem",
+  borderLi: "1.5rem",
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
   globalXPadding: "1.5rem",

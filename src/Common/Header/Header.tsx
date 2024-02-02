@@ -86,11 +86,13 @@ const Header = () => {
         background: colors.primaryBackground,
         border: "1px solid transparent",
         visibility: "hidden",
+        boxShadow: colors.transparentAvatarShadow,
       },
       color: {
         background: colors.secondBackground,
         border: `1px solid ${colors.border}`,
         visibility: "visible",
+        boxShadow: colors.avatarShadow,
       },
     },
   };
