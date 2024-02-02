@@ -11,12 +11,19 @@ export const AboutTitle = "ABOUT ME";
 export const AboutExtended = (
   <>
     {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit.`}
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit. 
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit`}
     <br />
     <br />
-    {`Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-    Saepe reprehenderit voluptates sapiente, tempora iure libero aliquid dolorum iste debitis impedit rerum sequi id nesciunt culpa, 
-    deleniti odio architecto soluta maxime?`}
+    {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit. 
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+    Accusamus fuga asperiores quam rerum quae error praesentium quos facilis, ad quis, doloremque omnis veritatis officia impedit`}
   </>
 );
 

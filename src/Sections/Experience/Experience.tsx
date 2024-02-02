@@ -17,7 +17,7 @@ const styles = stylex.create({
   card: {
     display: "grid",
     gridTemplateColumns: {default: "repeat(2, 1fr)", [MEDIA]: "repeat(2, 1fr)"},
-    gridTemplateRows: {default: "2rem 2rem auto 50px",[MEDIA]:"2rem auto 50px"},
+    gridTemplateRows: {default: "2rem 2rem auto auto",[MEDIA]:"2rem auto 50px"},
     rowGap: {default: "1rem",[MEDIA]: "1.5rem"}
   },
   cardTitle: {
@@ -38,7 +38,11 @@ const styles = stylex.create({
     display: "flex",
     gap: "0.5rem",
     gridArea: {default: "4/1/4/3",[MEDIA]:"3/1/3/3"},
+    flexDirection: {default: "column", [MEDIA]: "row"},
   },
+  cardLi: {
+    
+  }
 });
 const Experience = () => {
   return (

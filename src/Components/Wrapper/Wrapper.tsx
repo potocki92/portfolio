@@ -12,6 +12,7 @@ type WrapperProps = {
   animate?: any
   variants?: any;
   initial?: any
+  initialPosition?: any;
 };
 
 /**
@@ -30,13 +31,14 @@ const Wrapper = ({
   initialTransformOrigin,
   animate,
   variants,
+  initialPosition
 }: React.PropsWithChildren<WrapperProps>) => {
   return (
     <motion.div
       id="wrapper"
       {...stylex.props(style)}
       style={{
-        position: "sticky",
+        position: initialPosition,
         left: initialX,
         top: initialY,
         transform: initialTransform,

@@ -21,6 +21,7 @@ const initialValue = {
   initialTransform: {
     max: "translate3d(0, calc(-50% + 0px), 0) scale(1)",
     min: "translate3d(0, calc(-50% + 13px), 0) scale(0.6)",
+    notHome: "translate3d(0, -50%, 0) scale(0.6)",
   },
 } as const;
 
@@ -65,6 +66,7 @@ const Header = () => {
     initialX: string | MotionValue<string>;
     initialTransformOrigin: string;
     initialTransform: string | MotionValue<string>;
+    initialPosition: string;
     style: stylex.StyleXStyles;
     variants: {
       transparent: Record<string, string | number>;
@@ -72,11 +74,12 @@ const Header = () => {
     };
   };
   const AnimationVariants: AnimationVariantProps = {
-    initial: isHomePage ? "visible" : undefined,
-    initialY: isHomePage ? initialY : initialValue.initialY.min,
-    initialX: $.globalXPadding,
+    initial: isHomePage ? "transparent" : "color",
+    initialY: isHomePage ? initialY : initialValue.initialY.max,
+    initialX: isHomePage ? $.avatarLeft : "2rem",
     initialTransformOrigin: "left",
-    initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.min,
+    initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.notHome,
+    initialPosition: isHomePage ? "sticky" : "absolute",
     style: styles.avatarBackground,
     variants: {
       transparent: {
@@ -111,7 +114,7 @@ const Header = () => {
       </motion.header>
       {isHomePage && (
         <motion.div animate={controls} {...VisibleVariants} {...stylex.props(styles.avatarWrapper)}>
-          <Wrapper {...AnimationVariants}>
+          <Wrapper animate={controls} {...AnimationVariants}>
             <Avatar style={styles.avatar} />
           </Wrapper>
         </motion.div>

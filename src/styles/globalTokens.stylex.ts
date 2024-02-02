@@ -113,7 +113,8 @@ export const globalTokens = stylex.defineVars({
   containerGap: "5rem",
   socialGap: "2.5rem",
   maxTitleWidth: "42rem",
-  letterTitleSpacing: "-.05em"
+  letterTitleSpacing: "-.05em",
+  avatarLeft: "1.5rem",
 });
 
 export const globalStyles = stylex.create({
