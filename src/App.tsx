@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-import About from "./Pages/About";
+import AboutPage from "./Pages/About";
 import Projects from "./Pages/Projects";
 import { colors } from "./styles/globalTokens.stylex";
 import { dark } from "./styles/themes.stylex";
@@ -16,17 +16,17 @@ const styles = stylex.create({
   },
   body: {
     backgroundColor: colors.primaryBackground,
-    color: colors.primaryText
+    color: colors.primaryText,
   },
   base: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
-   button: {
-    zIndex: 1000
-   }
-})
+  button: {
+    zIndex: 1000,
+  },
+});
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/resume" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
         </Route>

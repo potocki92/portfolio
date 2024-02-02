@@ -1,7 +1,18 @@
-import {Container} from "../Components/Container/Container";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import * as stylex from "@stylexjs/stylex";
+import { globalTokens as $ } from "../styles/globalTokens.stylex";
+import About from "../Sections/About/About";
+import Experience from "../Sections/Experience/Experience";
 
-const About = () => {
+const styles = stylex.create({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    gap: $.containerGap,
+    maxWidth: $.maxWidth,
+  },
+});
+const AboutPage = () => {
   const helmetTitle = "About";
   const helmetDescription = "A few words about me.";
 
@@ -15,10 +26,13 @@ const About = () => {
           <meta property="og:title" content={helmetTitle} />
           <meta property="og:description" content={helmetDescription} />
         </Helmet>
-        <Container />
+        <div {...stylex.props(styles.container)}>
+          <About />
+          <Experience />
+        </div>
       </HelmetProvider>
     </>
   );
 };
 
-export default About;
+export default AboutPage;

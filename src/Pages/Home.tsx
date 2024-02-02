@@ -41,7 +41,6 @@ const Home = () => {
           <About />
           <Experience />
           <Projects />
-          <div style={{ height: "200vh", width: "100%" }}></div>
         </div>
       </HelmetProvider>
     </>
