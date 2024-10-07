@@ -9,6 +9,7 @@ import { Nav, MobileNav } from "../../Components/Nav/Nav";
 import Wrapper from "../../Components/Wrapper/Wrapper";
 import Avatar from "../../Components/Avatar/Avatar";
 import ToggleTheme from "../../Components/ToggleTheme/ToggleTheme";
+import LanguageButton from "../../Components/LanguageButton/LanguageButton";
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
  *
@@ -113,6 +114,7 @@ const Header = () => {
         <Nav />
         <MobileNav />
         <ToggleTheme />
+        <LanguageButton />
       </motion.header>
       {isHomePage && (
         <motion.div animate={controls} {...VisibleVariants} {...stylex.props(styles.avatarWrapper)}>

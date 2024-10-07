@@ -1,0 +1,8 @@
+{
+  "title": "Witaj!",
+  "hero_about": "Witaj! Jesteś teraz liderem gry",
+  "description": {
+    "part1": "Jest to zwykły przykład użycia i18next z typescriptem"
+  },
+  "inter": "interpolated {{val}}"
+}

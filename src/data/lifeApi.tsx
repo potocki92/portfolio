@@ -1,13 +1,8 @@
+import { useTranslation } from "react-i18next";
 import { GitHubIcon } from "../Components/Icons/GitHubIcon";
 import { LinkedinIcon } from "../Components/Icons/LinkedInIcon";
 import { XIcon } from "../Components/Icons/XIcon";
 
-export const Name = "John Doe";
-
-export const HeroAbout =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, cupiditate eligendi? Quibusdam vel delectus laudantium.";
-
-export const AboutTitle = "ABOUT ME";
 export const AboutExtended = (
   <>
     {`Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
@@ -38,9 +33,9 @@ export type Experience = {
 };
 export const MyExperience: Experience[] = [
   {
-    title: "LORO IPSUM TECH",
-    techStack: ["React", "JavaScript", "TypeScript"],
-    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
+    title: "NfHotel",
+    techStack: ["AngularJs", "PHP", "SCSS"],
+    date: "MARCH 2024 - PRESENT, JELENIA GÓRA",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -124,3 +119,26 @@ export const SocialMedia = [
   { name: "X", link: "https://twitter.com/?lang=pl", icon: XIcon },
   { name: "GitHub", link: "https://github.com/potocki92", icon: GitHubIcon },
 ];
+
+const LifeApiComponent = () => {
+  const { t } = useTranslation();
+
+  const Name = "Mateusz Potocki";
+  const HeroAbout = t("hero_about");
+  const AboutTitle = t("ABOUT_ME");
+  const ExperienceTitle = t("EXPERIENCE");
+  return {
+    Name,
+    HeroAbout,
+    AboutTitle,
+    AboutExtended,
+    ExperienceTitle,
+    MyExperience,
+    ExperienceExtended,
+    ProjectTitle,
+    MyProjects,
+    SocialMedia,
+  };
+};
+
+export default LifeApiComponent;
