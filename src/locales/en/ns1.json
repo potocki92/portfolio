@@ -1,8 +1,0 @@
-{
-  "title": "Welcome!",
-  "hero_about": "Welcome! You are now the leader of the game",
-  "description": {
-    "part1": "This is just a basic example of how to use i18next with typescript"
-  },
-  "inter": "interpolated {{val}}"
-}

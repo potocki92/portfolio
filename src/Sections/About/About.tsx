@@ -10,11 +10,11 @@ const styles = stylex.create({
   },
 });
 const About = () => {
-  const { AboutTitle } = LifeApiComponent();
+  const { Titles } = LifeApiComponent();
   return (
     <Container {...stylex.props(styles.containerGrid)}>
       <div>
-        <PageTitle>{AboutTitle}</PageTitle>
+        <PageTitle>{Titles.AboutTitle}</PageTitle>
         <Paragraph>{AboutExtended}</Paragraph>
       </div>
     </Container>

@@ -4,22 +4,29 @@ import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../Button/Button";
+import LifeApiComponent from "../../data/lifeApi";
 
-const NavigationItems = [
+interface NavigationItemsInterface {
+  Home: string;
+  Projects: string;
+  Resume: string;
+  About: string;
+}
+const NavigationItems = ({Home, Projects, Resume, About}: NavigationItemsInterface) => [
   {
-    name: "Home",
+    name: Home,
     href: "/",
   },
   {
-    name: "Projects",
+    name: Projects,
     href: "/projects",
   },
   {
-    name: "Resume",
+    name: Resume,
     href: "/resume",
   },
   {
-    name: "About",
+    name: About,
     href: "/about",
   },
 ] as const;
@@ -80,6 +87,8 @@ const Modal = ({
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
+
+  const {Navigation} = LifeApiComponent();
   return (
     <AnimatePresence mode="wait">
       {isModalOpen && (
@@ -100,7 +109,7 @@ const Modal = ({
             </div>
             <nav>
               <ul {...stylex.props(styles.ul)}>
-                {NavigationItems.map((item, index) => (
+                {NavigationItems(Navigation).map((item, index) => (
                   <NavItem
                     key={item.href}
                     href={item.href}
@@ -133,10 +142,11 @@ export const MobileNav = () => {
 };
 
 export const Nav = () => {
+  const { Navigation } = LifeApiComponent();
   return (
     <nav {...stylex.props(styles.nav)}>
       <ul {...stylex.props(styles.ul)}>
-        {NavigationItems.map((item) => {
+        {NavigationItems(Navigation).map((item) => {
           return (
             <NavItem key={item.href} href={item.href}>
               {item.name}

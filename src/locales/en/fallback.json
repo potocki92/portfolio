@@ -1,7 +1,45 @@
 {
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "resume": "Resume",
+    "projects": "Projects"
+  },
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "present": "Present",
+  "projects": {
+    "invoice": {
+      "description": "A platform to create invoices."
+    },
+    "icecream": {
+      "description": "A fully responsive website was built using the BEM methodology and the SASS preprocessor."
+    },
+    "filmoteka": {
+      "description": "Application for choosing a movie. I worked on modal CSS, connecting it with localStorage, creating a dynamic gallery, and conducting HTML + CSS testing."
+    }
+  },
   "ABOUT_ME": "ABOUT ME",
   "EXPERIENCE": "EXPERIENCE",
   "PROJECTS": "PROJECTS",
   "SOCIAL_MEDIA": "Social Media",
-  "DESCRIPTION": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+  "DESCRIPTION": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  "title": "Welcome!",
+  "hero_about": "Welcome! You are now the leader of the game",
+  "description": {
+    "part1": "This is just a basic example of how to use i18next with typescript"
+  },
+  "inter": "interpolated {{val}}"
 }

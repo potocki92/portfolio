@@ -1,7 +1,45 @@
 {
+  "navigation": {
+    "home": "Strona główna",
+    "about": "O mnie",
+    "resume": "CV",
+    "projects": "Projekty"
+  },
+  "months": {
+    "january": "Styczeń",
+    "february": "Luty",
+    "march": "Marzec",
+    "april": "Kwiecień",
+    "may": "Maj",
+    "june": "Czerwiec",
+    "july": "Lipiec",
+    "august": "Sierpień",
+    "september": "Wrzesień",
+    "october": "Październik",
+    "november": "Listopad",
+    "december": "Grudzień"
+  },
+  "present": "Obecnie",
+  "projects": {
+    "invoice": {
+      "description": "Platforma do tworzenia faktur."
+    },
+    "icecream": {
+      "description": "W pełni responsywna strona internetowa została zbudowana z wykorzystaniem metodologii BEM i preprocesora SASS."
+    },
+    "filmoteka": {
+      "description": "Aplikacja do wyboru filmu. Pracowałem nad CSS modal, połączeniem go z localStorage, tworzeniem dynamicznej galerii i przeprowadzaniem testów HTML + CSS."
+    }
+  },
   "ABOUT_ME": "O MNIE",
   "EXPERIENCE": "DOŚWIADCZENIE",
   "PROJECTS": "PROJEKTY",
   "SOCIAL_MEDIA": "Media społecznościowe",
-  "DESCRIPTION": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+  "DESCRIPTION": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  "title": "Witaj!",
+  "hero_about": "Witaj! Jesteś teraz liderem gry",
+  "description": {
+    "part1": "Jest to zwykły przykład użycia i18next z typescriptem"
+  },
+  "inter": "interpolated {{val}}"
 }

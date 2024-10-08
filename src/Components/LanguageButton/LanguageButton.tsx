@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import changeLanguage from "../../utils/changeLanguage";
 import Button from "../Button/Button";
-import i18next from "../../i18n";
 
 /**
  * A button component that toggles the language between multiple options.

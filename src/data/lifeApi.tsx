@@ -22,8 +22,6 @@ export const AboutExtended = (
   </>
 );
 
-export const ExperienceTitle = "EXPERIENCE";
-
 export type Experience = {
   title: string;
   date: string;
@@ -31,38 +29,7 @@ export type Experience = {
   description: string;
   techStack: string[];
 };
-export const MyExperience: Experience[] = [
-  {
-    title: "NfHotel",
-    techStack: ["AngularJs", "PHP", "SCSS"],
-    date: "MARCH 2024 - PRESENT, JELENIA GÓRA",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
-  },
-  {
-    title: "LORO IPSUM TECH2",
-    techStack: ["React", "JavaScript", "TypeScript"],
-    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
-  },
-  {
-    title: "LORO IPSUM TECH3",
-    techStack: ["React", "JavaScript", "TypeScript"],
-    date: "JAUARY 2024 - PRESENT, BOLESLAWIEC",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Sequi alias aliquid iste voluptatum totam? Repellendus.`,
-  },
-];
+
 export const ExperienceExtended = (
   <>
     {`Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -70,7 +37,6 @@ export const ExperienceExtended = (
   </>
 );
 
-export const ProjectTitle = "PROJECTS";
 export type Project = {
   title: string;
   techStack: string[];
@@ -81,38 +47,6 @@ export type Project = {
     href: string;
   };
 };
-
-export const MyProjects: Project[] = [
-  {
-    title: "Invoice",
-    techStack: ["JavaScript", "React", "NodeJS", "MongoDB", "Styled-Components", "Vite"],
-    description: "A platform to create invoices.",
-    link: {
-      label: "github.com",
-      href: "https://potocki92.github.io/invoice-vite",
-    },
-  },
-  {
-    title: "IceCream Shop",
-    techStack: ["JavaScript", "SASS"],
-    description:
-      "A fully responsive website was built using the BEM methodology and the SASS preprocessor.",
-    link: {
-      label: "github.com",
-      href: "https://potocki92.github.io/IceCream/",
-    },
-  },
-  {
-    title: "Filmoteka",
-    techStack: ["JavaScript", "React", "SASS", "REST API"],
-    description:
-      "Application for choosing a movie. I worked on modal CSS, connecting it with localStorage, creating a dynamic gallery, and conducting HTML + CSS testing.",
-    link: {
-      label: "github.com",
-      href: "https://mateuszcharysz.github.io/goit-Filmoteka/",
-    },
-  },
-];
 
 export const SocialMedia = [
   { name: "LinkedIn", link: "https://www.linkedin.com/in/mateusz-potocki/", icon: LinkedinIcon },
@@ -125,19 +59,91 @@ const LifeApiComponent = () => {
 
   const Name = "Mateusz Potocki";
   const HeroAbout = t("hero_about");
-  const AboutTitle = t("ABOUT_ME");
-  const ExperienceTitle = t("EXPERIENCE");
+
+  const Titles = {
+    AboutTitle: t("ABOUT_ME"),
+    ExperienceTitle: t("EXPERIENCE"),
+    ProjectTitle: t("PROJECTS"),
+  };
+  const Navigation = {
+    Home: t("navigation.home"),
+    About: t("navigation.about"),
+    Resume: t("navigation.resume"),
+    Projects: t("navigation.projects"),
+  };
+
+  const MyExperience: Experience[] = [
+    {
+      title: "NfHotel",
+      techStack: ["AngularJs", "PHP", "SCSS", "BitBucket", "Slack", "ClickUp"],
+      date: `${t("months.march")} 2024 - ${t("present")}, JELENIA GÓRA"`,
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+    },
+    {
+      title: "LORO IPSUM TECH2",
+      techStack: ["React", "JavaScript", "TypeScript"],
+      date: `${t("months.january")} 2024 - ${t("present")}, BOLESLAWIEC`,
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+    },
+    {
+      title: "LORO IPSUM TECH3",
+      techStack: ["React", "JavaScript", "TypeScript"],
+      date: `${t("months.january")} 2024 - ${t("present")}, BOLESLAWIEC`,
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Sequi alias aliquid iste voluptatum totam? Repellendus.`,
+    },
+  ];
+
+  const MyProjects: Project[] = [
+    {
+      title: "Invoice",
+      techStack: ["JavaScript", "React", "NodeJS", "MongoDB", "Styled-Components", "Vite"],
+      description: `${t("projects.invoice.description")}`,
+      link: {
+        label: "github.com",
+        href: "https://potocki92.github.io/invoice-vite",
+      },
+    },
+    {
+      title: "IceCream Shop",
+      techStack: ["JavaScript", "SASS"],
+      description: `${t("projects.icecream.description")}`,
+      link: {
+        label: "github.com",
+        href: "https://potocki92.github.io/IceCream/",
+      },
+    },
+    {
+      title: "Filmoteka",
+      techStack: ["JavaScript", "React", "SASS", "REST API"],
+      description: `${t("projects.filmoteka.description")}`,
+      link: {
+        label: "github.com",
+        href: "https://mateuszcharysz.github.io/goit-Filmoteka/",
+      },
+    },
+  ];
   return {
     Name,
     HeroAbout,
-    AboutTitle,
     AboutExtended,
-    ExperienceTitle,
     MyExperience,
     ExperienceExtended,
-    ProjectTitle,
     MyProjects,
     SocialMedia,
+    Titles,
+    Navigation,
   };
 };
 

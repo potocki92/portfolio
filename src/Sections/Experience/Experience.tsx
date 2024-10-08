@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { Card } from "../../Components/Card/Card";
 import { Container } from "../../Components/Container/Container";
 import PageTitle from "../../Components/PageTitle/PageTitle";
-import LifeApiComponent, { MyExperience } from "../../data/lifeApi";
+import LifeApiComponent from "../../data/lifeApi";
 import { globalTokens as $, colors, text } from "../../styles/globalTokens.stylex";
 
 export const MEDIA = "@media (min-width: 768px)";
@@ -47,10 +47,10 @@ const styles = stylex.create({
   },
 });
 const Experience = () => {
-  const {ExperienceTitle} = LifeApiComponent();
+  const { Titles, MyExperience } = LifeApiComponent();
   return (
     <Container>
-      <PageTitle>{ExperienceTitle}</PageTitle>
+      <PageTitle>{Titles.ExperienceTitle}</PageTitle>
       <Card style={styles.cardWrapper}>
         {MyExperience.map((Experience) => (
           <Card key={Experience.title} style={styles.card}>
