@@ -1,18 +1,25 @@
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, MotionProps, MotionValue } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
+
+/**
+ * The properties of the Wrapper component.
+ * 
+ * 
+ */
+type StyleProps = {
+  customStyles?: stylex.StyleXStyles;
+  initialX?: any;
+  initialY?: any;
+  initialTransform?: string | MotionValue<string>;
+  initialTransformOrigin?: string;
+  initialCSSPosition?: any;
+};
 
 type WrapperProps = {
   children?: ReactNode;
-  style?: stylex.StyleXStyles;
-  initialX?: any;
-  initialY?: any;
-  initialTransform?: any;
-  initialTransformOrigin?: string;
-  animate?: any
-  variants?: any;
-  initial?: any
-  initialPosition?: any;
+  styleProps?: StyleProps;
+  motionProps?: MotionProps;
 };
 
 /**
@@ -23,34 +30,34 @@ type WrapperProps = {
  */
 const Wrapper = ({
   children,
-  style,
-  initial,
-  initialX,
-  initialY,
-  initialTransform,
-  initialTransformOrigin,
-  animate,
-  variants,
-  initialPosition
-}: React.PropsWithChildren<WrapperProps>) => {
+  styleProps,
+  motionProps,
+}: React.PropsWithChildren<WrapperProps>): JSX.Element => {
+  const {
+    customStyles,
+    initialX,
+    initialY,
+    initialTransform,
+    initialTransformOrigin,
+    initialCSSPosition,
+  } = styleProps || {};
+
   return (
     <motion.div
       id="wrapper"
-      {...stylex.props(style)}
+      {...stylex.props(customStyles)}
       style={{
-        position: initialPosition,
+        position: initialCSSPosition,
         left: initialX,
         top: initialY,
         transform: initialTransform,
         transformOrigin: initialTransformOrigin,
       }}
-      initial={initial}
-      animate={animate}
-      variants={variants}
+      {...motionProps}
     >
       {children}
     </motion.div>
   );
 };
 
-export default Wrapper;
+export default Wrapper; 

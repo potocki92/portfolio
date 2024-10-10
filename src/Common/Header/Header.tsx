@@ -67,7 +67,7 @@ const Header = () => {
     initialX: string | MotionValue<string>;
     initialTransformOrigin: string;
     initialTransform: string | MotionValue<string>;
-    initialPosition: string;
+    initialCSSPosition: undefined | string | MotionValue<string>;
     style: stylex.StyleXStyles;
     variants: {
       transparent: Record<string, string | number>;
@@ -80,7 +80,7 @@ const Header = () => {
     initialX: isHomePage ? $.avatarLeft : "2rem",
     initialTransformOrigin: "left",
     initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.notHome,
-    initialPosition: isHomePage ? "sticky" : "absolute",
+    initialCSSPosition: isHomePage ? "sticky" : "absolute",
     style: styles.avatarBackground,
     variants: {
       transparent: {
@@ -107,7 +107,7 @@ const Header = () => {
     <>
       <motion.header animate={controls} {...VisibleVariants} {...stylex.props(styles.header)}>
         {!isHomePage && (
-          <Wrapper {...AnimationVariants}>
+          <Wrapper styleProps={AnimationVariants}>
             <Avatar style={styles.avatar} />
           </Wrapper>
         )}
@@ -118,7 +118,7 @@ const Header = () => {
       </motion.header>
       {isHomePage && (
         <motion.div animate={controls} {...VisibleVariants} {...stylex.props(styles.avatarWrapper)}>
-          <Wrapper animate={controls} {...AnimationVariants}>
+          <Wrapper styleProps={AnimationVariants} motionProps={{ animate: controls }}>
             <Avatar style={styles.avatar} />
           </Wrapper>
         </motion.div>
