@@ -13,7 +13,7 @@ const styles = stylex.create({
     maxWidth: $.maxWidth,
     alignItems: "center",
     justifyContent: "end",
-    padding: "2rem 2rem",
+    padding: `2rem ${$.globalYPadding}`,
   },
   heroHeading: {
     display: "block",
@@ -64,13 +64,12 @@ const styles = stylex.create({
     visibility: "visible",
   },
   avatarWrapper: {
-    height: "103px",
     width: "100%",
     position: "sticky",
-    top: "0px",
+    top: "172px",
     maxWidth: $.maxWidth,
-    padding: "0 2rem",
-  }
+    padding: `0 ${$.globalYPadding}`,
+  },
 });
 
 export default styles;
