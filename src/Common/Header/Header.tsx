@@ -1,15 +1,15 @@
-import { MotionValue, motion, useAnimation, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { MotionValue, motion } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 import styles from "./Header.stylex";
 import { useLocation } from "react-router-dom";
 import motionValueScrollYFactory from "../../utils/motionValueScroll";
 import { Nav, MobileNav } from "../../Components/Nav/Nav";
-import Wrapper from "../../Components/Wrapper/Wrapper";
+import { Animate } from "../../Components/AnimateWrapper/AnimateWrapper";
 import Avatar from "../../Components/Avatar/Avatar";
 import ToggleTheme from "../../Components/ToggleTheme/ToggleTheme";
 import LanguageButton from "../../Components/LanguageButton/LanguageButton";
+import useScrollHandler from "../../hooks/useScroll";
 /**
  * Header component representing the header of a webpage with dynamic animations and styling.
  *
@@ -18,10 +18,10 @@ import LanguageButton from "../../Components/LanguageButton/LanguageButton";
  */
 
 const initialValue = {
-  initialY: { max: `calc(50% + 0px)`, min: `calc(50% + 13px)` },
+  initialY: { max: `calc(50% + 0px)`, min: `calc(50% + -120px)` },
   initialTransform: {
     max: "translate3d(0, calc(-50% + 0px), 0) scale(1)",
-    min: "translate3d(0, calc(-50% + 13px), 0) scale(0.6)",
+    min: "translate3d(0, calc(-50% + -120px), 0) scale(0.6)",
     notHome: "translate3d(0, -50%, 0) scale(0.6)",
   },
 } as const;
@@ -29,10 +29,11 @@ const initialValue = {
 const Header = () => {
   const location = useLocation();
   let isHomePage = location.pathname === "/";
-  const controls = useAnimation();
-  const delta = useRef(0);
-  const lastScrollY = useRef(0);
-  const { scrollY } = useScroll();
+  const controls = useScrollHandler({
+    onScrollUp: () => controls.start("visible"),
+    onScrollDown: () => controls.start("hidden"),
+    threshold: 150,
+  });
 
   const initialY = motionValueScrollYFactory([
     initialValue.initialY.max,
@@ -43,85 +44,94 @@ const Header = () => {
     initialValue.initialTransform.min,
   ]);
 
-  scrollY.on("change", (val) => {
-    const diff = Math.abs(val - lastScrollY.current);
-    delta.current =
-      val >= lastScrollY.current
-        ? Math.min(delta.current + diff, 10)
-        : Math.max(delta.current - diff, -10);
-
-    if (delta.current >= 10 && val > 525) {
-      controls.start("hidden");
-    } else if (delta.current <= -10 || val < 200) {
-      controls.start("visible");
-    }
-
-    controls.start(val > 120 ? "color" : "transparent");
-
-    lastScrollY.current = val;
-  });
-
   type AnimationVariantProps = {
-    initial: string | undefined;
-    initialY: string | MotionValue<string>;
-    initialX: string | MotionValue<string>;
-    initialTransformOrigin: string;
-    initialTransform: string | MotionValue<string>;
-    initialCSSPosition: undefined | string | MotionValue<string>;
-    style: stylex.StyleXStyles;
-    variants: {
-      transparent: Record<string, string | number>;
-      color: Record<string, string | number>;
+    style?: {
+      initial?: string | undefined;
+      initialY?: string | MotionValue<string>;
+      initialX?: string | MotionValue<string>;
+      initialTransformOrigin?: string;
+      initialTransform?: string | MotionValue<string>;
+      initialCSSPosition?: undefined | string | MotionValue<string>;
+      style?: stylex.StyleXStyles;
+    };
+    motion?: {
+      animate?: any;
+      variants?: {
+        transparent?: Record<string, string | number>;
+        color?: Record<string, string | number>;
+      };
     };
   };
-  const AnimationVariants: AnimationVariantProps = {
-    initial: isHomePage ? "transparent" : "color",
-    initialY: isHomePage ? initialY : initialValue.initialY.max,
-    initialX: isHomePage ? $.avatarLeft : "2rem",
-    initialTransformOrigin: "left",
-    initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.notHome,
-    initialCSSPosition: isHomePage ? "sticky" : "absolute",
-    style: styles.avatarBackground,
-    variants: {
-      transparent: {
-        background: colors.primaryBackground,
-        border: "1px solid transparent",
-        visibility: "hidden",
-        boxShadow: colors.transparentAvatarShadow,
-      },
-      color: {
-        background: colors.secondBackground,
-        border: `1px solid ${colors.border}`,
-        visibility: "visible",
-        boxShadow: colors.avatarShadow,
+
+  const AvatarAnimationConfig: AnimationVariantProps = {
+    style: {
+      initial: isHomePage ? "transparent" : "color",
+      initialY: isHomePage ? initialY : initialValue.initialY.max,
+      initialX: isHomePage ? $.avatarLeft : "2rem",
+      initialTransformOrigin: "left",
+      initialTransform: isHomePage ? initialAvatarTransform : initialValue.initialTransform.notHome,
+      initialCSSPosition: isHomePage ? "sticky" : "absolute",
+      style: styles.avatarBackground,
+    },
+    motion: {
+      animate: controls,
+      variants: {
+        transparent: {
+          background: colors.primaryBackground,
+          border: "1px solid transparent",
+          visibility: "hidden",
+          boxShadow: colors.transparentAvatarShadow,
+        },
+        color: {
+          background: colors.secondBackground,
+          border: `1px solid ${colors.border}`,
+          visibility: "visible",
+          boxShadow: colors.avatarShadow,
+        },
       },
     },
   };
-  const VisibleVariants = {
-    variants: {
-      visible: { top: "0px" },
-      hidden: { top: "-100px" },
+  const HeaderAnimationVariants = {
+    style: { style: styles.header },
+    motion: {
+      animate: controls,
+      variants: {
+        visible: { top: "0px", transition: { duration: 1 } },
+        hidden: { top: "-100px", transition: { duration: 1 } },
+      },
     },
   };
+
+  const AvatarWrapperAnimationConfig = {
+    style: { style: styles.avatarWrapper },
+    motion: {
+      animate: controls,
+      variants: {
+        visible: { top: "172px", transition: { duration: 1 } },
+        hidden: { top: "-100px", transition: { duration: 1 } },
+      },
+    },
+  };
+
   return (
     <>
-      <motion.header animate={controls} {...VisibleVariants} {...stylex.props(styles.header)}>
+      <Animate.Header config={{ ...HeaderAnimationVariants }}>
         {!isHomePage && (
-          <Wrapper styleProps={AnimationVariants}>
+          <Animate.Avatar config={{ ...AvatarAnimationConfig }}>
             <Avatar style={styles.avatar} />
-          </Wrapper>
+          </Animate.Avatar>
         )}
         <Nav />
         <MobileNav />
         <ToggleTheme />
         <LanguageButton />
-      </motion.header>
+      </Animate.Header>
       {isHomePage && (
-        <motion.div animate={controls} {...VisibleVariants} {...stylex.props(styles.avatarWrapper)}>
-          <Wrapper styleProps={AnimationVariants} motionProps={{ animate: controls }}>
+        <Animate.Wrapper config={{ ...AvatarWrapperAnimationConfig }}>
+          <Animate.Avatar config={{ ...AvatarAnimationConfig }}>
             <Avatar style={styles.avatar} />
-          </Wrapper>
-        </motion.div>
+          </Animate.Avatar>
+        </Animate.Wrapper>
       )}
     </>
   );
