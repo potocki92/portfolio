@@ -3,7 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 import styles from "./Header.stylex";
 import { useLocation } from "react-router-dom";
-import motionValueScrollYFactory from "../../utils/motionValueScroll";
+import useMotionValueScrollYFactory from "../../hooks/useMotionValueScroll";
 import { Nav, MobileNav } from "../../Components/Nav/Nav";
 import { Animate } from "../../Components/AnimateWrapper/AnimateWrapper";
 import Avatar from "../../Components/Avatar/Avatar";
@@ -35,11 +35,11 @@ const Header = () => {
     threshold: 150,
   });
 
-  const initialY = motionValueScrollYFactory([
+  const initialY = useMotionValueScrollYFactory([
     initialValue.initialY.max,
     initialValue.initialY.min,
   ]);
-  const initialAvatarTransform = motionValueScrollYFactory([
+  const initialAvatarTransform = useMotionValueScrollYFactory([
     initialValue.initialTransform.max,
     initialValue.initialTransform.min,
   ]);
