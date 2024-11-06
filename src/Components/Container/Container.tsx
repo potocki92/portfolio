@@ -8,7 +8,7 @@ const styles = stylex.create({
     justifyContent: "center",
   },
   inner: {
-    padding: "0 2rem",
+    padding: `0 ${$.globalYPadding}`,
     width: "100%",
     maxWidth: $.maxWidth,
   },
