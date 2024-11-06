@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { motion, MotionProps, MotionValue } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
 
-type StyleProps = {
+interface StyleProps {
   style?: stylex.StyleXStyles;
   initial?: any;
   initialX?: any;
@@ -10,14 +10,14 @@ type StyleProps = {
   initialTransform?: string | MotionValue<string>;
   initialTransformOrigin?: string;
   initialCSSPosition?: any;
-};
+}
 
-type AnimateConfig = {
+interface AnimateConfig {
   style?: StyleProps;
   motion?: MotionProps;
   motionComponent?: React.ElementType;
   children?: ReactNode;
-};
+}
 
 /**
  * Builder class for creating animated components with style and motion properties.

@@ -2,7 +2,7 @@ import { useEffect, useCallback, useRef } from "react";
 import { useAnimation } from "framer-motion";
 import { useScroll } from "framer-motion";
 
-type ScrollHandlerOptions = {
+interface ScrollHandlerOptions {
   onScrollUp?: (speed: number) => void;
   onScrollDown?: (speed: number) => void;
   onScrollLeft?: (speed: number) => void;
