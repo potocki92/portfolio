@@ -1,7 +1,7 @@
 import stylex from "@stylexjs/stylex";
 
 const MIN_WIDTH = 320;
-const MAX_WIDTH = 1240;
+const MAX_WIDTH = 1920;
 const MIN_SCALE = 1.2;
 const MAX_SCALE = 1.333;
 const MIN_BASE_SIZE = 16;
@@ -110,7 +110,7 @@ export const globalTokens = stylex.defineVars({
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
   globalXPadding: "1.5rem",
-  globalYPadding: "2rem",
+  globalYPadding: "3rem",
   avatarSize: "3.5rem",
   avatarCircleSize: "4rem",
   iconToggleSize: "1rem",
