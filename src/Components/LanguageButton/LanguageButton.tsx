@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import changeLanguage from "../../utils/changeLanguage";
 import Button from "../Button/Button";
 
@@ -10,7 +9,6 @@ import Button from "../Button/Button";
  * @returns {JSX.Element} The rendered LanguageButton component.
  */
 const LanguageButton = (): JSX.Element => {
-  const { i18n } = useTranslation();
   const languages = ["pl", "en"];
   const [languageIndex, setLanguageIndex] = useState(0);
 
@@ -20,7 +18,6 @@ const LanguageButton = (): JSX.Element => {
     if (index !== -1) {
       setLanguageIndex(index);
       changeLanguage(systemLanguage);
-      i18n.changeLanguage(systemLanguage);
     }
   }, []);
 
@@ -31,7 +28,6 @@ const LanguageButton = (): JSX.Element => {
     const newIndex = (languageIndex + 1) % languages.length;
     const newLanguage = languages[newIndex];
     changeLanguage(newLanguage);
-    i18n.changeLanguage(newLanguage);
     setLanguageIndex(newIndex);
   };
 
