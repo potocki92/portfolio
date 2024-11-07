@@ -1,4 +1,4 @@
-import { MotionValue, motion } from "framer-motion";
+import { MotionValue } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 import styles from "./Header.stylex";
@@ -59,6 +59,8 @@ const Header = () => {
       variants?: {
         transparent?: Record<string, string | number>;
         color?: Record<string, string | number>;
+        visible?: Record<string, string | number | {}>;
+        hidden?: Record<string, string | number | {}>;
       };
     };
   };
@@ -91,7 +93,7 @@ const Header = () => {
       },
     },
   };
-  const HeaderAnimationVariants = {
+  const HeaderAnimationVariants: AnimationVariantProps = {
     style: { style: styles.header },
     motion: {
       animate: controls,
@@ -102,7 +104,7 @@ const Header = () => {
     },
   };
 
-  const AvatarWrapperAnimationConfig = {
+  const AvatarWrapperAnimationConfig: AnimationVariantProps = {
     style: { style: styles.avatarWrapper },
     motion: {
       animate: controls,
