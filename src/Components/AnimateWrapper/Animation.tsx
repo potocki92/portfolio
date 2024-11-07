@@ -1,6 +1,9 @@
 import React, { ReactNode } from "react";
 import { motion, MotionProps, MotionValue } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
+import { getHeaderAnimationConfig } from "./AnimationHeader";
+import { getAvatarAnimationConfig } from "./AnimationAvatar";
+import { getWrapperAnimationConfig } from "./AnimationWrapper";
 
 interface StyleProps {
   style?: stylex.StyleXStyles;
@@ -116,13 +119,12 @@ const AnimateBase = ({ config }: { config: AnimateConfig }): JSX.Element => {
  * @returns {JSX.Element} The animated component.
  */
 const AnimateWrapper = ({
-  config,
   children,
 }: {
-  config: AnimateConfig;
   children?: ReactNode;
 }): JSX.Element => {
-  return <AnimateBase config={{ ...config, children }} />;
+  const WrapperAnimationConfig = getWrapperAnimationConfig();
+  return <AnimateBase config={{ ...WrapperAnimationConfig, children }} />;
 };
 
 /**
@@ -133,13 +135,15 @@ const AnimateWrapper = ({
  * @returns {JSX.Element} The animated component.
  */
 const AnimateHeader = ({
-  config,
   children,
 }: {
-  config: AnimateConfig;
+  config?: AnimateConfig;
   children?: ReactNode;
 }): JSX.Element => {
-  return <AnimateBase config={{ ...config, motionComponent: motion.header, children }} />;
+  const HeaderAnimationConfig = getHeaderAnimationConfig();
+  return (
+    <AnimateBase config={{ ...HeaderAnimationConfig, motionComponent: motion.header, children }} />
+  );
 };
 
 /**
@@ -149,14 +153,11 @@ const AnimateHeader = ({
  * @param {ReactNode} [props.children] - The children nodes.
  * @returns {JSX.Element} The animated component.
  */
-const AnimateAvatar = ({
-  config,
-  children,
-}: {
-  config: AnimateConfig;
-  children?: ReactNode;
-}): JSX.Element => {
-  return <AnimateBase config={{ ...config, motionComponent: motion.div, children }} />;
+const AnimateAvatar = ({ children }: { children?: ReactNode }): JSX.Element => {
+  const AvatarAnimationConfig = getAvatarAnimationConfig();
+  return (
+    <AnimateBase config={{ ...AvatarAnimationConfig, motionComponent: motion.div, children }} />
+  );
 };
 
 export const Animate = {
