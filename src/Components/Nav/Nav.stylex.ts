@@ -5,13 +5,12 @@ const MEDIA = "@media (min-width: 768px)";
 
 const styles = stylex.create({
   nav: {
-    height: 40,
     display: { default: "none", [MEDIA]: "flex" },
     justifyContent: "flex-end",
     alignItems: "center",
     backgroundColor: colors.secondBackground,
     boxShadow: colors.shadow,
-    borderRadius: $.borderRadius,
+    borderRadius: $.borderButtonRadius,
     padding: "0 0.75rem",
     border: `1px solid ${colors.border}`,
     color: colors.primaryText,
@@ -52,14 +51,14 @@ const styles = stylex.create({
     margin: { default: "-0.5rem 0", [MEDIA]: "0" },
   },
   a: {
-    fontSize: text.sm,
+    fontSize: text.xs,
     lineHeight: "1.75rem",
     cursor: "pointer",
     display: "block",
-    padding: { default: "0.5rem 0rem", [MEDIA]: "0.5rem 0.75rem" },
+    padding: { default: "0.5rem 0rem", [MEDIA]: "0 0.75rem" },
     color: {
       default: colors.secondText,
-      ":hover":"rgba(251 37 118/1)"
+      ":hover": "rgba(251 37 118/1)",
     },
     userSelect: "none",
     transitionTimingFunction: "cubic-bezier(.4,0,.2,1)",
@@ -89,7 +88,7 @@ const styles = stylex.create({
   },
   mobileButtonWrapper: {
     display: "flex",
-    gap: "0.5rem"
+    gap: "0.5rem",
   },
   h2: {
     fontSize: text.sm,
