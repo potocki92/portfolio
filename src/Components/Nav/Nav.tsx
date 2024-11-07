@@ -7,29 +7,12 @@ import Button from "../Button/Button";
 import LifeApiComponent from "../../data/lifeApi";
 
 interface NavigationItemsInterface {
-  Home: string;
-  Projects: string;
-  Resume: string;
-  About: string;
+  href: string;
+  name: string;
 }
-const NavigationItems = ({Home, Projects, Resume, About}: NavigationItemsInterface) => [
-  {
-    name: Home,
-    href: "/",
-  },
-  {
-    name: Projects,
-    href: "/projects",
-  },
-  {
-    name: Resume,
-    href: "/resume",
-  },
-  {
-    name: About,
-    href: "/about",
-  },
-] as const;
+const NavigationItems = (items: NavigationItemsInterface[]): NavigationItemsInterface[] => {
+  return items;
+};
 
 const NavItem = ({
   href,
@@ -88,7 +71,7 @@ const Modal = ({
     e.stopPropagation();
   };
 
-  const {Navigation} = LifeApiComponent();
+  const { Navigation } = LifeApiComponent();
   return (
     <AnimatePresence mode="wait">
       {isModalOpen && (
@@ -133,9 +116,7 @@ export const MobileNav = () => {
 
   return (
     <>
-      <Button onClick={() => setIsModalOpen(true)}>
-        Menu
-      </Button>
+      <Button onClick={() => setIsModalOpen(true)}>Menu</Button>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
