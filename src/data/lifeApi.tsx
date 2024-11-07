@@ -53,7 +53,10 @@ export const SocialMedia = [
   { name: "X", link: "https://twitter.com/?lang=pl", icon: XIcon },
   { name: "GitHub", link: "https://github.com/potocki92", icon: GitHubIcon },
 ];
-
+interface NavigationItemsInterface {
+  href: string;
+  name: string;
+}
 const LifeApiComponent = () => {
   const { t } = useTranslation();
 
@@ -65,12 +68,12 @@ const LifeApiComponent = () => {
     ExperienceTitle: t("EXPERIENCE"),
     ProjectTitle: t("PROJECTS"),
   };
-  const Navigation = {
-    Home: t("navigation.home"),
-    About: t("navigation.about"),
-    Resume: t("navigation.resume"),
-    Projects: t("navigation.projects"),
-  };
+  const Navigation: NavigationItemsInterface[] = [
+    { href: "/", name: t("navigation.home") as string },
+    { href: "/projects", name: t("navigation.projects") as string },
+    { href: "/about", name: t("navigation.about") as string },
+    { href: "/resume", name: t("navigation.resume") as string },
+  ];
 
   const MyExperience: Experience[] = [
     {
