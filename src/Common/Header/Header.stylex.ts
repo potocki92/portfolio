@@ -12,7 +12,7 @@ const styles = stylex.create({
     width: "100%",
     maxWidth: $.maxWidth,
     alignItems: "center",
-    justifyContent: "end",
+    justifyContent: "flex-end",
     padding: `2rem ${$.globalYPadding}`,
   },
   heroHeading: {
