@@ -61,12 +61,12 @@ const LifeApiComponent = () => {
   const { t } = useTranslation();
 
   const Name = "Mateusz Potocki";
-  const HeroAbout = t("hero_about");
+  const HeroAbout = t("hero_about") as string;
 
   const Titles = {
-    AboutTitle: t("ABOUT_ME"),
-    ExperienceTitle: t("EXPERIENCE"),
-    ProjectTitle: t("PROJECTS"),
+    AboutTitle: t("ABOUT_ME") as string,
+    ExperienceTitle: t("EXPERIENCE") as string,
+    ProjectTitle: t("PROJECTS") as string,
   };
   const Navigation: NavigationItemsInterface[] = [
     { href: "/", name: t("navigation.home") as string },
