@@ -105,7 +105,7 @@ export const globalTokens = stylex.defineVars({
   maxWidth: `${MAX_WIDTH}px`,
   contentOffset: "180px",
   borderRadius: "9999px",
-  borderButtonRadius: "1rem",
+  borderButtonRadius: "calc(0.5rem - 2px)",
   borderLi: "1.5rem",
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
@@ -120,6 +120,9 @@ export const globalTokens = stylex.defineVars({
   maxTitleWidth: "42rem",
   letterTitleSpacing: "-.05em",
   avatarLeft: "1.5rem",
+  buttonHeight: "2rem",
+  buttonWidth: "2rem",
+  avatarWrapperTop: "160px"
 });
 
 export const globalStyles = stylex.create({
