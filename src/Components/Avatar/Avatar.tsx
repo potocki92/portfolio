@@ -12,6 +12,7 @@ const Avatar = ({ style }: React.PropsWithChildren<LogoProps>) => {
       <img
         src={avatarImage}
         {...stylex.props(style)}
+        alt="avatar"
       />
   );
 };
