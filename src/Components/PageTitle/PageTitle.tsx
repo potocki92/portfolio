@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import { globalTokens as $, colors, text } from "../../styles/globalTokens.stylex";
 
 type Props = {
@@ -16,8 +16,8 @@ const styles = stylex.create({
     color: colors.primaryText,
   },
 });
-const PageTitle = ({ children }: React.PropsWithChildren<Props>) => {
+const PageTitle = memo(({ children }: React.PropsWithChildren<Props>) => {
   return <h1 {...stylex.props(styles.h1)}>{children}</h1>;
-};
+});
 
 export default PageTitle;
