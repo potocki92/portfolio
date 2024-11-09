@@ -2,7 +2,7 @@ import { stylex } from "@stylexjs/stylex";
 import React, { memo, useState, useMemo, useCallback } from "react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Button from "../Button/Button";
 import LifeApiComponent from "../../data/lifeApi";
 import { HamburgerIcon } from "../Icons/HamburgerIcon";
@@ -40,23 +40,6 @@ const NavLink = ({ href, children }: React.PropsWithChildren<{ href: string }>) 
     </Link>
   );
 };
-
-const backdrop = {
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
-} as const;
-
-const modal = {
-  hidden: {
-    y: "0rem",
-    opacity: 0,
-  },
-  visible: {
-    y: "2rem",
-    opacity: 1,
-    transition: { delay: 0.25 },
-  },
-} as const;
 
 const Modal = ({
   isModalOpen,
