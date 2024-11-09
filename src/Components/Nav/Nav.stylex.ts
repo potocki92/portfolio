@@ -14,6 +14,7 @@ const styles = stylex.create({
     padding: "0 0.75rem",
     border: `1px solid ${colors.border}`,
     color: colors.primaryText,
+    height: "2rem",
   },
   backdrop: {
     position: "fixed",
@@ -85,6 +86,7 @@ const styles = stylex.create({
     background: "transparent",
     border: "none",
     cursor: "pointer",
+    display: "block",
   },
   mobileButtonWrapper: {
     display: "flex",
