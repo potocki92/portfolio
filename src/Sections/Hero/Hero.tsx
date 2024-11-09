@@ -6,14 +6,15 @@ import { Container } from "../../Components/Container/Container";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import Paragraph from "../../Components/Paragraph/Paragraph";
 import LifeApiComponent from "../../data/lifeApi";
-
+import { memo, useMemo } from "react";
+const MEDIA = "@media (min-width: 768px)";
 const styles = stylex.create({
   container: {
     width: "100%",
     maxWidth: $.maxTitleWidth,
-    position: "absolute",
+    position: { default: "static", [MEDIA]: "absolute" },
     left: `calc(${$.globalYPadding} + 95px)`,
-    bottom: "20px",
+    bottom: "10px",
   },
   containerGrid: {
     gridArea: {
@@ -26,11 +27,14 @@ const styles = stylex.create({
 
 const Hero = () => {
   const { Name, HeroAbout } = LifeApiComponent();
+
+  const MemoizedPageTitle = useMemo(() => <PageTitle>{Name}</PageTitle>, [Name]);
+
   return (
     <>
       <Container {...stylex.props(styles.containerGrid)}>
         <div {...stylex.props(styles.container)}>
-          <PageTitle>{Name}</PageTitle>
+          {MemoizedPageTitle}
           <Paragraph>{HeroAbout}</Paragraph>
         </div>
       </Container>
@@ -38,4 +42,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default memo(Hero);
