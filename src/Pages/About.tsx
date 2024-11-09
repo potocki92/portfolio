@@ -3,6 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $ } from "../styles/globalTokens.stylex";
 import About from "../Sections/About/About";
 import Experience from "../Sections/Experience/Experience";
+import { memo } from "react";
 
 const styles = stylex.create({
   container: {
@@ -35,4 +36,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default memo(AboutPage);
