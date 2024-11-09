@@ -110,7 +110,7 @@ export const globalTokens = stylex.defineVars({
   backgroundColor: { default: colors.primaryBackground },
   color: { default: colors.primaryText },
   globalXPadding: "1.5rem",
-  globalYPadding: "3rem",
+  globalYPadding: { default: "calc(3rem - 12px)", [MEDIA]: "5rem" },
   avatarSize: "3.5rem",
   avatarCircleSize: "4rem",
   iconToggleSize: "1rem",
@@ -122,7 +122,7 @@ export const globalTokens = stylex.defineVars({
   avatarLeft: "1.5rem",
   buttonHeight: "2rem",
   buttonWidth: "2rem",
-  avatarWrapperTop: "160px"
+  avatarWrapperTop: { default: "120px", [MEDIA]: "168px" },
 });
 
 export const globalStyles = stylex.create({
