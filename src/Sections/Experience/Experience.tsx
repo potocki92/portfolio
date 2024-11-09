@@ -4,6 +4,7 @@ import { Container } from "../../Components/Container/Container";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import LifeApiComponent from "../../data/lifeApi";
 import { globalTokens as $, colors, text } from "../../styles/globalTokens.stylex";
+import { memo, useMemo } from "react";
 
 export const MEDIA = "@media (min-width: 768px)";
 const styles = stylex.create({
@@ -48,20 +49,26 @@ const styles = stylex.create({
 });
 const Experience = () => {
   const { Titles, MyExperience } = LifeApiComponent();
+
+  const memoizedPageTitle = useMemo(
+    () => <PageTitle>{Titles.ExperienceTitle}</PageTitle>,
+    [Titles.ExperienceTitle],
+  );
+
   return (
     <Container>
-      <PageTitle>{Titles.ExperienceTitle}</PageTitle>
+      {memoizedPageTitle}
       <Card style={styles.cardWrapper}>
         {MyExperience.map((Experience) => (
-          <Card key={Experience.title} style={styles.card}>
+          <Card key={`${Experience.title}-${Experience.date}`} style={styles.card}>
             <Card.Title style={styles.cardTitle}>{Experience.title}</Card.Title>
             <Card.Date style={styles.cardDate}>{Experience.date}</Card.Date>
             <Card.Description style={styles.cardDescription}>
               {Experience.description}
             </Card.Description>
             <Card.Tech style={styles.cardUl}>
-              {Experience.techStack.map((stack) => (
-                <Card.TechItem key={stack} style={styles.cardLi}>
+              {Experience.techStack.map((stack, index) => (
+                <Card.TechItem key={`${stack}-${index}`} style={styles.cardLi}>
                   {stack}
                 </Card.TechItem>
               ))}
@@ -73,4 +80,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default memo(Experience);
