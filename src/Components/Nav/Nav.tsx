@@ -1,10 +1,12 @@
 import { stylex } from "@stylexjs/stylex";
-import React, { useState } from "react";
+import React, { memo, useState, useMemo, useCallback } from "react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../Button/Button";
 import LifeApiComponent from "../../data/lifeApi";
+import { HamburgerIcon } from "../Icons/HamburgerIcon";
+import { Animate } from "../AnimateWrapper/Animation";
 
 interface NavigationItemsInterface {
   href: string;
@@ -72,57 +74,61 @@ const Modal = ({
   };
 
   const { Navigation } = LifeApiComponent();
-  return (
-    <AnimatePresence mode="wait">
-      {isModalOpen && (
-        <motion.div
-          {...stylex.props(styles.backdrop)}
-          variants={backdrop}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          onClick={closeModal}
-        >
-          <motion.div {...stylex.props(styles.modal)} variants={modal} onClick={stopPropagation}>
-            <div {...stylex.props(styles.bottomMargin, styles.container)}>
-              <Button style={styles.navButton} onClick={closeModal}>
-                X
-              </Button>
-              <h2 {...stylex.props(styles.h2)}>Navigation</h2>
-            </div>
-            <nav>
-              <ul {...stylex.props(styles.ul)}>
-                {NavigationItems(Navigation).map((item, index) => (
-                  <NavItem
-                    key={item.href}
-                    href={item.href}
-                    isLast={index === NavigationItems.length - 1}
-                    onClick={closeModal}
-                  >
-                    {item.name}
-                  </NavItem>
-                ))}
-              </ul>
-            </nav>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+
+  const memoizedAnimatePresence = useMemo(
+    () => (
+      <AnimatePresence mode="wait">
+        {isModalOpen && (
+          <Animate.Backdrop>
+            <Animate.Modal onClick={stopPropagation}>
+              <div {...stylex.props(styles.bottomMargin, styles.container)}>
+                <Button style={styles.navButton} onClick={closeModal}>
+                  X
+                </Button>
+                <h2 {...stylex.props(styles.h2)}>Navigation</h2>
+              </div>
+              <nav>
+                <ul {...stylex.props(styles.ul)}>
+                  {NavigationItems(Navigation).map((item, index) => (
+                    <NavItem
+                      key={item.href}
+                      href={item.href}
+                      isLast={index === Navigation.length - 1}
+                    >
+                      {item.name}
+                    </NavItem>
+                  ))}
+                </ul>
+              </nav>
+            </Animate.Modal>
+          </Animate.Backdrop>
+        )}
+      </AnimatePresence>
+    ),
+    [isModalOpen, Navigation],
   );
+
+  return memoizedAnimatePresence;
 };
 
-export const MobileNav = () => {
+export const MobileNav = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const handleButtonClick = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
 
   return (
     <>
-      <Button onClick={() => setIsModalOpen(true)}>Menu</Button>
+      <Button onClick={handleButtonClick}>
+        <HamburgerIcon />
+      </Button>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );
-};
+});
 
-export const Nav = () => {
+export const Nav = memo(() => {
   const { Navigation } = LifeApiComponent();
   return (
     <nav {...stylex.props(styles.nav)}>
@@ -137,4 +143,4 @@ export const Nav = () => {
       </ul>
     </nav>
   );
-};
+});
