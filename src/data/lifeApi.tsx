@@ -38,6 +38,7 @@ export const ExperienceExtended = (
 );
 
 export type Project = {
+  id: number;
   title: string;
   techStack: string[];
   description: string;
@@ -110,6 +111,7 @@ const LifeApiComponent = () => {
 
   const MyProjects: Project[] = [
     {
+      id: 1,
       title: "Invoice",
       techStack: ["JavaScript", "React", "NodeJS", "MongoDB", "Styled-Components", "Vite"],
       description: `${t("projects.invoice.description")}`,
@@ -119,6 +121,7 @@ const LifeApiComponent = () => {
       },
     },
     {
+      id: 2,
       title: "IceCream Shop",
       techStack: ["JavaScript", "SASS"],
       description: `${t("projects.icecream.description")}`,
@@ -128,6 +131,7 @@ const LifeApiComponent = () => {
       },
     },
     {
+      id: 3,
       title: "Filmoteka",
       techStack: ["JavaScript", "React", "SASS", "REST API"],
       description: `${t("projects.filmoteka.description")}`,
