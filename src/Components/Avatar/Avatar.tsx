@@ -1,6 +1,7 @@
 import type { StyleXStyles } from "@stylexjs/stylex";
 import * as stylex from "@stylexjs/stylex";
 import avatarImage from "/assets/avatar-min.jpg";
+import { memo } from "react";
 
 type LogoProps = {
   style?: StyleXStyles;
@@ -8,13 +9,7 @@ type LogoProps = {
 };
 
 const Avatar = ({ style }: React.PropsWithChildren<LogoProps>) => {
-  return (
-      <img
-        src={avatarImage}
-        {...stylex.props(style)}
-        alt="avatar"
-      />
-  );
+  return <img src={avatarImage} {...stylex.props(style)} alt="avatar" />;
 };
 
-export default Avatar;
+export default memo(Avatar);
