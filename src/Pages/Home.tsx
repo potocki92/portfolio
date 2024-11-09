@@ -5,13 +5,14 @@ import * as stylex from "@stylexjs/stylex";
 import { globalTokens as $ } from "../styles/globalTokens.stylex";
 import Experience from "../Sections/Experience/Experience";
 import Projects from "../Sections/Projects/Projects";
+import { memo } from "react";
 
 const styles = stylex.create({
   container: {
     display: "flex",
     flexDirection: "column",
     gap: $.containerGap,
-    maxWidth: $.maxWidth
+    maxWidth: $.maxWidth,
   },
   containerGrid: {
     display: "grid",
@@ -47,4 +48,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default memo(Home);
