@@ -4,17 +4,24 @@ import styles from "../../Common/Header/Header.stylex";
 import useMotionValueScrollYFactory from "../../hooks/useMotionValueScroll";
 import useScrollHandler from "../../hooks/useScroll";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
+import { useMediaQuery } from "react-responsive";
 
+export const MEDIA = "(min-width: 768px)";
 export const getAvatarAnimationConfig = (): AnimationVariantProps => {
+  const isDesktop = useMediaQuery({ query: MEDIA });
   const location = useLocation();
   let isHomePage = location.pathname === "/";
   const initialValue = {
     initialY: { max: `calc(50% + 0px)`, min: `calc(50% + -120px)` },
+    initialYMedia: { max: `calc(50% + 0px)`, min: `calc(50% + -155px)` },
     initialTransform: {
       max: "translate3d(0, calc(-50% + 0px), 0) scale(1)",
-      min: "translate3d(0, calc(-50% + -120px), 0) scale(0.6)",
+      min: "translate3d(0, calc(-50% + -155px), 0) scale(0.6)",
       notHome: "translate3d(0, -50%, 0) scale(0.6)",
     },
+    initialTranformMedia: {
+      min: "translate3d(0, calc(-50% + -107px), 0) scale(0.6)",
+    }
   } as const;
   const controls = useScrollHandler({
     onScrollUp: () => controls.start("visible"),
@@ -22,12 +29,12 @@ export const getAvatarAnimationConfig = (): AnimationVariantProps => {
     threshold: 150,
   });
   const initialY = useMotionValueScrollYFactory([
-    initialValue.initialY.max,
-    initialValue.initialY.min,
+    isDesktop ? initialValue.initialY.max : initialValue.initialYMedia.max,
+    isDesktop ? initialValue.initialY.min : initialValue.initialYMedia.min,
   ]);
   const initialAvatarTransform = useMotionValueScrollYFactory([
     initialValue.initialTransform.max,
-    initialValue.initialTransform.min,
+    isDesktop ? initialValue.initialTransform.min : initialValue.initialTranformMedia.min,
   ]);
   const config = {
     style: {
