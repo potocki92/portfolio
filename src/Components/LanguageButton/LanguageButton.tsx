@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import changeLanguage from "../../utils/changeLanguage";
 import Button from "../Button/Button";
 
@@ -38,4 +38,4 @@ const LanguageButton = (): JSX.Element => {
   );
 };
 
-export default LanguageButton;
+export default memo(LanguageButton);
