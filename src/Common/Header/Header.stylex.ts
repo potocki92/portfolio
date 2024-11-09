@@ -65,6 +65,7 @@ const styles = stylex.create({
   },
   avatarWrapper: {
     width: "100%",
+    height: "100px",
     position: "sticky",
     top: $.avatarWrapperTop,
     maxWidth: $.maxWidth,
