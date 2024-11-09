@@ -1,5 +1,6 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import {Container} from "../Components/Container/Container";
+import { Container } from "../Components/Container/Container";
+import { memo } from "react";
 
 const Projects = () => {
   const helmetTitle = "Projects";
@@ -22,4 +23,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default memo(Projects);
