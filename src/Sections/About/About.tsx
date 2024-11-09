@@ -3,6 +3,7 @@ import PageTitle from "../../Components/PageTitle/PageTitle";
 import LifeApiComponent, { AboutExtended } from "../../data/lifeApi";
 import Paragraph from "../../Components/Paragraph/Paragraph";
 import * as stylex from "@stylexjs/stylex";
+import { memo, useMemo } from "react";
 
 const styles = stylex.create({
   containerGrid: {
@@ -11,14 +12,20 @@ const styles = stylex.create({
 });
 const About = () => {
   const { Titles } = LifeApiComponent();
+
+  const memoizedPageTitle = useMemo(
+    () => <PageTitle>{Titles.AboutTitle}</PageTitle>,
+    [Titles.AboutTitle],
+  );
+
   return (
     <Container {...stylex.props(styles.containerGrid)}>
       <div>
-        <PageTitle>{Titles.AboutTitle}</PageTitle>
+        {memoizedPageTitle}
         <Paragraph>{AboutExtended}</Paragraph>
       </div>
     </Container>
   );
 };
 
-export default About;
+export default memo(About);
