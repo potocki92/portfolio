@@ -4,7 +4,7 @@ import { Container } from "../../Components/Container/Container";
 import PageTitle from "../../Components/PageTitle/PageTitle";
 import LifeApiComponent from "../../data/lifeApi";
 import { globalTokens as $, colors, text } from "../../styles/globalTokens.stylex";
-
+import { useMemo, memo } from "react";
 export const MEDIA = "@media (min-width: 768px)";
 const styles = stylex.create({
   cardWrapper: {
@@ -46,21 +46,26 @@ const styles = stylex.create({
     width: "max-content",
   },
 });
-const Projects = () => {
+const Projects = memo(() => {
   const { Titles, MyProjects } = LifeApiComponent();
+  const pageTitle = useMemo(
+    () => <PageTitle>{Titles.ProjectTitle}</PageTitle>,
+    [Titles.ProjectTitle],
+  );
+
   return (
     <Container>
-      <PageTitle>{Titles.ProjectTitle}</PageTitle>
+      {pageTitle}
       <Card style={styles.cardWrapper}>
         {MyProjects.map((Project) => (
-          <Card key={Project.title} style={styles.card}>
+          <Card key={Project.id} style={styles.card}>
             <Card.Title style={styles.cardTitle}>{Project.title}</Card.Title>
             <Card.Description style={styles.cardDescription}>
               {Project.description}
             </Card.Description>
             <Card.Tech style={styles.cardUl}>
               {Project.techStack.map((stack) => (
-                <Card.TechItem key={stack} style={styles.cardLi}>
+                <Card.TechItem key={`${Project.id}-${stack}`} style={styles.cardLi}>
                   {stack}
                 </Card.TechItem>
               ))}
@@ -70,6 +75,6 @@ const Projects = () => {
       </Card>
     </Container>
   );
-};
+});
 
 export default Projects;
