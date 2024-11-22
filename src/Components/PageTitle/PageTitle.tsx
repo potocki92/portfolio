@@ -6,18 +6,19 @@ type Props = {
   children?: ReactNode;
 };
 
+const MEDIA = "@media (min-width: 768px)";
 const styles = stylex.create({
-  h1: {
+  title: {
     overflow: "hidden",
     fontWeight: 600,
-    fontSize: text.h1,
+    fontSize: { default: text.h2, [MEDIA]: text.h1 },
     lineHeight: 1.5,
     letterSpacing: $.letterTitleSpacing,
     color: colors.primaryText,
   },
 });
 const PageTitle = memo(({ children }: React.PropsWithChildren<Props>) => {
-  return <h1 {...stylex.props(styles.h1)}>{children}</h1>;
+  return <h1 {...stylex.props(styles.title)}>{children}</h1>;
 });
 
 export default PageTitle;
