@@ -1,12 +1,13 @@
-import { stylex } from "@stylexjs/stylex";
+import stylex from "@stylexjs/stylex";
 import React, { memo, useState, useMemo, useCallback } from "react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { AlignJustify, X } from "lucide-react";
 import Button from "../Button/Button";
 import LifeApiComponent from "../../data/lifeApi";
-import { HamburgerIcon } from "../Icons/HamburgerIcon";
 import { Animate } from "../AnimateWrapper/Animation";
+import { useScrollLock } from "../../hooks/useScrollLock";
 
 interface NavigationItemsInterface {
   href: string;
@@ -56,19 +57,20 @@ const Modal = ({
     e.stopPropagation();
   };
 
-  const { Navigation } = LifeApiComponent();
+  useScrollLock(isModalOpen);
+  const { Navigation, NavigationText } = LifeApiComponent();
 
   const memoizedAnimatePresence = useMemo(
     () => (
       <AnimatePresence mode="wait">
         {isModalOpen && (
-          <Animate.Backdrop>
+          <Animate.Backdrop onClick={closeModal}>
             <Animate.Modal onClick={stopPropagation}>
               <div {...stylex.props(styles.bottomMargin, styles.container)}>
                 <Button style={styles.navButton} onClick={closeModal}>
-                  X
+                  <X size={16} />
                 </Button>
-                <h2 {...stylex.props(styles.h2)}>Navigation</h2>
+                <h2 {...stylex.props(styles.h2)}>{NavigationText}</h2>
               </div>
               <nav>
                 <ul {...stylex.props(styles.ul)}>
@@ -77,6 +79,7 @@ const Modal = ({
                       key={item.href}
                       href={item.href}
                       isLast={index === Navigation.length - 1}
+                      onClick={closeModal}
                     >
                       {item.name}
                     </NavItem>
@@ -104,7 +107,7 @@ export const MobileNav = memo(() => {
   return (
     <>
       <Button onClick={handleButtonClick}>
-        <HamburgerIcon />
+        <AlignJustify size={16} />
       </Button>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
