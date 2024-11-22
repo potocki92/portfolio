@@ -1,5 +1,6 @@
 {
   "navigation": {
+    "navigation" : "Navigation",
     "home": "Home",
     "about": "About",
     "resume": "Resume",
