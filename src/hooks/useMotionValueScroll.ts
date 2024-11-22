@@ -3,7 +3,7 @@ import { useScroll } from "framer-motion";
 
 const useMotionValueScrollYFactory = (
   values: [string, string],
-  scrollRange: [number, number] = [0, 500],
+  scrollRange: [number, number] = [0, 250],
 ) => {
   const { scrollY } = useScroll();
   return useTransform(scrollY, scrollRange, values);
