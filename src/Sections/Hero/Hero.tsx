@@ -13,8 +13,6 @@ const styles = stylex.create({
     width: "100%",
     maxWidth: $.maxTitleWidth,
     position: { default: "static", [MEDIA]: "absolute" },
-    left: `calc(${$.globalYPadding} + 95px)`,
-    bottom: "10px",
   },
   containerGrid: {
     gridArea: {
