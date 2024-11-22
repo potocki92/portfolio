@@ -4,7 +4,7 @@ import Home from "./Pages/Home";
 import AboutPage from "./Pages/About";
 import Projects from "./Pages/Projects";
 import { colors } from "./styles/globalTokens.stylex";
-import { dark } from "./styles/themes.stylex";
+import { lightTheme, darkTheme } from "./styles/themes.stylex";
 import { ThemeProvider, useTheme } from "./Components/ThemeContext/ThemeContex";
 import Layout from "./Layout/Layout";
 
@@ -39,7 +39,7 @@ function AppContent() {
   const { theme } = useTheme();
 
   return (
-    <div {...stylex.props(styles.body, styles.base, theme === "light" ? [] : dark)}>
+    <div {...stylex.props(theme === "dark" ? darkTheme : lightTheme, styles.base, styles.body)}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
