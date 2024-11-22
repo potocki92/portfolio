@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export type AnimationVariantProps = {
   style?: {
-    initial?: string | undefined;
+    initial?: string | object | undefined;
     initialY?: string | MotionValue<string>;
     initialX?: string | MotionValue<string>;
     initialTransformOrigin?: string;
