@@ -1,4 +1,12 @@
-import React, { createContext, useContext, useCallback, useMemo, useState, memo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useMemo,
+  useState,
+  useEffect,
+  memo,
+} from "react";
 
 type ThemeContextType = "light" | "dark";
 interface ThemeContextProps {
@@ -18,9 +26,25 @@ export const useTheme = () => {
 
 export const ThemeProvider = memo(({ children }: React.PropsWithChildren<{}>) => {
   const [theme, setTheme] = useState<ThemeContextType>(() => {
-    const localStorageTheme = localStorage.getItem("theme");
-    return (localStorageTheme as ThemeContextType) || "light";
+    const localStorageTheme = localStorage.getItem("theme") as ThemeContextType | null;
+    if (localStorageTheme) {
+      return localStorageTheme;
+    }
+    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    return darkModeMediaQuery.matches ? "dark" : "light";
   });
+
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? "dark" : "light");
+    };
+
+    darkModeMediaQuery.addEventListener("change", handleChange);
+    return () => {
+      darkModeMediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => {
@@ -38,8 +62,5 @@ export const ThemeProvider = memo(({ children }: React.PropsWithChildren<{}>) =>
     [theme, toggleTheme],
   );
 
-  return useMemo(
-    () => <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>,
-    [contextValue, children],
-  );
+  return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 });
