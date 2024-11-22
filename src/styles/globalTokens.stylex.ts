@@ -122,15 +122,18 @@ export const globalTokens = stylex.defineVars({
   avatarLeft: "1.5rem",
   buttonHeight: "2rem",
   buttonWidth: "2rem",
-  avatarWrapperTop: { default: "120px", [MEDIA]: "168px" },
+  avatarWrapperTop: { default: "0px", [MEDIA]: "96px" },
 });
 
 export const globalStyles = stylex.create({
   flex: {
     display: "flex",
+    justifyContent: "center",
   },
   flexColumn: {
     flexDirection: "column",
   },
-  flexButtons: { display: { default: "flex", [MEDIA]: "none" } },
+  flexButtons: {
+    display: { default: "flex", [MEDIA]: "none" },
+  },
 });
