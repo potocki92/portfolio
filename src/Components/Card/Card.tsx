@@ -1,4 +1,4 @@
-import { StyleXStyles, stylex } from "@stylexjs/stylex";
+import stylex, { StyleXStyles } from "@stylexjs/stylex";
 import Paragraph from "../Paragraph/Paragraph";
 
 const CardRoot = ({
@@ -12,15 +12,15 @@ const CardRoot = ({
 const CardTitle = ({
   as: Component = "h5",
   children,
-  style
-}: React.PropsWithChildren<{ as?: React.ElementType; href?: string, style?: StyleXStyles }>) => {
+  style,
+}: React.PropsWithChildren<{ as?: React.ElementType; href?: string; style?: StyleXStyles }>) => {
   return <Component {...stylex.props(style)}>{children}</Component>;
 };
 
 const CardDate = ({
   as: Component = "span",
   children,
-  style
+  style,
 }: React.PropsWithChildren<{ as?: React.ElementType; style?: StyleXStyles }>) => {
   return <Component {...stylex.props(style)}>{children}</Component>;
 };
@@ -35,16 +35,16 @@ const CardDescription = ({
 const CardTech = ({
   as: Component = "ul",
   children,
-  style
-}: React.PropsWithChildren<{ as?: React.ElementType, style?: StyleXStyles }>) => {
+  style,
+}: React.PropsWithChildren<{ as?: React.ElementType; style?: StyleXStyles }>) => {
   return <Component {...stylex.props(style)}>{children}</Component>;
 };
 
 const CardTechItem = ({
   as: Component = "li",
   children,
-  style
-}: React.PropsWithChildren<{ as?: React.ElementType, style?: StyleXStyles }>) => {
+  style,
+}: React.PropsWithChildren<{ as?: React.ElementType; style?: StyleXStyles }>) => {
   return <Component {...stylex.props(style)}>{children}</Component>;
 };
 export const Card = Object.assign(CardRoot, {
