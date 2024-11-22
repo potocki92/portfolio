@@ -55,8 +55,6 @@ const Button = memo(
       ref: React.Ref<T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : T>,
     ) => {
       const { style, className, children, onClick, is, ...rest } = props;
-      console.log(props);
-      
       return (
         <Component
           className={className}
