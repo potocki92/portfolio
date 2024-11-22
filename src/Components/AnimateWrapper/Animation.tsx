@@ -6,7 +6,6 @@ import AnimateAvatar from "./AnimationAvatar";
 import AnimateWrapper from "./AnimationWrapper";
 import AnimateBackdrop from "./AnimationBackdrop";
 import AnimateModal from "./AnimationModal";
-import AnimateMain from "./AnimationMain";
 import AnimateThemeButton from "./AnimateThemeButton";
 
 interface StyleProps {
@@ -157,6 +156,5 @@ export const Animate = {
   Avatar: AnimateAvatar,
   Backdrop: AnimateBackdrop,
   Modal: AnimateModal,
-  Main: AnimateMain,
   ThemeButton: AnimateThemeButton,
 };
