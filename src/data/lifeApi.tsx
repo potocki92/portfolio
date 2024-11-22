@@ -69,6 +69,7 @@ const LifeApiComponent = () => {
     ExperienceTitle: t("EXPERIENCE") as string,
     ProjectTitle: t("PROJECTS") as string,
   };
+  const NavigationText = t("navigation.navigation") as string;
   const Navigation: NavigationItemsInterface[] = [
     { href: "/", name: t("navigation.home") as string },
     { href: "/projects", name: t("navigation.projects") as string },
@@ -151,6 +152,7 @@ const LifeApiComponent = () => {
     SocialMedia,
     Titles,
     Navigation,
+    NavigationText,
   };
 };
 
