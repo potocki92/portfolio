@@ -5,6 +5,9 @@ import useMotionValueScrollYFactory from "../../hooks/useMotionValueScroll";
 import useScrollHandler from "../../hooks/useScroll";
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
 import { useMediaQuery } from "react-responsive";
+import { AnimateBase } from "./Animation";
+import { memo, ReactNode } from "react";
+import { motion } from "framer-motion";
 
 export const MEDIA = "(min-width: 768px)";
 export const getAvatarAnimationConfig = (): AnimationVariantProps => {
@@ -16,12 +19,12 @@ export const getAvatarAnimationConfig = (): AnimationVariantProps => {
     initialYMedia: { max: `calc(50% + 0px)`, min: `calc(50% + -155px)` },
     initialTransform: {
       max: "translate3d(0, calc(-50% + 0px), 0) scale(1)",
-      min: "translate3d(0, calc(-50% + -155px), 0) scale(0.6)",
+      min: "translate3d(0, calc(-50% + -12px), 0) scale(0.6)",
       notHome: "translate3d(0, -50%, 0) scale(0.6)",
     },
     initialTranformMedia: {
-      min: "translate3d(0, calc(-50% + -107px), 0) scale(0.6)",
-    }
+      min: "translate3d(0, calc(-50% + -13px), 0) scale(0.6)",
+    },
   } as const;
   const controls = useScrollHandler({
     onScrollUp: () => controls.start("visible"),
@@ -66,3 +69,21 @@ export const getAvatarAnimationConfig = (): AnimationVariantProps => {
   };
   return config;
 };
+
+/**
+ * Avatar component for creating animated avatar elements.
+ * @param {Object} props - The component props.
+ * @param {AnimateConfig} props.config - The animation configuration.
+ * @param {ReactNode} [props.children] - The children nodes.
+ * @returns {JSX.Element} The animated component.
+ */
+const AnimateAvatar = memo(({ children }: { children?: ReactNode }): JSX.Element => {
+  const AvatarAnimationConfig = getAvatarAnimationConfig();
+  return (
+    <AnimateBase
+      config={{ ...AvatarAnimationConfig, motionComponent: motion.div, children }}
+    />
+  );
+});
+
+export default AnimateAvatar;

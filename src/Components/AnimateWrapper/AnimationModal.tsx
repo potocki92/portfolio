@@ -1,5 +1,8 @@
-import { AnimationVariantProps } from "../../@types/types";
+import { memo, ReactNode } from "react";
+import { AnimateConfig, AnimationVariantProps } from "../../@types/types";
 import styles from "../Nav/Nav.stylex";
+import { AnimateBase } from "./Animation";
+import { motion } from "framer-motion";
 
 export const getModalAnimationConfig = (): AnimationVariantProps => {
   const config = {
@@ -26,3 +29,14 @@ export const getModalAnimationConfig = (): AnimationVariantProps => {
   };
   return config;
 };
+
+const AnimateModal = memo(
+  ({ children, onClick }: { config?: AnimateConfig; children?: ReactNode; onClick?: any }): JSX.Element => {
+    const ModalAnimationConfig = getModalAnimationConfig();
+    return (
+      <AnimateBase config={{ ...ModalAnimationConfig, motionComponent: motion.div, children, onClick }} />
+    );
+  },
+);
+
+export default AnimateModal;
