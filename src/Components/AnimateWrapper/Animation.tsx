@@ -7,6 +7,8 @@ import AnimateWrapper from "./AnimationWrapper";
 import AnimateBackdrop from "./AnimationBackdrop";
 import AnimateModal from "./AnimationModal";
 import AnimateThemeButton from "./AnimateThemeButton";
+import AnimateSocial from "./AnimateSocial";
+import AnimateSocialIcon from "./AnimateSocialIcon";
 
 interface StyleProps {
   style?: stylex.StyleXStyles;
@@ -157,4 +159,6 @@ export const Animate = {
   Backdrop: AnimateBackdrop,
   Modal: AnimateModal,
   ThemeButton: AnimateThemeButton,
+  Social: AnimateSocial,
+  SocialIcon: AnimateSocialIcon,
 };
