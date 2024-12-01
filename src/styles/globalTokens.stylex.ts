@@ -129,6 +129,7 @@ export const globalStyles = stylex.create({
   flex: {
     display: "flex",
     justifyContent: "center",
+    alignItems: "center"
   },
   flexColumn: {
     flexDirection: "column",
