@@ -1,8 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 import { Container } from "../../Components/Container/Container"
-import { SocialLink } from "../../Components/SocialLink/SocialLink"
 import { SocialMedia } from "../../data/lifeApi"
 import { globalTokens as $, colors } from "../../styles/globalTokens.stylex";
+import { SocialLink } from "../../Components/Social/Social";
 
 const styles = stylex.create({
     footer: {
