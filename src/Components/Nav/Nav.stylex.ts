@@ -92,6 +92,11 @@ const styles = stylex.create({
     display: "flex",
     gap: "0.5rem",
   },
+  modalButton: {
+    display: "flex",
+    justifyContent: "flex-end",
+    gap: "0.5rem", 
+  },
   h2: {
     fontSize: text.sm,
     lineHeight: "1.5rem",
