@@ -1,17 +1,14 @@
 import stylex from "@stylexjs/stylex";
-import React, { memo, useState, useMemo, useCallback } from "react";
+import React, { memo, useMemo } from "react";
 import styles from "./Nav.stylex";
 import { Link, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import { AlignJustify, X } from "lucide-react";
 import Button from "../Button/Button";
 import LifeApiComponent from "../../data/lifeApi";
 import { Animate } from "../AnimateWrapper/Animation";
-import { useScrollLock } from "../../hooks/useScrollLock";
 import LanguageButton from "../LanguageButton/LanguageButton";
 import ToggleTheme from "../ToggleTheme/ToggleTheme";
 import { useModal } from "../../hooks/useModal";
-import { t } from "i18next";
 import { Backdrop } from "../Backdrop/Backdrop";
 
 interface NavigationItemsInterface {
