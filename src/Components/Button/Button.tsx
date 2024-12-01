@@ -35,6 +35,7 @@ const styles = stylex.create({
  * @property {React.ReactNode} children - The content of the button.
  * @property {React.MouseEventHandler} [onClick] - The click event handler.
  * @property {boolean} [is] - Conditional styling flag.
+ * @property {stylex.StyleXStyles} [style] - Additional styles to apply to the button.
  */
 type Props<T extends ElementType> = {
   as?: T;
